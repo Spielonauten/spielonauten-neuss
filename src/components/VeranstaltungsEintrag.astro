@@ -1,0 +1,76 @@
+---
+interface Veranstaltung {
+  id: string;
+  titel: string;
+  untertitel: string;
+  beschreibung: string;
+  termin: string;
+  datum: string;
+  art: string;
+  ort: string;
+  teilnahme: string;
+  hinweise: string[];
+  bild?: string;
+}
+interface Props {
+  veranstaltung: Veranstaltung;
+  position: number;
+}
+const { veranstaltung: event, position } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const logo = `${base}/bilder/logo/spielonauten-logo.png`;
+const hasPoster = Boolean(event.bild);
+const posterUrl = hasPoster ? `${base}/${event.bild?.replace(/^\//, '')}` : '';
+const artLabel = {
+  fest: 'Einzeltermin',
+  regelmaessig: 'Regelmäßige Veranstaltung',
+  planung: 'Termin in Planung',
+}[event.art];
+---
+<section
+  class:list={['band', position % 2 === 0 ? 'band--white' : 'band--blue', 'event-feature']}
+  id={event.id}
+  data-event-feature
+  data-event-date={event.datum}
+  data-event-kind={event.art}
+  aria-labelledby={`title-${event.id}`}
+>
+  <div class="shell event-feature-grid">
+    <div class="event-feature-copy">
+      <p class="event-type">{artLabel}</p>
+      <h2 id={`title-${event.id}`}>{event.titel}</h2>
+      <p class="event-feature-subtitle">{event.untertitel}</p>
+      <p>{event.beschreibung}</p>
+      <dl class="event-facts">
+        <div>
+          <dt>Wann</dt>
+          <dd>{event.termin}</dd>
+        </div>
+        <div>
+          <dt>Wo</dt>
+          <dd>{event.ort}</dd>
+        </div>
+        <div>
+          <dt>Teilnahme</dt>
+          <dd>{event.teilnahme}</dd>
+        </div>
+      </dl>
+      {event.hinweise.map((hinweis) => <p class="event-extra">{hinweis}</p>)}
+      {event.art === 'fest' && <p class="event-date-warning" data-event-past hidden>Dieser Termin liegt bereits zurück. Ein neuer Termin wird hier ergänzt, sobald er feststeht.</p>}
+      <a class="button" href={`${base}/wo-wird-gespielt/`}>Informationen zu unseren Spielorten</a>
+    </div>
+    <div class="event-feature-media">
+      {hasPoster ? (
+        <img class="event-poster" src={posterUrl} alt={`Veranstaltungsflyer: ${event.titel}`} loading="lazy" />
+      ) : (
+        <div class="event-poster-fallback">
+          <img src={logo} alt="" width="104" height="104" loading="lazy" />
+          <span class="event-poster-kicker">Spielonauten Neuss</span>
+          <strong>{event.titel}</strong>
+          <span class="event-poster-subtitle">{event.untertitel}</span>
+          <span class="event-poster-note">Originalflyer folgt</span>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

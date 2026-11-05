@@ -27,7 +27,7 @@ const startBild = `${base}/bilder/startseite/meeples-startseite.jpg`;
             <p>{event.beschreibung}</p>
             <p class="event-detail"><strong>Wann:</strong> {event.termin}</p>
             <p class="event-detail"><strong>Wo:</strong> {event.ort}</p>
-            <a class="button" href={`${base}/veranstaltungen/`}>Alle Informationen</a>
+            <a class="button" href={`${base}/veranstaltungen/#${event.id}`}>Alle Informationen</a>
           </div>
         </article>
       ))}

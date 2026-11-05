@@ -1,9 +1,13 @@
 /**
- * Vorläufige zentrale Veranstaltungsliste für die Startseite.
- * Später werden diese Felder über den Inhaltseditor gepflegt.
+ * Zentrale Veranstaltungsformate der Spielonauten.
+ * Basis: freigegebene Texte und Screenshots der Jimdo-Seite (November 2026).
+ * Einmaltermine und Links vor jeder öffentlichen Ankündigung überprüfen.
+ * Dieses Datenmodell wird später an den redaktionellen Editor angebunden.
  *
- * Feste Termine werden nach Ablauf im Slider automatisch ausgeblendet.
- * Wiederkehrende Veranstaltungen ohne bestätigten Einzeltermin bleiben sichtbar.
+ * datum: ISO-Tag für einen einzelnen bestätigten Termin, sonst leer.
+ * art: 'fest' | 'regelmaessig' | 'planung'
+ * bild: optionaler Pfad relativ zur GitHub-Pages-Basis; leer bis ein
+ *       Originalflyer bereitgestellt wurde.
  */
 export const veranstaltungen = [
   {
@@ -14,56 +18,74 @@ export const veranstaltungen = [
     termin: 'Donnerstag, 19.11.2026 · 19:00 Uhr',
     datum: '2026-11-19',
     art: 'fest',
-    ort: 'Rheinisches Landestheater Neuss, Oberstraße 95',
+    ort: 'Rheinisches Landestheater Neuss, Oberstraße 95, 41460 Neuss',
+    teilnahme: 'Eintritt kostenlos, keine Anmeldung erforderlich.',
+    hinweise: ['Du kannst neue Spiele ausprobieren, dich beraten lassen oder einfach direkt mitspielen. Auch ohne Regelkenntnisse bist du willkommen.'],
+    bild: '',
   },
   {
     id: 'offener-brettspieleabend',
     titel: 'Offener Brettspieleabend',
     untertitel: 'Gemeinsam spielen im Kardinal-Bea-Haus',
-    beschreibung: 'Ob Spieleklassiker oder Neuheit: Bring dein Lieblingsspiel mit oder entdecke Spiele aus unserer Sammlung. Kostenlos und ohne Anmeldung.',
+    beschreibung: 'Monatlich am zweiten Montag laden wir ab 18:30 Uhr zu unserem traditionellen Spieleabend ein. Komm gerne auch spontan bei uns vorbei. Eine große Menge Spaß wartet auf dich.',
     termin: 'Jeden zweiten Montag im Monat · ab 18:30 Uhr',
     datum: '',
     art: 'regelmaessig',
-    ort: 'Kardinal-Bea-Haus, Furthhofstraße 25',
+    ort: 'Großer Saal im Kardinal-Bea-Haus, Furthhofstraße 25, 41462 Neuss',
+    teilnahme: 'Keine Anmeldung notwendig. Eintritt kostenlos.',
+    hinweise: ['Wir spielen Neuheiten, Klassiker und alles, was ihr mitbringt. Unsere Spieleprofis erklären dir gerne die Regeln.'],
+    bild: '',
   },
   {
     id: 'ikea',
     titel: 'After-Work bei IKEA',
     untertitel: 'Brettspiele im Schwedensrestaurant',
-    beschreibung: 'Gemeinsam neue und bekannte Brettspiele ausprobieren. Für diesen Abend ist eine Anmeldung über IKEA vorgesehen.',
+    beschreibung: 'Unser After-Work-Spieleabend verwandelt das Schwedensrestaurant in eine Brettspiel-Area. Egal, ob du erfahren bist oder dich einfach auf einen geselligen Abend freust – du bist am Zug!',
     termin: 'Donnerstag, 26.11.2026 · 18:00–20:30 Uhr',
     datum: '2026-11-26',
     art: 'fest',
-    ort: 'IKEA Düsseldorf, Oerschbachstraße 75',
+    ort: 'IKEA Düsseldorf, Schwedensrestaurant, Oerschbachstraße 75, Düsseldorf',
+    teilnahme: 'Für IKEA-Familienmitglieder mit Anmeldung über IKEA. Ein direkter Anmeldelink wird ergänzt, sobald er bestätigt ist.',
+    hinweise: ['Wir bringen Spiele von Klassikern bis zu aktuellen Neuheiten mit, erklären die Regeln und spielen mit euch.'],
+    bild: '',
   },
   {
     id: 'vorhang-auf',
     titel: 'Vorhang auf für Brettspiele',
-    untertitel: 'Der große Brettspieltag im Theater',
-    beschreibung: 'Ein ganzer Tag für neue Spiele, Klassiker und gemeinsame Partien. Kommt vorbei, spielt mit und lasst euch die Regeln erklären.',
+    untertitel: 'Der Brettspieltag im Rheinischen Landestheater',
+    beschreibung: 'Ein gemütlicher Brettspieltag für neugierige Spielerinnen und Spieler. Es gibt Neuheiten, Klassiker und viele Möglichkeiten, einfach mitzuspielen.',
     termin: 'Samstag, 12.12.2026 · 12:00–21:00 Uhr',
     datum: '2026-12-12',
     art: 'fest',
-    ort: 'Rheinisches Landestheater Neuss, Oberstraße 95',
+    ort: 'Offenes Foyer im Rheinischen Landestheater Neuss, Oberstraße 95, 41460 Neuss',
+    teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
+    hinweise: ['Unsere Spieleprofis erklären euch die Regeln. Auch das gastronomische Angebot in der Umgebung kann genutzt werden.'],
+    bild: '',
   },
   {
     id: 'xxl-spieletag',
     titel: 'XXL-Spieletag',
     untertitel: 'Ein ganzer Tag voller Brettspiele',
-    beschreibung: 'Beim XXL-Spieletag könnt ihr gemeinsam spielen, neue Titel entdecken und eure Lieblingsspiele mitbringen.',
+    beschreibung: 'Bei unserem XXL-Spieletag kannst du den ganzen Tag spielen, neue Spiele kennenlernen und eigene Lieblingsspiele mitbringen.',
     termin: 'Samstag, 06.03.2027 · ab 11:00 Uhr',
     datum: '2027-03-06',
     art: 'fest',
-    ort: 'Kardinal-Bea-Haus, Furthhofstraße 25',
+    ort: 'Kardinal-Bea-Haus, Furthhofstraße 25, 41462 Neuss',
+    teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
+    hinweise: ['Du kannst bereits morgens starten oder später dazukommen. Für das Mitbringbuffet freuen wir uns über einen Beitrag.'],
+    bild: '',
   },
   {
     id: 'thalia',
     titel: 'Brettspielaktion bei Thalia',
     untertitel: 'Vor dem Kauf im Geschäft ausprobieren',
-    beschreibung: 'Wir erklären Brettspiele direkt im Rheinpark-Center Neuss. Der nächste Termin wird noch geplant.',
+    beschreibung: 'Wir bringen Brettspiele direkt auf die Verkaufsfläche im Rheinpark-Center Neuss, erklären die Regeln und spielen mit euch.',
     termin: 'Nächster Termin in Planung',
     datum: '',
     art: 'planung',
-    ort: 'Thalia im Rheinpark-Center Neuss',
+    ort: 'Thalia im Rheinpark-Center Neuss, Breslauer Straße 2–4, 41460 Neuss',
+    teilnahme: 'Spontane, kostenlose Teilnahme ohne Anmeldung.',
+    hinweise: ['So kannst du direkt vor dem Kauf ausprobieren, ob dir ein Spiel gefällt.'],
+    bild: '',
   },
 ];

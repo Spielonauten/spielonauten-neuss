@@ -1,9 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import VeranstaltungsEintrag from '../components/VeranstaltungsEintrag.astro';
+import { veranstaltungen } from '../data/veranstaltungen.js';
+
+// Reihenfolge wie auf der bisherigen Veranstaltungsseite.
+const reihenfolge = [
+  'offener-brettspieleabend',
+  'rheingespielt',
+  'ikea',
+  'vorhang-auf',
+  'xxl-spieletag',
+  'thalia',
+];
+const eintraege = reihenfolge.map((id) => veranstaltungen.find((v) => v.id === id)).filter(Boolean);
 ---
-<Layout title="Veranstaltungen">
-  <section class="band band--blue title-hero"><div class="shell narrow"><h1>Alles Wichtige zu unseren Veranstaltungen</h1><p>Auf dieser Seite findest du bald alle Veranstaltungsformate und ihre aktuellen Termine übersichtlich an einem Ort.</p></div></section>
-  <section class="band band--white"><div class="shell"><h2>Unsere Veranstaltungsformate</h2><div class="simple-grid">
-    {['Offener Brettspieleabend', 'Rheingespielt', 'After-Work-Spieleabend bei IKEA', 'Vorhang auf für Brettspiele', 'XXL-Spieletag', 'Brettspielaktion bei Thalia'].map((name) => <article class="simple-card"><h3>{name}</h3><p>Texte, Bilder und Termine folgen beim Seiten-Nachbau.</p></article>)}
-  </div></div></section>
+<Layout title="Veranstaltungen" description="Unsere offenen Spieleabende und Brettspielveranstaltungen in Neuss – Termine, Orte und Teilnahmeinformationen.">
+  <section class="band band--blue title-hero">
+    <div class="shell narrow">
+      <h1>Alles Wichtige zu unseren Veranstaltungen</h1>
+      <p>Bilder und Informationen zu unseren bisherigen Veranstaltungen findest du auch auf unserem Instagram-Kanal. Die nächsten Termine und Teilnahmebedingungen stehen hier auf der Website.</p>
+    </div>
+  </section>
+  {eintraege.map((eintrag, position) => (
+    <VeranstaltungsEintrag veranstaltung={eintrag} position={position} />
+  ))}
 </Layout>
+
+<script>
+  // Der statische Build bleibt korrekt, selbst wenn später ein Datum verstreicht:
+  // Browser markieren verstrichene Einzeltermine nach dem tatsächlichen Besuchstag.
+  const heute = new Date();
+  heute.setHours(0, 0, 0, 0);
+  for (const section of document.querySelectorAll<HTMLElement>('[data-event-feature]')) {
+    if (section.dataset.eventKind !== 'fest' || !section.dataset.eventDate) continue;
+    const [jahr, monat, tag] = section.dataset.eventDate.split('-').map(Number);
+    if (new Date(jahr, monat - 1, tag) < heute) {
+      const hinweis = section.querySelector<HTMLElement>('[data-event-past]');
+      if (hinweis) hinweis.hidden = false;
+    }
+  }
+</script>
