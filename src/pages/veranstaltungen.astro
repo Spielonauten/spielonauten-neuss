@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Veranstaltungen">
+  <section class="band band--blue title-hero"><div class="shell narrow"><h1>Alles Wichtige zu unseren Veranstaltungen</h1><p>Auf dieser Seite findest du bald alle Veranstaltungsformate und ihre aktuellen Termine übersichtlich an einem Ort.</p></div></section>
+  <section class="band band--white"><div class="shell"><h2>Unsere Veranstaltungsformate</h2><div class="simple-grid">
+    {['Offener Brettspieleabend', 'Rheingespielt', 'After-Work-Spieleabend bei IKEA', 'Vorhang auf für Brettspiele', 'XXL-Spieletag', 'Brettspielaktion bei Thalia'].map((name) => <article class="simple-card"><h3>{name}</h3><p>Texte, Bilder und Termine folgen beim Seiten-Nachbau.</p></article>)}
+  </div></div></section>
+</Layout>

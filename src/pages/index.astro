@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Placeholder from '../components/Placeholder.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Layout title="Startseite">
+  <section class="band band--blue hero">
+    <div class="shell hero-grid">
+      <Placeholder label="Hier folgt das Originalfoto mit den Spielfiguren" tall />
+      <div>
+        <p class="eyebrow">Gemeinsam spielen in Neuss</p>
+        <h1>Lust auf ein Spiel?</h1>
+        <p>Dann bist du bei den <strong>Spielonauten Neuss</strong> genau richtig! Bei unserer Brettspielgruppe dreht sich alles um das gemeinsame Erleben von spannenden Abenteuern, strategischem Denken und purem Spielspaß. Jetzt bist du am Zug! Schau dich um und komm gerne bei einer unserer Veranstaltungen vorbei.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band band--white section-center" aria-labelledby="termine">
+    <div class="shell narrow">
+      <h2 id="termine">Diese Veranstaltungen warten auf dich:</h2>
+      <p>Unsere sechs Veranstaltungsformate und ihre Termine übernehmen wir im nächsten Projektschritt in eine zentrale Verwaltung.</p>
+      <a class="button" href={`${base}/veranstaltungen/`}>Veranstaltungen ansehen</a>
+    </div>
+  </section>
+  <section class="band band--blue" aria-labelledby="ablauf">
+    <div class="shell">
+      <h2 class="section-heading" id="ablauf">So läuft’s bei uns</h2>
+      <div class="info-grid">
+        <article class="info-card"><h3>Eintritt FREI</h3><p>Du musst nichts zahlen, komme einfach vorbei! Alle Erlöse aus Getränken und Verpflegung unterstützen den Erhalt des Kardinal-Bea-Hauses.</p></article>
+        <article class="info-card"><h3>Was spiele ich denn heute?</h3><p>Wir haben immer eine große Auswahl an Spielen dabei. Du kannst auch eigene Spiele mitbringen und sie gemeinsam mit uns ausprobieren.</p></article>
+        <article class="info-card"><h3>Du kennst die Regeln nicht?</h3><p>Kein Problem. Wir erklären die Spiele und spielen gerne mit dir.</p></article>
+        <article class="info-card"><h3>Alle sind willkommen!</h3><p>Unabhängig von deinem Alter oder deiner Spielerfahrung freuen wir uns auf dich.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="band band--white section-center" aria-labelledby="partner">
+    <div class="shell">
+      <h2 id="partner">Unsere Kooperationspartner</h2>
+      <p>Hier folgen die Original-Logos und Beschreibungen unserer Partner.</p>
+      <div class="partner-names" aria-label="Kooperationspartner">
+        <span>Förderverein Kardinal-Bea-Haus e. V.</span><span>IKEA Düsseldorf</span><span>Thalia im Rheinpark-Center</span><span>Rheinisches Landestheater Neuss</span>
+      </div>
+    </div>
+  </section>
+  <section class="band band--blue section-center" aria-labelledby="kontakt">
+    <div class="shell narrow">
+      <h2 id="kontakt">Du möchtest Kontakt zu uns aufnehmen?</h2>
+      <p>Das Kontaktformular wird nach Auswahl eines datenschutzgerechten Versanddienstes eingebunden. Bis dahin veröffentlichen wir hier bewusst noch kein funktionsloses Formular.</p>
+    </div>
+  </section>
+  <section class="band band--white">
+    <div class="shell hero-grid">
+      <Placeholder label="Hier folgt das Originalfoto des Spielsaals" />
+      <div><h2>Wo wird gespielt?</h2><p>Unsere Spielabende finden unter anderem im Kardinal-Bea-Haus und im Rheinischen Landestheater Neuss statt.</p><a class="button" href={`${base}/wo-wird-gespielt/`}>Weitere Informationen</a></div>
+    </div>
+  </section>
+  <section class="band band--blue section-center">
+    <div class="shell narrow">
+      <h2>Mehr Eindrücke auf Instagram</h2>
+      <p>Fotos von unseren Veranstaltungen und Einblicke in unsere Brettspielgemeinschaft.</p>
+      <a class="button" href="https://www.instagram.com/spielonauten_neuss/" target="_blank" rel="noopener noreferrer">Zu Instagram <span class="sr-only">(öffnet in neuem Tab)</span></a>
+    </div>
+  </section>
+</Layout>

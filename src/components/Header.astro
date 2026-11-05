@@ -1,0 +1,42 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { label: 'Startseite', path: '/' },
+  { label: 'Veranstaltungen', path: '/veranstaltungen/' },
+  { label: 'Wo wird gespielt?', path: '/wo-wird-gespielt/' },
+  { label: 'Über uns', path: '/ueber-uns/' },
+];
+const linkFor = (path) => `${base}${path}`;
+const active = (path) => (path === '/' ? currentPath === base : currentPath === `${base}${path}`.replace(/\/$/, ''));
+---
+<header class="site-header">
+  <div class="shell header-content">
+    <a class="brand" href={linkFor('/')} aria-label="Spielonauten Neuss – Startseite">
+      <span class="brand-symbol" aria-hidden="true">SN</span>
+      <span>Spielonauten Neuss</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      {nav.map((item) => (
+        <a href={linkFor(item.path)} aria-current={active(item.path) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <details class="mobile-nav">
+      <summary aria-label="Hauptmenü öffnen oder schließen">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Menü</span>
+      </summary>
+      <nav aria-label="Mobile Hauptnavigation">
+        {nav.map((item) => (
+          <a href={linkFor(item.path)} aria-current={active(item.path) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>

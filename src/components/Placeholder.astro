@@ -1,0 +1,10 @@
+---
+interface Props {
+  label: string;
+  tall?: boolean;
+}
+const { label, tall = false } = Astro.props;
+---
+<div class:list={['placeholder-photo', { 'placeholder-photo--tall': tall }]} role="img" aria-label={label}>
+  <span>{label}</span>
+</div>
