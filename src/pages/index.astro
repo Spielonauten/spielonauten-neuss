@@ -2,13 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Placeholder from '../components/Placeholder.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
 ---
 <Layout title="Startseite">
   <section class="band band--blue hero">
     <div class="shell hero-grid">
-      <Placeholder label="Hier folgt das Originalfoto mit den Spielfiguren" tall />
-      <div>
-        <p class="eyebrow">Gemeinsam spielen in Neuss</p>
+      <img class="hero-photo" src={heroImage} alt="Rote, blaue und gelbe Spielfiguren auf einem Brettspiel" width="822" height="464" />
+      <div class="hero-copy">
         <h1>Lust auf ein Spiel?</h1>
         <p>Dann bist du bei den <strong>Spielonauten Neuss</strong> genau richtig! Bei unserer Brettspielgruppe dreht sich alles um das gemeinsame Erleben von spannenden Abenteuern, strategischem Denken und purem Spielspaß. Jetzt bist du am Zug! Schau dich um und komm gerne bei einer unserer Veranstaltungen vorbei.</p>
       </div>
