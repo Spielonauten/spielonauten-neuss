@@ -22,15 +22,14 @@ const theater = spielorte.theater;
 
   <section id="kardinal-bea-haus" class="band band--white" aria-labelledby="kardinal-title">
     <div class="shell venue-split">
-      <img class="venue-lead-image" src={bild('kardinal-bea-haus.webp')} alt="Außenansicht des Kardinal-Bea-Hauses in Neuss" width="1600" height="1064" decoding="async" />
       <div class="venue-copy">
         <p class="venue-kicker venue-kicker--place">Spielort 01</p>
         <h2 id="kardinal-title">Kardinal-Bea-Haus</h2>
         <p>Unsere offenen Brettspieleabende und XXL-Spieletage finden im großen Saal des Kardinal-Bea-Hauses statt. Hier ist genügend Platz, um gemeinsam neue und bekannte Spiele auszuprobieren.</p>
         <address><strong>Zugang für unsere Gäste:</strong><br />{kardinal.eingang}<br />{kardinal.plzOrt}</address>
         <p class="venue-small-note">Die Gebäudeadresse wird auch unter {kardinal.gebaeudeadresse} geführt. Für den hier gezeigten Weg nutze bitte den Zugang bei Hausnummer 25.</p>
-        <a class="button" href={kardinal.website} target="_blank" rel="noopener noreferrer">Zum Kardinal-Bea-Haus <span class="sr-only">(öffnet in neuem Tab)</span></a>
       </div>
+      <img class="venue-lead-image" src={bild('kardinal-bea-haus.webp')} alt="Außenansicht des Kardinal-Bea-Hauses in Neuss" width="1600" height="1064" decoding="async" />
     </div>
   </section>
 
@@ -45,15 +44,15 @@ const theater = spielorte.theater;
     </summary>
 
   <section class="band band--mid venue-map-band" aria-labelledby="venue-map-title">
-    <div class="shell venue-map-panel">
-      <div>
-        <p class="venue-kicker">Karte und Navigation</p>
-        <h2 id="venue-map-title">So findest du uns</h2>
+    <div class="shell">
+      <p class="venue-kicker venue-section-kicker">Karte und Navigation</p>
+      <h2 id="venue-map-title" class="section-heading">So findest du uns</h2>
+      <div class="venue-map-panel">
         <p>Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.</p>
-      </div>
-      <div class="venue-map-actions">
+        <div class="venue-map-actions">
         <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Route in Google Maps planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
-        <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+          <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -95,13 +94,15 @@ const theater = spielorte.theater;
   </section>
 
   <section class="band band--blue" aria-labelledby="auto-title">
-    <div class="shell venue-split venue-split--photo-last">
-      <div class="venue-copy venue-copy--centered">
-        <h2 id="auto-title">Anfahrt mit dem Auto</h2>
-        <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
-        <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+    <div class="shell">
+      <h2 id="auto-title" class="section-heading">Anfahrt mit dem Auto</h2>
+      <div class="venue-split venue-split--photo-last">
+        <div class="venue-copy">
+          <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
+          <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+        </div>
+        <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
       </div>
-      <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -109,9 +110,6 @@ const theater = spielorte.theater;
 
   <section id="rheinisches-landestheater" class="band band--white" aria-labelledby="theater-title">
     <div class="shell venue-split venue-theater">
-      <div class="venue-theater-visual" aria-hidden="true">
-        <img src={rltLogo} alt="" loading="lazy" decoding="async" />
-      </div>
       <div class="venue-copy">
         <p class="venue-kicker venue-kicker--place">Spielort 02</p>
         <h2 id="theater-title">Rheinisches Landestheater Neuss</h2>
@@ -122,7 +120,9 @@ const theater = spielorte.theater;
           <a class="button" href={theater.route} target="_blank" rel="noopener noreferrer">Route zum Theater planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
           <a class="venue-text-link" href={theater.website} target="_blank" rel="noopener noreferrer">Anreiseinfos des Theaters <span class="sr-only">(öffnet in neuem Tab)</span></a>
         </div>
-
+      </div>
+      <div class="venue-theater-visual" aria-hidden="true">
+        <img src={rltLogo} alt="" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
