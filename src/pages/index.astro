@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Placeholder from '../components/Placeholder.astro';
+import VeranstaltungsSlider from '../components/VeranstaltungsSlider.astro';
+import { partner } from '../data/partner.js';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
 ---
@@ -14,13 +16,7 @@ const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
       </div>
     </div>
   </section>
-  <section class="band band--white section-center" aria-labelledby="termine">
-    <div class="shell narrow">
-      <h2 id="termine">Diese Veranstaltungen warten auf dich:</h2>
-      <p>Unsere sechs Veranstaltungsformate und ihre Termine übernehmen wir im nächsten Projektschritt in eine zentrale Verwaltung.</p>
-      <a class="button" href={`${base}/veranstaltungen/`}>Veranstaltungen ansehen</a>
-    </div>
-  </section>
+  <VeranstaltungsSlider />
   <section class="band band--blue" aria-labelledby="ablauf">
     <div class="shell">
       <h2 class="section-heading" id="ablauf">So läuft’s bei uns</h2>
@@ -32,12 +28,19 @@ const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
       </div>
     </div>
   </section>
-  <section class="band band--white section-center" aria-labelledby="partner">
+  <section class="band band--white" aria-labelledby="partner">
     <div class="shell">
-      <h2 id="partner">Unsere Kooperationspartner</h2>
-      <p>Hier folgen die Original-Logos und Beschreibungen unserer Partner.</p>
-      <div class="partner-names" aria-label="Kooperationspartner">
-        <span>Förderverein Kardinal-Bea-Haus e. V.</span><span>IKEA Düsseldorf</span><span>Thalia im Rheinpark-Center</span><span>Rheinisches Landestheater Neuss</span>
+      <h2 class="section-heading" id="partner">Unsere Kooperationspartner</h2>
+      <div class="partner-grid">
+        {partner.map((item) => (
+          <article class="partner-card">
+            <div class="partner-logo-space" aria-hidden="true">
+              <span>{item.kurzname}</span>
+            </div>
+            <h3>{item.name}</h3>
+            <p>{item.beschreibung}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>

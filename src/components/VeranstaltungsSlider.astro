@@ -1,0 +1,106 @@
+---
+import { veranstaltungen } from '../data/veranstaltungen.js';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const startBild = `${base}/bilder/startseite/meeples-startseite.jpg`;
+---
+<section class="events-section" aria-labelledby="termine">
+  <div class="events-heading shell">
+    <h2 id="termine">Diese Veranstaltungen warten auf dich:</h2>
+  </div>
+  <div class="events-carousel" data-event-carousel style={`--events-photo: url("${startBild}");`}>
+    <button class="events-arrow events-arrow--prev" type="button" data-carousel-prev aria-label="Vorherige Veranstaltung">
+      <span aria-hidden="true">&#8249;</span>
+    </button>
+    <div class="events-stage" aria-roledescription="Karussell" aria-label="Unsere Veranstaltungen">
+      {veranstaltungen.map((event, i) => (
+        <article
+          class="event-slide"
+          data-event-slide
+          data-kind={event.art}
+          data-date={event.datum}
+          hidden={i !== 0}
+          aria-label={`${i + 1} von ${veranstaltungen.length}: ${event.titel}`}
+        >
+          <div class="event-panel">
+            <h3>{event.titel}</h3>
+            <p class="event-subtitle">{event.untertitel}</p>
+            <p>{event.beschreibung}</p>
+            <p class="event-detail"><strong>Wann:</strong> {event.termin}</p>
+            <p class="event-detail"><strong>Wo:</strong> {event.ort}</p>
+            <a class="button" href={`${base}/veranstaltungen/`}>Alle Informationen</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <button class="events-arrow events-arrow--next" type="button" data-carousel-next aria-label="Nächste Veranstaltung">
+      <span aria-hidden="true">&#8250;</span>
+    </button>
+    <div class="events-dots" role="group" aria-label="Veranstaltung auswählen">
+      {veranstaltungen.map((event, i) => (
+        <button
+          type="button"
+          data-carousel-dot
+          data-index={i}
+          aria-label={`Veranstaltung: ${event.titel}`}
+          aria-current={i === 0 ? 'true' : undefined}
+        ></button>
+      ))}
+    </div>
+    <p class="sr-only" aria-live="polite" aria-atomic="true" data-carousel-status></p>
+  </div>
+</section>
+
+<script>
+  for (const carousel of document.querySelectorAll('[data-event-carousel]')) {
+    const slides = [...carousel.querySelectorAll('[data-event-slide]')];
+    const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
+    const prev = carousel.querySelector('[data-carousel-prev]');
+    const next = carousel.querySelector('[data-carousel-next]');
+    const status = carousel.querySelector('[data-carousel-status]');
+
+    // Abgelaufene Einzeltermine im Browser ausblenden; wiederkehrende und
+    // noch nicht terminierte Formate bleiben weiterhin sichtbar.
+    const visibleIndices = slides.flatMap((slide, i) => {
+      const date = slide.dataset.date;
+      const isPast = slide.dataset.kind === 'fest' && date && new Date(`${date}T23:59:59`).getTime() < Date.now();
+      return isPast ? [] : [i];
+    });
+    // Auch ohne anstehende Einzeltermine bleibt der Slider nutzbar.
+    const available = visibleIndices.length ? visibleIndices : [0];
+    let position = 0;
+
+    const show = (newPosition, announce = false) => {
+      position = (newPosition + available.length) % available.length;
+      const selected = available[position];
+      slides.forEach((slide, i) => { slide.hidden = i !== selected; });
+      dots.forEach((dot, i) => {
+        dot.hidden = !available.includes(i);
+        if (i === selected) {
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.removeAttribute('aria-current');
+        }
+      });
+      prev.disabled = available.length < 2;
+      next.disabled = available.length < 2;
+      if (announce && status) {
+        status.textContent = slides[selected].querySelector('h3')?.textContent || '';
+      }
+    };
+
+    prev.addEventListener('click', () => show(position - 1, true));
+    next.addEventListener('click', () => show(position + 1, true));
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const newPosition = available.indexOf(i);
+        if (newPosition >= 0) show(newPosition, true);
+      });
+    });
+    carousel.addEventListener('keydown', (event) => {
+      if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA'].includes(event.target.tagName)) return;
+      if (event.key === 'ArrowRight') { event.preventDefault(); show(position + 1, true); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); show(position - 1, true); }
+    });
+    show(0);
+  }
+</script>
