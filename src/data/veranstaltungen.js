@@ -6,8 +6,8 @@
  *
  * datum: ISO-Tag für einen einzelnen bestätigten Termin, sonst leer.
  * art: 'fest' | 'regelmaessig' | 'planung'
- * bild: optionaler Pfad relativ zur GitHub-Pages-Basis; leer bis ein
- *       Originalflyer bereitgestellt wurde.
+ * bild: Pfad zum Originalmotiv relativ zur GitHub-Pages-Basis.
+ * bildBreite / bildHoehe: Originalmaße für eine stabile Bilddarstellung.
  */
 export const veranstaltungen = [
   {
@@ -21,7 +21,9 @@ export const veranstaltungen = [
     ort: 'Rheinisches Landestheater Neuss, Oberstraße 95, 41460 Neuss',
     teilnahme: 'Eintritt kostenlos, keine Anmeldung erforderlich.',
     hinweise: ['Du kannst neue Spiele ausprobieren, dich beraten lassen oder einfach direkt mitspielen. Auch ohne Regelkenntnisse bist du willkommen.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/rheingespielt.webp',
+    bildBreite: 1080,
+    bildHoehe: 1080,
   },
   {
     id: 'offener-brettspieleabend',
@@ -34,7 +36,9 @@ export const veranstaltungen = [
     ort: 'Großer Saal im Kardinal-Bea-Haus, Furthhofstraße 25, 41462 Neuss',
     teilnahme: 'Keine Anmeldung notwendig. Eintritt kostenlos.',
     hinweise: ['Wir spielen Neuheiten, Klassiker und alles, was ihr mitbringt. Unsere Spieleprofis erklären dir gerne die Regeln.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/offener-brettspieleabend.webp',
+    bildBreite: 1448,
+    bildHoehe: 2048,
   },
   {
     id: 'ikea',
@@ -47,7 +51,9 @@ export const veranstaltungen = [
     ort: 'IKEA Düsseldorf, Schwedensrestaurant, Oerschbachstraße 75, Düsseldorf',
     teilnahme: 'Für IKEA-Familienmitglieder mit Anmeldung über IKEA. Ein direkter Anmeldelink wird ergänzt, sobald er bestätigt ist.',
     hinweise: ['Wir bringen Spiele von Klassikern bis zu aktuellen Neuheiten mit, erklären die Regeln und spielen mit euch.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/ikea.webp',
+    bildBreite: 1080,
+    bildHoehe: 1080,
   },
   {
     id: 'vorhang-auf',
@@ -60,7 +66,9 @@ export const veranstaltungen = [
     ort: 'Offenes Foyer im Rheinischen Landestheater Neuss, Oberstraße 95, 41460 Neuss',
     teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
     hinweise: ['Unsere Spieleprofis erklären euch die Regeln. Auch das gastronomische Angebot in der Umgebung kann genutzt werden.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/vorhang-auf.webp',
+    bildBreite: 1080,
+    bildHoehe: 1080,
   },
   {
     id: 'xxl-spieletag',
@@ -73,7 +81,9 @@ export const veranstaltungen = [
     ort: 'Kardinal-Bea-Haus, Furthhofstraße 25, 41462 Neuss',
     teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
     hinweise: ['Du kannst bereits morgens starten oder später dazukommen. Für das Mitbringbuffet freuen wir uns über einen Beitrag.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/xxl-spieletag.webp',
+    bildBreite: 1080,
+    bildHoehe: 1080,
   },
   {
     id: 'thalia',
@@ -86,6 +96,8 @@ export const veranstaltungen = [
     ort: 'Thalia im Rheinpark-Center Neuss, Breslauer Straße 2–4, 41460 Neuss',
     teilnahme: 'Spontane, kostenlose Teilnahme ohne Anmeldung.',
     hinweise: ['So kannst du direkt vor dem Kauf ausprobieren, ob dir ein Spiel gefällt.'],
-    bild: '',
+    bild: 'bilder/veranstaltungen/thalia.webp',
+    bildBreite: 1080,
+    bildHoehe: 1080,
   },
 ];

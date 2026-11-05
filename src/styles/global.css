@@ -64,7 +64,7 @@ p:last-child { margin-bottom: 0; }
 .events-heading { padding-top: clamp(2.7rem, 5vw, 4.1rem); padding-bottom: clamp(2rem, 4vw, 3.1rem); text-align: center; }
 .events-heading h2 { margin: 0; }
 .events-carousel { position: relative; background: #dce8ee; overflow: hidden; }
-.events-carousel::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255, 255, 255, .72), rgba(255, 255, 255, .79)), var(--events-photo); background-size: cover; background-position: center; }
+.events-carousel::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255, 255, 255, .78), rgba(255, 255, 255, .84)), var(--events-photo); background-size: cover; background-position: center; }
 .events-stage { position: relative; z-index: 1; min-height: 495px; padding: 52px 88px 70px; display: grid; place-items: center; }
 .event-slide { width: min(100%, 560px); }
 .event-slide[hidden], .events-dots button[hidden] { display: none !important; }

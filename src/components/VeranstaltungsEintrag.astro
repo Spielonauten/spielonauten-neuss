@@ -11,6 +11,8 @@ interface Veranstaltung {
   teilnahme: string;
   hinweise: string[];
   bild?: string;
+  bildBreite?: number;
+  bildHoehe?: number;
 }
 interface Props {
   veranstaltung: Veranstaltung;
@@ -61,7 +63,7 @@ const artLabel = {
     </div>
     <div class="event-feature-media">
       {hasPoster ? (
-        <img class="event-poster" src={posterUrl} alt={`Veranstaltungsflyer: ${event.titel}`} loading="lazy" />
+        <img class="event-poster" src={posterUrl} alt={`Veranstaltungsflyer: ${event.titel}`} width={event.bildBreite} height={event.bildHoehe} loading="lazy" decoding="async" />
       ) : (
         <div class="event-poster-fallback">
           <img src={logo} alt="" width="104" height="104" loading="lazy" />
