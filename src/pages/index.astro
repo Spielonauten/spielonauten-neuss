@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Placeholder from '../components/Placeholder.astro';
 import VeranstaltungsSlider from '../components/VeranstaltungsSlider.astro';
 import { partner } from '../data/partner.js';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
+const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
 ---
 <Layout title="Startseite">
   <section class="band band--blue hero">
@@ -60,8 +60,13 @@ const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
   </section>
   <section class="band band--white">
     <div class="shell hero-grid">
-      <Placeholder label="Hier folgt das Originalfoto des Spielsaals" />
-      <div><h2>Wo wird gespielt?</h2><p>Unsere Spielabende finden unter anderem im Kardinal-Bea-Haus und im Rheinischen Landestheater Neuss statt.</p><a class="button" href={`${base}/wo-wird-gespielt/`}>Weitere Informationen</a></div>
+      <img class="venue-home-image" src={saalFoto} alt="Großer Spielsaal im Kardinal-Bea-Haus mit Tischen und Stühlen für die Spieleabende" width="1089" height="816" loading="lazy" decoding="async" />
+      <div class="venue-home-copy">
+        <h2>Wo wird gespielt?</h2>
+        <p>Die meisten unserer eigenen Veranstaltungen finden im <strong>Kardinal-Bea-Haus</strong> in Neuss statt. Der Eingang liegt an der <strong>Furtherhofstraße 25</strong>.</p>
+        <p>Bei <strong>Rheingespielt</strong> und <strong>Vorhang auf für Brettspiele</strong> sind wir außerdem im Rheinischen Landestheater zu Gast.</p>
+        <a class="button" href={`${base}/wo-wird-gespielt/`}>Spielorte und Anfahrt ansehen</a>
+      </div>
     </div>
   </section>
   <section class="band band--blue section-center">

@@ -1,9 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Placeholder from '../components/Placeholder.astro';
+import { spielorte, wegschritte } from '../data/spielorte.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const bild = (name) => `${base}/bilder/spielorte/${name}`;
+const rltLogo = `${base}/bilder/partner/rlt-neuss.png`;
+const kardinal = spielorte.kardinal;
+const theater = spielorte.theater;
 ---
-<Layout title="Wo wird gespielt?">
-  <section class="band band--blue title-hero"><div class="shell narrow"><h1>Alles Wichtige zu unseren Spielorten und wie ihr dort hinkommt.</h1></div></section>
-  <section class="band band--white"><div class="shell hero-grid"><Placeholder label="Gebäudefoto des Kardinal-Bea-Hauses folgt" /><div><h2>Kardinal-Bea-Haus</h2><p>Furthhofstraße 25, 41462 Neuss</p><p>Hier ergänzen wir die bebilderte Wegbeschreibung, Parkmöglichkeiten und ÖPNV-Informationen.</p></div></div></section>
-  <section class="band band--blue"><div class="shell hero-grid"><Placeholder label="Foto des Rheinischen Landestheaters folgt" /><div><h2>Rheinisches Landestheater Neuss</h2><p>Oberstraße 95, 41460 Neuss</p><p>Der zweite regelmäßige Spielort erhält einen eigenen Anfahrts- und Zugangsbereich.</p></div></div></section>
+<Layout title="Wo wird gespielt?" description="Spielorte und Anfahrt der Spielonauten Neuss: Wegbeschreibung zum Kardinal-Bea-Haus und Informationen zum Rheinischen Landestheater.">
+  <section class="band band--blue title-hero venue-title">
+    <div class="shell narrow">
+      <h1>Wo wird gespielt?</h1>
+      <p>Hier findest du unsere Spielorte und erfährst, wie du zu unseren Veranstaltungen kommst.</p>
+    </div>
+  </section>
+
+  <section id="kardinal-bea-haus" class="band band--white" aria-labelledby="kardinal-title">
+    <div class="shell venue-split">
+      <img class="venue-lead-image" src={bild('kardinal-bea-haus.webp')} alt="Außenansicht des Kardinal-Bea-Hauses in Neuss" width="1600" height="1064" decoding="async" />
+      <div class="venue-copy">
+        <p class="venue-kicker">Spielort 01</p>
+        <h2 id="kardinal-title">Kardinal-Bea-Haus</h2>
+        <p>Unsere offenen Brettspieleabende und XXL-Spieletage finden im großen Saal des Kardinal-Bea-Hauses statt. Hier ist genügend Platz, um gemeinsam neue und bekannte Spiele auszuprobieren.</p>
+        <address><strong>Zugang für unsere Gäste:</strong><br />{kardinal.eingang}<br />{kardinal.plzOrt}</address>
+        <p class="venue-small-note">Die Gebäudeadresse wird auch unter {kardinal.gebaeudeadresse} geführt. Für den hier gezeigten Weg nutze bitte den Zugang bei Hausnummer 25.</p>
+        <a class="button" href={kardinal.website} target="_blank" rel="noopener noreferrer">Zum Kardinal-Bea-Haus <span class="sr-only">(öffnet in neuem Tab)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--mid venue-map-band" aria-labelledby="venue-map-title">
+    <div class="shell venue-map-panel">
+      <div>
+        <p class="venue-kicker">Karte und Navigation</p>
+        <h2 id="venue-map-title">So findest du uns</h2>
+        <p>Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.</p>
+      </div>
+      <div class="venue-map-actions">
+        <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Route in Google Maps planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+        <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--blue" aria-labelledby="weg-title">
+    <div class="shell">
+      <h2 id="weg-title" class="section-heading">Vom Vorplatz bis zum Spieltisch – in vier Schritten</h2>
+      <div class="venue-route-grid">
+        {wegschritte.map((schritt, i) => (
+          <figure class="venue-route-card">
+            <div class="venue-route-image">
+              <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
+            </div>
+            <figcaption>
+              <span class="venue-step-number" aria-label={`Schritt ${i + 1}`}>{String(i + 1).padStart(2, '0')}</span>
+              <span>{schritt.text}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--white" aria-labelledby="oepnv-title">
+    <div class="shell">
+      <h2 class="section-heading" id="oepnv-title">Anfahrt mit dem öffentlichen Nahverkehr</h2>
+      <div class="venue-transit-grid">
+        <article class="venue-transit-card">
+          <img src={bild('haltestelle-thomas-morus.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Thomas-Morus-Kirche zum Kardinal-Bea-Haus" width="976" height="686" loading="lazy" decoding="async" />
+          <div class="venue-transit-text"><h3>Neuss Thomas-Morus-Kirche</h3><p>Von dieser Haltestelle sind es nach der bisherigen Wegbeschreibung etwa <strong>240 Meter zu Fuß</strong>.</p></div>
+        </article>
+        <article class="venue-transit-card">
+          <img src={bild('haltestelle-viersener.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Viersener Straße zum Kardinal-Bea-Haus" width="578" height="433" loading="lazy" decoding="async" />
+          <div class="venue-transit-text"><h3>Neuss Viersener Straße</h3><p>Von hier sind es nach der bisherigen Wegbeschreibung etwa <strong>800 Meter zu Fuß</strong>. Es stehen verschiedene Busverbindungen zur Verfügung.</p></div>
+        </article>
+      </div>
+      <p class="venue-transit-hint">Die Karten zeigen die bisherigen Fußwege. Linien, Haltestellen und Fahrpläne können sich ändern – überprüfe deine Verbindung bitte vor der Anreise.</p>
+    </div>
+  </section>
+
+  <section class="band band--blue" aria-labelledby="auto-title">
+    <div class="shell venue-split venue-split--photo-last">
+      <div class="venue-copy venue-copy--centered">
+        <h2 id="auto-title">Anfahrt mit dem Auto</h2>
+        <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
+        <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+      </div>
+      <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <section id="rheinisches-landestheater" class="band band--white" aria-labelledby="theater-title">
+    <div class="shell venue-split venue-theater">
+      <div class="venue-theater-visual" aria-hidden="true">
+        <img src={rltLogo} alt="" loading="lazy" decoding="async" />
+      </div>
+      <div class="venue-copy">
+        <p class="venue-kicker">Spielort 02</p>
+        <h2 id="theater-title">Rheinisches Landestheater Neuss</h2>
+        <p>Für <strong>Rheingespielt</strong> und unseren Brettspieltag <strong>„Vorhang auf für Brettspiele“</strong> treffen wir uns im offenen Foyer des Rheinischen Landestheaters.</p>
+        <address>{theater.eingang}<br />{theater.plzOrt}</address>
+        <p>Mit der Straßenbahnlinie <strong>709</strong> erreichst du die Haltestelle <strong>Landestheater/Zollstraße</strong>. Das Parkhaus Tranktor liegt direkt neben dem Theater. Aktuelle Details findest du auf der Website des Theaters.</p>
+        <div class="venue-theater-actions">
+          <a class="button" href={theater.route} target="_blank" rel="noopener noreferrer">Route zum Theater planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+          <a class="venue-text-link" href={theater.website} target="_blank" rel="noopener noreferrer">Anreiseinfos des Theaters <span class="sr-only">(öffnet in neuem Tab)</span></a>
+        </div>
+        <p class="venue-small-note">Eine eigene bebilderte Wegbeschreibung für das Foyer ergänzen wir, sobald geeignete Fotos vorliegen.</p>
+      </div>
+    </div>
+  </section>
 </Layout>

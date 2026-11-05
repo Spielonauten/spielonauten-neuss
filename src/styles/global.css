@@ -183,3 +183,54 @@ p:last-child { margin-bottom: 0; }
   .event-poster-fallback { min-height: 280px; }
   .event-feature-copy .button { display: inline-block; max-width: 100%; }
 }
+
+/* Update 6: Spielorte – Bilder unverzerrt, nummerierte Wegbeschreibung, responsives Layout. */
+.venue-home-image { display: block; width: 100%; height: auto; object-fit: cover; }
+.venue-home-copy .button { margin-top: .35rem; }
+.band--mid { background: var(--blue-mid); color: var(--white); }
+.venue-title { padding-block: clamp(3.1rem, 5vw, 4.7rem); }
+.venue-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5.5rem); align-items: center; }
+.venue-split > * { min-width: 0; }
+.venue-copy { max-width: 560px; }
+.venue-copy address { margin: 1rem 0; font-style: normal; line-height: 1.7; }
+.venue-small-note { font-size: .87rem; color: #36576a; margin-bottom: 1.4rem; }
+.venue-lead-image { display: block; width: 100%; height: auto; object-fit: contain; }
+.venue-kicker { font-size: .79rem; text-transform: uppercase; font-weight: 700; letter-spacing: .10em; margin-bottom: .6rem; }
+.venue-map-panel { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); align-items: center; gap: clamp(1rem, 4vw, 4rem); }
+.venue-map-panel h2 { margin-bottom: .4em; }
+.venue-map-actions, .venue-theater-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.venue-map-actions { align-items: stretch; text-align: center; }
+.venue-map-actions .button { width: 100%; }
+.venue-text-link { display: inline-block; color: inherit; text-underline-offset: .18em; font-weight: 700; }
+.venue-text-link:hover { text-decoration-thickness: 2px; }
+.venue-route-grid { display: grid; grid-template-columns: repeat(2,minmax(0, 1fr)); gap: clamp(1rem, 2.4vw, 1.7rem); }
+.venue-route-card { margin: 0; background: var(--blue-mid); color: var(--white); min-width: 0; display: flex; flex-direction: column; }
+.venue-route-image { height: clamp(250px, 31vw, 360px); display: flex; align-items: center; justify-content: center; overflow: hidden; background: #d4e9f2; }
+.venue-route-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.venue-route-card figcaption { display: flex; align-items: center; gap: 1rem; flex: 1; padding: 1.25rem; line-height: 1.5; }
+.venue-step-number { display: inline-grid; place-items: center; flex: 0 0 auto; width: 2.6rem; height: 2.6rem; color: var(--blue-nav); border-radius: 50%; background: #fff; font-weight: 800; font-variant-numeric: tabular-nums; }
+.venue-transit-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(1rem, 2.4vw, 1.7rem); }
+.venue-transit-card { background: #d8eef8; min-width: 0; }
+.venue-transit-card img { display: block; width: 100%; height: auto; aspect-ratio: 1.45; object-fit: contain; background: #f2f6f9; }
+.venue-transit-text { padding: 1.2rem 1.4rem 1.3rem; }
+.venue-transit-text h3 { font-size: 1.1rem; margin-bottom: .55rem; }
+.venue-transit-text p { margin: 0; }
+.venue-transit-hint { margin: 1.4rem 0 0; font-size: .9rem; color: #3b5363; }
+.venue-copy--centered { justify-self: center; }
+.venue-theater-visual { display: flex; align-items: center; justify-content: center; padding: 2rem; background: #f1f7fa; }
+.venue-theater-visual img { display: block; width: min(100%, 380px); max-height: 300px; object-fit: contain; }
+.venue-theater-actions { margin: 1.2rem 0; }
+@media (max-width: 800px) {
+  .venue-split, .venue-map-panel { grid-template-columns: 1fr; gap: 1.6rem; }
+  .venue-split--photo-last > img { order: -1; }
+  .venue-copy { max-width: none; }
+  .venue-theater .venue-theater-visual { max-height: 240px; }
+  .venue-theater-visual img { max-height: 180px; }
+}
+@media (max-width: 580px) {
+  .venue-route-grid, .venue-transit-grid { grid-template-columns: 1fr; }
+  .venue-route-image { height: 330px; }
+  .venue-route-card figcaption { padding: 1.05rem; }
+  .venue-map-actions { align-items: stretch; }
+  .venue-map-panel .button { white-space: normal; }
+}
