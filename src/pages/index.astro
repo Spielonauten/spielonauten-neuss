@@ -34,11 +34,19 @@ const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
       <div class="partner-grid">
         {partner.map((item) => (
           <article class="partner-card">
-            <div class="partner-logo-space" aria-hidden="true">
-              <span>{item.kurzname}</span>
+            <div class="partner-logo-space">
+              <img
+                src={`${base}/${item.logo}`}
+                alt={`Logo von ${item.name}`}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <h3>{item.name}</h3>
             <p>{item.beschreibung}</p>
+            <a class="button partner-button" href={item.website} target="_blank" rel="noopener noreferrer">
+              Mehr erfahren <span class="sr-only">über {item.name} (öffnet in neuem Tab)</span>
+            </a>
           </article>
         ))}
       </div>
