@@ -13,6 +13,10 @@ const theater = spielorte.theater;
     <div class="shell narrow">
       <h1>Wo wird gespielt?</h1>
       <p>Hier findest du unsere Spielorte und erfährst, wie du zu unseren Veranstaltungen kommst.</p>
+      <nav class="venue-jump-links" aria-label="Direkt zum Spielort springen">
+        <a class="button" href="#kardinal-bea-haus">Kardinal-Bea-Haus <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#rheinisches-landestheater">Rheinisches Landestheater <span aria-hidden="true">↓</span></a>
+      </nav>
     </div>
   </section>
 
@@ -20,7 +24,7 @@ const theater = spielorte.theater;
     <div class="shell venue-split">
       <img class="venue-lead-image" src={bild('kardinal-bea-haus.webp')} alt="Außenansicht des Kardinal-Bea-Hauses in Neuss" width="1600" height="1064" decoding="async" />
       <div class="venue-copy">
-        <p class="venue-kicker">Spielort 01</p>
+        <p class="venue-kicker venue-kicker--place">Spielort 01</p>
         <h2 id="kardinal-title">Kardinal-Bea-Haus</h2>
         <p>Unsere offenen Brettspieleabende und XXL-Spieletage finden im großen Saal des Kardinal-Bea-Hauses statt. Hier ist genügend Platz, um gemeinsam neue und bekannte Spiele auszuprobieren.</p>
         <address><strong>Zugang für unsere Gäste:</strong><br />{kardinal.eingang}<br />{kardinal.plzOrt}</address>
@@ -29,6 +33,16 @@ const theater = spielorte.theater;
       </div>
     </div>
   </section>
+
+  <!-- Zusätzliche Informationen bleiben bis zum Aufklappen verborgen. -->
+  <details class="venue-collapse venue-collapse--kardinal">
+    <summary class="venue-collapse-summary shell">
+      <span class="venue-collapse-summary-text">
+        <strong>Anfahrt und Wegbeschreibung zum Kardinal-Bea-Haus</strong>
+        <span>Karte, vier Fotos, Busverbindungen und Parkmöglichkeiten</span>
+      </span>
+      <span class="venue-collapse-icon" aria-hidden="true"></span>
+    </summary>
 
   <section class="band band--mid venue-map-band" aria-labelledby="venue-map-title">
     <div class="shell venue-map-panel">
@@ -91,22 +105,74 @@ const theater = spielorte.theater;
     </div>
   </section>
 
+  </details>
+
   <section id="rheinisches-landestheater" class="band band--white" aria-labelledby="theater-title">
     <div class="shell venue-split venue-theater">
       <div class="venue-theater-visual" aria-hidden="true">
         <img src={rltLogo} alt="" loading="lazy" decoding="async" />
       </div>
       <div class="venue-copy">
-        <p class="venue-kicker">Spielort 02</p>
+        <p class="venue-kicker venue-kicker--place">Spielort 02</p>
         <h2 id="theater-title">Rheinisches Landestheater Neuss</h2>
-        <p>Für <strong>Rheingespielt</strong> und unseren Brettspieltag <strong>„Vorhang auf für Brettspiele“</strong> treffen wir uns im offenen Foyer des Rheinischen Landestheaters.</p>
+        <p>Für <strong>Rheingespielt</strong> und <strong>„Vorhang auf für Brettspiele“</strong> sind wir im Rheinischen Landestheater zu Gast. Je nach Veranstaltung spielen wir entweder im <strong>offenen Foyer</strong> oder im <strong>Alten Herzstück</strong> direkt beim Eingang.</p>
         <address>{theater.eingang}<br />{theater.plzOrt}</address>
         <p>Mit der Straßenbahnlinie <strong>709</strong> erreichst du die Haltestelle <strong>Landestheater/Zollstraße</strong>. Das Parkhaus Tranktor liegt direkt neben dem Theater. Aktuelle Details findest du auf der Website des Theaters.</p>
         <div class="venue-theater-actions">
           <a class="button" href={theater.route} target="_blank" rel="noopener noreferrer">Route zum Theater planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
           <a class="venue-text-link" href={theater.website} target="_blank" rel="noopener noreferrer">Anreiseinfos des Theaters <span class="sr-only">(öffnet in neuem Tab)</span></a>
         </div>
-        <p class="venue-small-note">Eine eigene bebilderte Wegbeschreibung für das Foyer ergänzen wir, sobald geeignete Fotos vorliegen.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--blue venue-theater-areas" aria-labelledby="theater-areas-title">
+    <div class="shell">
+      <h2 id="theater-areas-title" class="section-heading">Wo genau spielen wir im Theater?</h2>
+      <p class="venue-area-intro">Welcher Bereich genutzt wird, geben wir bei der jeweiligen Veranstaltung bekannt. Hier findest du die passenden Hinweise für beide Möglichkeiten.</p>
+      <div class="venue-theater-choices">
+        <details class="venue-collapse venue-collapse--theater">
+          <summary class="venue-collapse-summary">
+            <span class="venue-collapse-summary-text">
+              <span class="venue-area-number">Spielort 02a</span>
+              <strong>Offenes Foyer</strong>
+              <span>Vier Bilder zeigen künftig den Weg zum Spielebereich.</span>
+            </span>
+            <span class="venue-collapse-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="venue-choice-content">
+            <p>Wenn wir im offenen Foyer spielen, ergänzen wir hier eine bebilderte Wegbeschreibung mit vier Schritten. Die Fotos fehlen noch – bis dahin nutzen wir keine unbestätigten Richtungsangaben.</p>
+            <div class="venue-foyer-steps" aria-label="Vorbereitete vier Schritte für den Weg zum offenen Foyer">
+              {[
+                'Ankunft am Rheinischen Landestheater',
+                'Der richtige Gebäudeeingang',
+                'Orientierung im Gebäude',
+                'Der Spielbereich im offenen Foyer',
+              ].map((titel, index) => (
+                <div class="venue-foyer-step">
+                  <div class="venue-foyer-photo-placeholder" aria-hidden="true">Foto {index + 1} folgt</div>
+                  <p><span class="venue-step-number">{String(index + 1).padStart(2, '0')}</span><span>{titel}</span></p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </details>
+
+        <details class="venue-collapse venue-collapse--theater">
+          <summary class="venue-collapse-summary">
+            <span class="venue-collapse-summary-text">
+              <span class="venue-area-number">Spielort 02b</span>
+              <strong>Altes Herzstück</strong>
+              <span>Direkt unten am Eingang, von außen einsehbar.</span>
+            </span>
+            <span class="venue-collapse-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="venue-choice-content">
+            <p>Das <strong>Alte Herzstück</strong> liegt im Erdgeschoss direkt am Eingang des Theaters. Wenn wir dort spielen, kannst du unseren Spielbereich bereits von außen sehen.</p>
+            <p class="venue-choice-note">Ein zusätzliches Orientierungsfoto vom Eingangsbereich können wir später ergänzen.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>

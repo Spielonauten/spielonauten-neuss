@@ -234,3 +234,51 @@ p:last-child { margin-bottom: 0; }
   .venue-map-actions { align-items: stretch; }
   .venue-map-panel .button { white-space: normal; }
 }
+
+/* Update 7: Spielortnavigation, Terrakotta-Akzent und aufklappbare Wegbeschreibungen. */
+:root { --venue-accent: #AC4A25; }
+#kardinal-bea-haus, #rheinisches-landestheater { scroll-margin-top: 1.5rem; }
+.venue-jump-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem; margin-top: 1.7rem; }
+.venue-jump-links .button { min-width: 210px; }
+.venue-kicker--place { color: var(--venue-accent); font-size: 1.12rem; font-weight: 800; line-height: 1.4; letter-spacing: .12em; border-left: 4px solid var(--venue-accent); padding-left: .8rem; margin-bottom: .6rem; }
+.venue-collapse { min-width: 0; }
+.venue-collapse-summary { display: flex; justify-content: space-between; gap: 1.5rem; align-items: center; cursor: pointer; list-style: none; }
+.venue-collapse-summary::-webkit-details-marker { display: none; }
+.venue-collapse-summary::marker { content: ''; }
+.venue-collapse-summary-text { display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; min-width: 0; }
+.venue-collapse-summary-text strong { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.3; }
+.venue-collapse-summary-text > span:last-child { font-size: .94rem; line-height: 1.5; }
+.venue-collapse-icon { display: grid; place-items: center; flex: 0 0 auto; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: #fff; color: #152f40; box-shadow: 0 0 0 1px rgba(12,46,65,.12); }
+.venue-collapse-icon::before { content: '+'; font-size: 1.8rem; line-height: 1; }
+.venue-collapse[open] > .venue-collapse-summary .venue-collapse-icon::before { content: '−'; }
+.venue-collapse--kardinal { background: #e6f2f8; border-top: 1px solid #c6dfe9; }
+.venue-collapse--kardinal > .venue-collapse-summary { padding-block: 1.5rem; }
+.venue-collapse--kardinal > .venue-collapse-summary:hover { color: #15465b; }
+.venue-collapse--theater { background: #fff; color: var(--ink); border: 1px solid #c5d9e2; border-radius: 4px; overflow: hidden; }
+.venue-collapse--theater .venue-collapse-summary { padding: 1.25rem 1.4rem; min-height: 136px; }
+.venue-collapse--theater .venue-collapse-summary:hover { background: #f4fafc; }
+.venue-collapse--theater .venue-collapse-icon { background: #e7f2f8; }
+.venue-theater-areas { padding-top: clamp(2.5rem, 5vw, 4rem); }
+.venue-area-intro { text-align: center; max-width: 68ch; margin: 0 auto 1.8rem; }
+.venue-theater-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; align-items: start; }
+.venue-area-number { color: var(--venue-accent); font-size: 1.08rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; }
+.venue-choice-content { padding: .2rem 1.4rem 1.5rem; }
+.venue-choice-content p { line-height: 1.65; }
+.venue-choice-note { color: #3a5668; font-size: .92rem; }
+.venue-foyer-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.venue-foyer-step { border: 1px solid #c6dce7; min-width: 0; background: #f4f9fc; }
+.venue-foyer-photo-placeholder { height: 130px; background: repeating-linear-gradient(135deg, #d5e7f0, #d5e7f0 13px, #e6f1f7 13px, #e6f1f7 26px); display: grid; place-items: center; color: #355365; font-size: .9rem; font-weight: 700; }
+.venue-foyer-step p { display: flex; align-items: center; gap: .65rem; padding: .85rem; margin: 0; font-size: .88rem; }
+.venue-foyer-step .venue-step-number { width: 2rem; height: 2rem; font-size: .86rem; background: var(--blue-nav); color: #fff; }
+@media (max-width: 900px) {
+  .venue-theater-choices { grid-template-columns: 1fr; }
+  .venue-collapse--theater .venue-collapse-summary { min-height: 0; }
+}
+@media (max-width: 580px) {
+  .venue-jump-links { flex-direction: column; align-items: stretch; }
+  .venue-jump-links .button { width: 100%; min-width: 0; }
+  .venue-collapse--kardinal > .venue-collapse-summary { padding-block: 1.25rem; }
+  .venue-collapse-summary { gap: .6rem; }
+  .venue-collapse-icon { width: 2.2rem; height: 2.2rem; }
+  .venue-foyer-steps { grid-template-columns: 1fr; }
+}
