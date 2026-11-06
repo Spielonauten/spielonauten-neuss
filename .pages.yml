@@ -1,156 +1,217 @@
-# Spielonauten Neuss: Formate und bestätigte Einzeltermine getrennt pflegen.
 media:
+- name: veranstaltungsbilder
+  label: Veranstaltungsbilder
   input: public/bilder/veranstaltungen
   output: /spielonauten-neuss/bilder/veranstaltungen
-  extensions: [jpg, jpeg, png, webp]
-
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+- name: galeriebilder
+  label: Über uns – Galeriebilder
+  input: public/bilder/ueber-uns
+  output: /spielonauten-neuss/bilder/ueber-uns
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
 content:
-  - name: veranstaltungen
-    label: Veranstaltungsformate
-    type: collection
-    path: src/content/veranstaltungen
-    format: json
-    filename: "{primary}.json"
-    operations:
-      create: false
-      rename: false
-      delete: false
-    view:
-      primary: titel
-      fields: [titel, typ, rhythmus, standardBeginn, standardEnde]
-      sort: [titel]
-      search: [titel, ort]
+- name: veranstaltungen
+  label: Veranstaltungsformate
+  type: collection
+  path: src/content/veranstaltungen
+  format: json
+  filename: '{primary}.json'
+  operations:
+    create: false
+    rename: false
+    delete: false
+  view:
+    primary: titel
     fields:
-      - name: id
-        label: Technische Kennung (nicht ändern)
-        type: string
-        readonly: true
-      - name: titel
-        label: Name der Veranstaltung
-        type: string
-        required: true
-      - name: untertitel
-        label: Untertitel
-        type: string
-        required: true
-      - name: beschreibung
-        label: Beschreibung
-        type: text
-        required: true
-      - name: typ
-        label: Veranstaltungsart
-        type: select
-        required: true
-        options:
-          values:
-            - name: regelmaessig
-              label: Regelmäßige Veranstaltung
-            - name: unregelmaessig
-              label: Unregelmäßige Veranstaltung
-            - name: grossveranstaltung
-              label: Einzelne Großveranstaltungen
-      - name: rhythmus
-        label: Üblicher Rhythmus / Hinweise zur Regelmäßigkeit
-        type: text
-        required: true
-        description: Nur zur Information. Es werden daraus keine zukünftigen Termine erfunden.
-      - name: standardBeginn
-        label: Übliche Startzeit (HH:MM)
-        type: string
-      - name: standardEnde
-        label: Übliche Endzeit (HH:MM) – leer bei Open End
-        type: string
-      - name: ort
-        label: Allgemeiner Veranstaltungsort
-        type: text
-        required: true
-      - name: teilnahme
-        label: Teilnahme / Anmeldung
-        type: text
-        required: true
-      - name: hinweise
-        label: Zusätzliche Hinweise
-        type: text
-        list: true
-      - name: bild
-        label: Flyerpfad (technisch – vorerst nicht ändern)
-        type: string
-        readonly: true
-      - name: bildBreite
-        label: Bildbreite (technisch)
-        type: number
-        readonly: true
-      - name: bildHoehe
-        label: Bildhöhe (technisch)
-        type: number
-        readonly: true
-
-  - name: termine
-    label: Einzeltermine
-    type: collection
-    path: src/content/termine
-    format: json
-    filename: "{datum}-{format}.json"
-    operations:
-      create: true
-      rename: false
-      delete: true
-    view:
-      primary: datum
-      fields: [datum, format, beginn, ende, status]
-      sort: [datum]
-      search: [format]
-      default:
-        sort: datum
-        order: desc
+    - titel
+    - typ
+    - rhythmus
+    - standardBeginn
+    - standardEnde
+    sort:
+    - titel
+    search:
+    - titel
+    - ort
+  fields:
+  - name: id
+    label: Technische Kennung (nicht ändern)
+    type: string
+    readonly: true
+  - name: titel
+    label: Name der Veranstaltung
+    type: string
+    required: true
+  - name: untertitel
+    label: Untertitel
+    type: string
+    required: true
+  - name: beschreibung
+    label: Beschreibung
+    type: text
+    required: true
+  - name: typ
+    label: Veranstaltungsart
+    type: select
+    required: true
+    options:
+      values:
+      - name: regelmaessig
+        label: Regelmäßige Veranstaltung
+      - name: unregelmaessig
+        label: Unregelmäßige Veranstaltung
+      - name: grossveranstaltung
+        label: Einzelne Großveranstaltungen
+  - name: rhythmus
+    label: Üblicher Rhythmus / Hinweise zur Regelmäßigkeit
+    type: text
+    required: true
+    description: Nur zur Information. Es werden daraus keine zukünftigen Termine erfunden.
+  - name: standardBeginn
+    label: Übliche Startzeit (HH:MM)
+    type: string
+  - name: standardEnde
+    label: Übliche Endzeit (HH:MM) – leer bei Open End
+    type: string
+  - name: ort
+    label: Allgemeiner Veranstaltungsort
+    type: text
+    required: true
+  - name: teilnahme
+    label: Teilnahme / Anmeldung
+    type: text
+    required: true
+  - name: hinweise
+    label: Zusätzliche Hinweise
+    type: text
+    list: true
+  - name: bild
+    label: Flyerpfad (technisch – vorerst nicht ändern)
+    type: string
+    readonly: true
+  - name: bildBreite
+    label: Bildbreite (technisch)
+    type: number
+    readonly: true
+  - name: bildHoehe
+    label: Bildhöhe (technisch)
+    type: number
+    readonly: true
+- name: termine
+  label: Einzeltermine
+  type: collection
+  path: src/content/termine
+  format: json
+  filename: '{datum}-{format}.json'
+  operations:
+    create: true
+    rename: false
+    delete: true
+  view:
+    primary: datum
     fields:
-      - name: format
-        label: Veranstaltungsformat
-        type: select
-        required: true
-        options:
-          values:
-            - name: rheingespielt
-              label: Rheingespielt
-            - name: offener-brettspieleabend
-              label: Offener Brettspieleabend
-            - name: ikea
-              label: After-Work IKEA
-            - name: vorhang-auf
-              label: Vorhang auf für Brettspiele
-            - name: xxl-spieletag
-              label: XXL-Spieletag
-            - name: thalia
-              label: Thalia
-      - name: datum
-        label: Datum des Einzeltermins
-        type: date
-        required: true
-        options:
-          format: yyyy-MM-dd
-      - name: beginn
-        label: Beginn (HH:MM)
-        type: string
-        required: true
-        description: Beispiel 18:30. Immer die tatsächliche Zeit des Einzeltermins eintragen.
-        pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
-      - name: ende
-        label: Ende (HH:MM) – leer bei Open End
-        type: string
-        description: Beispiel 20:30. Bei Open End leer lassen.
-      - name: status
-        label: Status
-        type: select
-        required: true
-        options:
-          values:
-            - name: bestaetigt
-              label: Bestätigt
-            - name: abgesagt
-              label: Abgesagt
-            - name: verschoben
-              label: Verschoben
-      - name: hinweis
-        label: Zusatzhinweis zu Absage / Verschiebung
-        type: text
-        description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin anlegen.
+    - datum
+    - format
+    - beginn
+    - ende
+    - status
+    sort:
+    - datum
+    search:
+    - format
+    default:
+      sort: datum
+      order: desc
+  fields:
+  - name: format
+    label: Veranstaltungsformat
+    type: select
+    required: true
+    options:
+      values:
+      - name: rheingespielt
+        label: Rheingespielt
+      - name: offener-brettspieleabend
+        label: Offener Brettspieleabend
+      - name: ikea
+        label: After-Work IKEA
+      - name: vorhang-auf
+        label: Vorhang auf für Brettspiele
+      - name: xxl-spieletag
+        label: XXL-Spieletag
+      - name: thalia
+        label: Thalia
+  - name: datum
+    label: Datum des Einzeltermins
+    type: date
+    required: true
+    options:
+      format: yyyy-MM-dd
+  - name: beginn
+    label: Beginn (HH:MM)
+    type: string
+    required: true
+    description: Beispiel 18:30. Immer die tatsächliche Zeit des Einzeltermins eintragen.
+    pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]$
+  - name: ende
+    label: Ende (HH:MM) – leer bei Open End
+    type: string
+    description: Beispiel 20:30. Bei Open End leer lassen.
+  - name: status
+    label: Status
+    type: select
+    required: true
+    options:
+      values:
+      - name: bestaetigt
+        label: Bestätigt
+      - name: abgesagt
+        label: Abgesagt
+      - name: verschoben
+        label: Verschoben
+  - name: hinweis
+    label: Zusatzhinweis zu Absage / Verschiebung
+    type: text
+    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin
+      anlegen.
+- name: ueber_uns_galerie
+  label: Bildergalerie Über uns
+  type: file
+  path: src/content/ueber-uns-galerie.json
+  format: json
+  list: true
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: bild
+    label: Foto
+    type: image
+    required: true
+    options:
+      media: galeriebilder
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+  - name: titel
+    label: Bildtitel
+    type: string
+    required: true
+  - name: beschreibung
+    label: Bildunterschrift
+    type: text
+  - name: alt
+    label: Alternativtext für barrierefreie Nutzung
+    type: text
+    required: true
+    description: Beschreibe den Bildinhalt knapp und sachlich, nicht nur „Foto“.
