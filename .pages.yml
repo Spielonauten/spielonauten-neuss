@@ -26,6 +26,15 @@ media:
   - jpeg
   - png
   - webp
+- name: spielortbilder
+  label: Spielorte – Anfahrt und Wegbeschreibungen
+  input: public/bilder/spielorte
+  output: /spielonauten-neuss/bilder/spielorte
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
 content:
 - name: veranstaltungen
   label: Veranstaltungsformate
@@ -189,8 +198,8 @@ content:
   - name: hinweis
     label: Zusatzhinweis zu Absage / Verschiebung
     type: text
-    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten
-      Einzeltermin anlegen.
+    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin
+      anlegen.
 - name: ueber_uns_galerie
   label: Bildergalerie Über uns
   type: file
@@ -263,3 +272,281 @@ content:
     type: string
     required: true
     pattern: ^https://.+
+- name: spielorte
+  label: Spielorte und Wegbeschreibungen
+  type: file
+  path: src/content/spielorte.json
+  format: json
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: einleitung
+    label: Einleitung der Seite „Wo wird gespielt?“
+    type: text
+    required: true
+  - name: kardinal
+    label: Spielort 01 – Kardinal-Bea-Haus
+    type: object
+    fields:
+    - name: name
+      label: Name des Spielorts
+      type: string
+      required: true
+    - name: beschreibung
+      label: Beschreibung des Spielorts
+      type: text
+      required: true
+    - name: eingang
+      label: Zugang / Straße und Hausnummer
+      type: string
+      required: true
+    - name: plzOrt
+      label: Postleitzahl und Ort
+      type: string
+      required: true
+    - name: gebaeudeadresse
+      label: Alternative Gebäudeadresse
+      type: string
+      required: true
+    - name: zugangshinweis
+      label: Zusatzhinweis zum Weg ab dem Eingang
+      type: text
+      required: true
+    - name: titelbild
+      label: Großes Foto des Kardinal-Bea-Hauses
+      type: image
+      required: true
+      options:
+        media: spielortbilder
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+    - name: titelbildAlt
+      label: Alternativtext für das große Foto
+      type: text
+      required: true
+    - name: route
+      label: Google Maps – Routenlink
+      type: string
+      required: true
+      pattern: ^https://.+
+    - name: karte
+      label: OpenStreetMap – Kartenlink
+      type: string
+      required: true
+      pattern: ^https://.+
+    - name: kartenhinweis
+      label: Einleitung zu den Kartenlinks
+      type: text
+      required: true
+    - name: haltestellen
+      label: ÖPNV-Haltestellen und Fußwegkarten
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name}'
+      fields:
+      - name: name
+        label: Haltestelle
+        type: string
+        required: true
+      - name: beschreibung
+        label: Beschreibung und Fußweg
+        type: text
+        required: true
+      - name: bild
+        label: Fußweg-Karte
+        type: image
+        required: true
+        options:
+          media: spielortbilder
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+      - name: alt
+        label: Alternativtext der Karte
+        type: text
+        required: true
+      - name: breite
+        label: Bildbreite (optional)
+        type: number
+        description: Technische Angabe; bei neuen Bildern leer lassen.
+      - name: hoehe
+        label: Bildhöhe (optional)
+        type: number
+        description: Technische Angabe; bei neuen Bildern leer lassen.
+    - name: oepnvHinweis
+      label: Hinweis unter den ÖPNV-Karten
+      type: text
+      required: true
+    - name: autoBeschreibung
+      label: Anfahrt mit dem Auto / Parkplatzbeschreibung
+      type: text
+      required: true
+    - name: parkbild
+      label: Parkplatzfoto
+      type: image
+      required: true
+      options:
+        media: spielortbilder
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+    - name: parkbildAlt
+      label: Alternativtext für das Parkplatzfoto
+      type: text
+      required: true
+    - name: wegschritte
+      label: Weg zum Spieltisch – Fotos und Schritte
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{text}'
+      fields:
+      - name: bild
+        label: Foto für diesen Schritt
+        type: image
+        required: true
+        options:
+          media: spielortbilder
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+      - name: text
+        label: Wegbeschreibung des Schritts
+        type: text
+        required: true
+      - name: alt
+        label: Alternativtext für das Bild
+        type: text
+        required: true
+      - name: breite
+        label: Ursprüngliche Bildbreite (optional)
+        type: number
+        description: Technische Bildgröße. Bei neuen Fotos leer lassen.
+      - name: hoehe
+        label: Ursprüngliche Bildhöhe (optional)
+        type: number
+        description: Technische Bildgröße. Bei neuen Fotos leer lassen.
+  - name: theater
+    label: Spielort 02 – Rheinisches Landestheater
+    type: object
+    fields:
+    - name: name
+      label: Name des Spielorts
+      type: string
+      required: true
+    - name: beschreibung
+      label: Beschreibung des Spielorts
+      type: text
+      required: true
+    - name: eingang
+      label: Straße und Hausnummer
+      type: string
+      required: true
+    - name: plzOrt
+      label: Postleitzahl und Ort
+      type: string
+      required: true
+    - name: anreiseBeschreibung
+      label: Anreise mit Bahn und Auto
+      type: text
+      required: true
+    - name: route
+      label: Google Maps – Routenlink
+      type: string
+      required: true
+      pattern: ^https://.+
+    - name: website
+      label: Website mit Anreiseinformationen
+      type: string
+      required: true
+      pattern: ^https://.+
+    - name: logo
+      label: Theaterlogo (wird neben dem Text angezeigt)
+      type: image
+      required: true
+      options:
+        media: partnerbilder
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+    - name: bereichHinweis
+      label: Hinweis, dass Foyer oder Altes Herzstück genutzt werden
+      type: text
+      required: true
+    - name: foyerEinleitung
+      label: Offenes Foyer – Einführung
+      type: text
+      required: true
+    - name: foyerSchritte
+      label: Offenes Foyer – Fotos und Schritte
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{text}'
+      fields:
+      - name: bild
+        label: Foto für diesen Schritt
+        type: image
+        required: true
+        options:
+          media: spielortbilder
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+      - name: text
+        label: Wegbeschreibung des Schritts
+        type: text
+        required: true
+      - name: alt
+        label: Alternativtext für das Bild
+        type: text
+        required: true
+      - name: breite
+        label: Ursprüngliche Bildbreite (optional)
+        type: number
+        description: Technische Bildgröße. Bei neuen Fotos leer lassen.
+      - name: hoehe
+        label: Ursprüngliche Bildhöhe (optional)
+        type: number
+        description: Technische Bildgröße. Bei neuen Fotos leer lassen.
+    - name: herzstueckBeschreibung
+      label: Altes Herzstück – Beschreibung
+      type: text
+      required: true
+    - name: herzstueckBild
+      label: Altes Herzstück – Orientierungsfoto
+      type: image
+      required: true
+      options:
+        media: spielortbilder
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+    - name: herzstueckBildAlt
+      label: Alternativtext für das Orientierungsfoto
+      type: text
+      required: true
+    - name: herzstueckBildtext
+      label: Bildunterschrift für das Alte Herzstück
+      type: text
+      required: true
