@@ -12,6 +12,7 @@ content:
     type: collection
     path: src/content/veranstaltungen
     format: json
+    filename: "{primary}.json"
     operations:
       create: false
       rename: false
