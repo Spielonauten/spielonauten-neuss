@@ -17,6 +17,15 @@ media:
   - jpeg
   - png
   - webp
+- name: partnerbilder
+  label: Kooperationspartner – Logos
+  input: public/bilder/partner
+  output: /spielonauten-neuss/bilder/partner
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
 content:
 - name: veranstaltungen
   label: Veranstaltungsformate
@@ -180,8 +189,8 @@ content:
   - name: hinweis
     label: Zusatzhinweis zu Absage / Verschiebung
     type: text
-    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin
-      anlegen.
+    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten
+      Einzeltermin anlegen.
 - name: ueber_uns_galerie
   label: Bildergalerie Über uns
   type: file
@@ -215,3 +224,42 @@ content:
     type: text
     required: true
     description: Beschreibe den Bildinhalt knapp und sachlich, nicht nur „Foto“.
+- name: partner
+  label: Kooperationspartner
+  type: file
+  path: src/content/partner.json
+  format: json
+  list: true
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: id
+    label: Interne Kennung (bestehende Einträge nicht ändern)
+    type: string
+    readonly: true
+    description: Bei neuen Partnern darf dieses Feld leer bleiben.
+  - name: name
+    label: Name des Partners
+    type: string
+    required: true
+  - name: beschreibung
+    label: Beschreibung
+    type: text
+    required: true
+  - name: logo
+    label: Logo
+    type: image
+    required: true
+    options:
+      media: partnerbilder
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+  - name: website
+    label: Website (vollständige HTTPS-Adresse)
+    type: string
+    required: true
+    pattern: ^https://.+
