@@ -1,0 +1,17 @@
+{
+  "id": "vorhang-auf",
+  "titel": "Vorhang auf für Brettspiele",
+  "untertitel": "Der Brettspieltag im Rheinischen Landestheater",
+  "beschreibung": "Ein gemütlicher Brettspieltag für neugierige Spielerinnen und Spieler. Es gibt Neuheiten, Klassiker und viele Möglichkeiten, einfach mitzuspielen.",
+  "termin": "Samstag, 12.12.2026 · 12:00–21:00 Uhr",
+  "datum": "2026-12-12",
+  "art": "fest",
+  "ort": "Offenes Foyer im Rheinischen Landestheater Neuss, Oberstraße 95, 41460 Neuss",
+  "teilnahme": "Eintritt kostenlos. Getränke können vor Ort gekauft werden.",
+  "hinweise": [
+    "Unsere Spieleprofis erklären euch die Regeln. Auch das gastronomische Angebot in der Umgebung kann genutzt werden."
+  ],
+  "bild": "bilder/veranstaltungen/vorhang-auf.webp",
+  "bildBreite": 1080,
+  "bildHoehe": 1080
+}

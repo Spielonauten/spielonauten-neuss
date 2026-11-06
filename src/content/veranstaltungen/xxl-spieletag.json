@@ -1,0 +1,17 @@
+{
+  "id": "xxl-spieletag",
+  "titel": "XXL-Spieletag",
+  "untertitel": "Ein ganzer Tag voller Brettspiele",
+  "beschreibung": "Bei unserem XXL-Spieletag kannst du den ganzen Tag spielen, neue Spiele kennenlernen und eigene Lieblingsspiele mitbringen.",
+  "termin": "Samstag, 06.03.2027 · ab 11:00 Uhr",
+  "datum": "2027-03-06",
+  "art": "fest",
+  "ort": "Kardinal-Bea-Haus, Furtherhofstraße 25, 41462 Neuss",
+  "teilnahme": "Eintritt kostenlos. Getränke können vor Ort gekauft werden.",
+  "hinweise": [
+    "Du kannst bereits morgens starten oder später dazukommen. Für das Mitbringbuffet freuen wir uns über einen Beitrag."
+  ],
+  "bild": "bilder/veranstaltungen/xxl-spieletag.webp",
+  "bildBreite": 1080,
+  "bildHoehe": 1080
+}

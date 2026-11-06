@@ -1,103 +1,25 @@
 /**
- * Zentrale Veranstaltungsformate der Spielonauten.
- * Basis: freigegebene Texte und Screenshots der Jimdo-Seite (November 2026).
- * Einmaltermine und Links vor jeder öffentlichen Ankündigung überprüfen.
- * Dieses Datenmodell wird später an den redaktionellen Editor angebunden.
+ * Zentrale Veranstaltungsdaten: Jede Veranstaltung wird in Pages CMS
+ * als eigene JSON-Datei unter src/content/veranstaltungen bearbeitet.
  *
- * datum: ISO-Tag für einen einzelnen bestätigten Termin, sonst leer.
- * art: 'fest' | 'regelmaessig' | 'planung'
- * bild: Pfad zum Originalmotiv relativ zur GitHub-Pages-Basis.
- * bildBreite / bildHoehe: Originalmaße für eine stabile Bilddarstellung.
+ * Die Reihenfolge für den Startseiten-Slider bleibt hier bewusst stabil.
+ * Die Veranstaltungs-Unterseite besitzt ihre eigene Reihenfolge.
+ *
+ * Änderungen in Pages CMS werden in GitHub gespeichert und beim
+ * nächsten GitHub-Pages-Build automatisch übernommen.
  */
+import rheingespielt from '../content/veranstaltungen/rheingespielt.json';
+import offenerBrettspieleabend from '../content/veranstaltungen/offener-brettspieleabend.json';
+import ikea from '../content/veranstaltungen/ikea.json';
+import vorhangAuf from '../content/veranstaltungen/vorhang-auf.json';
+import xxlSpieletag from '../content/veranstaltungen/xxl-spieletag.json';
+import thalia from '../content/veranstaltungen/thalia.json';
+
 export const veranstaltungen = [
-  {
-    id: 'rheingespielt',
-    titel: 'Rheingespielt',
-    untertitel: 'Der Spieleabend im Rheinischen Landestheater Neuss',
-    beschreibung: 'Wir treffen uns zu einem gemeinsamen Spieleabend im offenen Foyer. Brettspiele und Erklärungen bringen wir mit – du kannst einfach vorbeikommen.',
-    termin: 'Donnerstag, 19.11.2026 · 19:00 Uhr',
-    datum: '2026-11-19',
-    art: 'fest',
-    ort: 'Rheinisches Landestheater Neuss, Oberstraße 95, 41460 Neuss',
-    teilnahme: 'Eintritt kostenlos, keine Anmeldung erforderlich.',
-    hinweise: ['Du kannst neue Spiele ausprobieren, dich beraten lassen oder einfach direkt mitspielen. Auch ohne Regelkenntnisse bist du willkommen.'],
-    bild: 'bilder/veranstaltungen/rheingespielt.webp',
-    bildBreite: 1080,
-    bildHoehe: 1080,
-  },
-  {
-    id: 'offener-brettspieleabend',
-    titel: 'Offener Brettspieleabend',
-    untertitel: 'Gemeinsam spielen im Kardinal-Bea-Haus',
-    beschreibung: 'Monatlich am zweiten Montag laden wir ab 18:30 Uhr zu unserem traditionellen Spieleabend ein. Komm gerne auch spontan bei uns vorbei. Eine große Menge Spaß wartet auf dich.',
-    termin: 'Jeden zweiten Montag im Monat · ab 18:30 Uhr',
-    datum: '',
-    art: 'regelmaessig',
-    ort: 'Großer Saal im Kardinal-Bea-Haus, Furtherhofstraße 25, 41462 Neuss',
-    teilnahme: 'Keine Anmeldung notwendig. Eintritt kostenlos.',
-    hinweise: ['Wir spielen Neuheiten, Klassiker und alles, was ihr mitbringt. Unsere Spieleprofis erklären dir gerne die Regeln.'],
-    bild: 'bilder/veranstaltungen/offener-brettspieleabend.webp',
-    bildBreite: 1448,
-    bildHoehe: 2048,
-  },
-  {
-    id: 'ikea',
-    titel: 'After-Work bei IKEA',
-    untertitel: 'Brettspiele im Schwedensrestaurant',
-    beschreibung: 'Unser After-Work-Spieleabend verwandelt das Schwedensrestaurant in eine Brettspiel-Area. Egal, ob du erfahren bist oder dich einfach auf einen geselligen Abend freust – du bist am Zug!',
-    termin: 'Donnerstag, 26.11.2026 · 18:00–20:30 Uhr',
-    datum: '2026-11-26',
-    art: 'fest',
-    ort: 'IKEA Düsseldorf, Schwedensrestaurant, Oerschbachstraße 75, Düsseldorf',
-    teilnahme: 'Für IKEA-Familienmitglieder mit Anmeldung über IKEA. Ein direkter Anmeldelink wird ergänzt, sobald er bestätigt ist.',
-    hinweise: ['Wir bringen Spiele von Klassikern bis zu aktuellen Neuheiten mit, erklären die Regeln und spielen mit euch.'],
-    bild: 'bilder/veranstaltungen/ikea.webp',
-    bildBreite: 1080,
-    bildHoehe: 1080,
-  },
-  {
-    id: 'vorhang-auf',
-    titel: 'Vorhang auf für Brettspiele',
-    untertitel: 'Der Brettspieltag im Rheinischen Landestheater',
-    beschreibung: 'Ein gemütlicher Brettspieltag für neugierige Spielerinnen und Spieler. Es gibt Neuheiten, Klassiker und viele Möglichkeiten, einfach mitzuspielen.',
-    termin: 'Samstag, 12.12.2026 · 12:00–21:00 Uhr',
-    datum: '2026-12-12',
-    art: 'fest',
-    ort: 'Offenes Foyer im Rheinischen Landestheater Neuss, Oberstraße 95, 41460 Neuss',
-    teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
-    hinweise: ['Unsere Spieleprofis erklären euch die Regeln. Auch das gastronomische Angebot in der Umgebung kann genutzt werden.'],
-    bild: 'bilder/veranstaltungen/vorhang-auf.webp',
-    bildBreite: 1080,
-    bildHoehe: 1080,
-  },
-  {
-    id: 'xxl-spieletag',
-    titel: 'XXL-Spieletag',
-    untertitel: 'Ein ganzer Tag voller Brettspiele',
-    beschreibung: 'Bei unserem XXL-Spieletag kannst du den ganzen Tag spielen, neue Spiele kennenlernen und eigene Lieblingsspiele mitbringen.',
-    termin: 'Samstag, 06.03.2027 · ab 11:00 Uhr',
-    datum: '2027-03-06',
-    art: 'fest',
-    ort: 'Kardinal-Bea-Haus, Furtherhofstraße 25, 41462 Neuss',
-    teilnahme: 'Eintritt kostenlos. Getränke können vor Ort gekauft werden.',
-    hinweise: ['Du kannst bereits morgens starten oder später dazukommen. Für das Mitbringbuffet freuen wir uns über einen Beitrag.'],
-    bild: 'bilder/veranstaltungen/xxl-spieletag.webp',
-    bildBreite: 1080,
-    bildHoehe: 1080,
-  },
-  {
-    id: 'thalia',
-    titel: 'Brettspielaktion bei Thalia',
-    untertitel: 'Vor dem Kauf im Geschäft ausprobieren',
-    beschreibung: 'Wir bringen Brettspiele direkt auf die Verkaufsfläche im Rheinpark-Center Neuss, erklären die Regeln und spielen mit euch.',
-    termin: 'Nächster Termin in Planung',
-    datum: '',
-    art: 'planung',
-    ort: 'Thalia im Rheinpark-Center Neuss, Breslauer Straße 2–4, 41460 Neuss',
-    teilnahme: 'Spontane, kostenlose Teilnahme ohne Anmeldung.',
-    hinweise: ['So kannst du direkt vor dem Kauf ausprobieren, ob dir ein Spiel gefällt.'],
-    bild: 'bilder/veranstaltungen/thalia.webp',
-    bildBreite: 1080,
-    bildHoehe: 1080,
-  },
+  rheingespielt,
+  offenerBrettspieleabend,
+  ikea,
+  vorhangAuf,
+  xxlSpieletag,
+  thalia,
 ];
