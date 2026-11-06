@@ -1,49 +1,38 @@
 ---
-interface Veranstaltung {
-  id: string;
-  titel: string;
-  untertitel: string;
-  beschreibung: string;
-  termin: string;
-  datum: string;
-  art: string;
-  typ: string;
-  rhythmus: string;
-  termine: Array<{ format: string; datum: string; beginn: string; ende?: string; status: string; hinweis?: string }>;
-  kommendeTermine: Array<{ format: string; datum: string; beginn: string; ende?: string; status: string; hinweis?: string }>;
-  ort: string;
-  teilnahme: string;
-  hinweise: string[];
-  bild?: string;
-  bildBreite?: number;
-  bildHoehe?: number;
-}
-interface Props {
-  veranstaltung: Veranstaltung;
-  position: number;
-}
+import { statusText } from '../data/terminanzeige.js';
+
+// Die Daten stammen aus den JSON-Dateien, die in Pages CMS gepflegt werden.
+// Bewusst einfache JavaScript-Ausdruecke, damit die Komponente stabil gebaut wird.
 const { veranstaltung: event, position } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const logo = `${base}/bilder/logo/spielonauten-logo.png`;
 const hasPoster = Boolean(event.bild);
-const posterUrl = hasPoster ? `${base}/${event.bild?.replace(/^\//, '')}` : '';
-import { statusText } from '../data/terminanzeige.js';
-const artLabel = event.typ === 'regelmaessig' ? 'Regelmäßige Veranstaltung' : event.typ === 'grossveranstaltung' ? 'Großveranstaltung' : 'Unregelmäßige Veranstaltung';
+const posterUrl = hasPoster ? `${base}/${String(event.bild).replace(/^\//, '')}` : '';
+const bandClass = Number(position) % 2 === 0 ? 'band--white' : 'band--blue';
+const formatLabel = event.typ === 'regelmaessig'
+  ? 'Regelmäßige Veranstaltung'
+  : event.typ === 'grossveranstaltung'
+    ? 'Großveranstaltung'
+    : 'Unregelmäßige Veranstaltung';
+const einzeltermine = Array.isArray(event.termine) ? event.termine : [];
+const kommendeTermine = Array.isArray(event.kommendeTermine) ? event.kommendeTermine : [];
+const hinweise = Array.isArray(event.hinweise) ? event.hinweise : [];
 ---
 <section
-  class:list={['band', position % 2 === 0 ? 'band--white' : 'band--blue', 'event-feature']}
+  class={`band ${bandClass} event-feature`}
   id={event.id}
   data-event-feature
-  data-event-terms={JSON.stringify(event.termine)}
+  data-event-terms={JSON.stringify(einzeltermine)}
   aria-labelledby={`title-${event.id}`}
 >
   <div class="shell event-feature-grid">
     <div class="event-feature-copy">
-      <p class="event-type">{artLabel}</p>
+      <p class="event-type">{formatLabel}</p>
       <h2 id={`title-${event.id}`}>{event.titel}</h2>
       <p class="event-feature-subtitle">{event.untertitel}</p>
       <p>{event.beschreibung}</p>
       <p class="event-rhythm"><strong>Üblicher Rhythmus:</strong> {event.rhythmus}</p>
+
       <dl class="event-facts">
         <div>
           <dt>Nächster bestätigter Termin</dt>
@@ -58,21 +47,41 @@ const artLabel = event.typ === 'regelmaessig' ? 'Regelmäßige Veranstaltung' : 
           <dd>{event.teilnahme}</dd>
         </div>
       </dl>
-      {event.hinweise.map((hinweis) => <p class="event-extra">{hinweis}</p>)}
+
+      {hinweise.map((hinweis) => (
+        <p class="event-extra">{hinweis}</p>
+      ))}
+
       <div class="event-upcoming" data-event-upcoming>
         <h3>Alle kommenden Termine</h3>
         <ul data-event-upcoming-list>
-          {event.kommendeTermine.length ? event.kommendeTermine.map((termin) => (
-            <li class:list={['event-term-item', `event-term-item--${termin.status}`]}>{statusText(termin)}</li>
-          )) : <li>Weitere Termine werden noch bekannt gegeben.</li>}
+          {kommendeTermine.map((termin) => (
+            <li class={`event-term-item event-term-item--${termin.status}`}>{statusText(termin)}</li>
+          ))}
+          {kommendeTermine.length === 0 && (
+            <li>Weitere Termine werden noch bekannt gegeben.</li>
+          )}
         </ul>
       </div>
-      <a class="button" href={`${base}/wo-wird-gespielt/`}>Informationen zu unseren Spielorten</a>
+
+      <a class="button" href={`${base}/wo-wird-gespielt/`}>
+        Informationen zu unseren Spielorten
+      </a>
     </div>
+
     <div class="event-feature-media">
-      {hasPoster ? (
-        <img class="event-poster" src={posterUrl} alt={`Veranstaltungsflyer: ${event.titel}`} width={event.bildBreite} height={event.bildHoehe} loading="lazy" decoding="async" />
-      ) : (
+      {hasPoster && (
+        <img
+          class="event-poster"
+          src={posterUrl}
+          alt={`Veranstaltungsflyer: ${event.titel}`}
+          width={event.bildBreite}
+          height={event.bildHoehe}
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+      {!hasPoster && (
         <div class="event-poster-fallback">
           <img src={logo} alt="" width="104" height="104" loading="lazy" />
           <span class="event-poster-kicker">Spielonauten Neuss</span>
