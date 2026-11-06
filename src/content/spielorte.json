@@ -37,29 +37,29 @@
     "wegschritte": [
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/weg-01-vorplatz.webp",
-        "alt": "Blick über den Vorplatz mit blauem Wegpfeil zur Überdachung",
         "text": "Über den Vorplatz zur Überdachung gehen und dort links halten.",
+        "alt": "Blick über den Vorplatz mit blauem Wegpfeil zur Überdachung",
         "breite": 1500,
         "hoehe": 844
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/weg-02-ueberdachung.webp",
-        "alt": "Überdachter Zugang zum Gebäude mit blauem Pfeil in Richtung Tür",
         "text": "Unter der Überdachung geradeaus zur Eingangstür gehen.",
+        "alt": "Überdachter Zugang zum Gebäude mit blauem Pfeil in Richtung Tür",
         "breite": 1500,
         "hoehe": 844
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/weg-03-eingang.webp",
-        "alt": "Geöffnete hölzerne Eingangstür mit blauem Pfeil nach links",
         "text": "Durch die Tür und direkt wieder nach links abbiegen.",
+        "alt": "Geöffnete hölzerne Eingangstür mit blauem Pfeil nach links",
         "breite": 1100,
         "hoehe": 816
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/spielsaal.webp",
-        "alt": "Großer Spielsaal mit vielen Tischen und Stühlen",
         "text": "Geschafft! Du bist im großen Saal und kannst direkt mitspielen.",
+        "alt": "Großer Spielsaal mit vielen Tischen und Stühlen",
         "breite": 1089,
         "hoehe": 816
       }
@@ -79,29 +79,29 @@
     "foyerSchritte": [
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-01-eingang.png",
-        "alt": "Haupteingang des Rheinischen Landestheaters mit dem Schriftzug Theater.",
         "text": "Am Haupteingang das Gebäude betreten.",
+        "alt": "Haupteingang des Rheinischen Landestheaters mit dem Schriftzug Theater.",
         "breite": 960,
         "hoehe": 640
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-02-treppe.png",
-        "alt": "Treppe im Rheinischen Landestheater mit dem Weg nach oben ins Foyer.",
-        "text": "Die Treppe hinauf ins offene Foyer gehen.",
+        "text": "Die Treppe hinauf gehen.",
+        "alt": "Treppe im Rheinischen Landestheater mit dem Weg nach oben.",
         "breite": 960,
         "hoehe": 640
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-03-spiel-aussuchen.png",
-        "alt": "Im offenen Foyer ausgelegte Brettspiele auf langen Tischen.",
-        "text": "Ein Spiel aussuchen.",
+        "text": "Such dir ein Spiel aus.",
+        "alt": "Tisch mit ausgelegten Brettspielen auf langen Tischen.",
         "breite": 960,
         "hoehe": 640
       },
       {
         "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-04-losspielen.png",
+        "text": "Einen Platz finden und losspielen!",
         "alt": "Besucherinnen und Besucher spielen gemeinsam im offenen Foyer des Rheinischen Landestheaters.",
-        "text": "Einen Platz finden und losspielen.",
         "breite": 960,
         "hoehe": 640
       }
