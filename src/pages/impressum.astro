@@ -1,4 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Impressum"><section class="band band--white"><div class="shell prose legal-draft"><h1>Impressum</h1><p><strong>Entwurfsseite – noch nicht zur öffentlichen Nutzung freigegeben.</strong></p><p>Das Impressum wird vor dem offiziellen Website-Wechsel mit den aktuellen Angaben übernommen und überprüft. Es werden bewusst keine rechtlichen Kontaktdaten erfunden.</p></div></section></Layout>
+<Layout title="Impressum" description="Impressum und Kontakt der Spielonauten Neuss.">
+  <section class="band band--blue title-hero">
+    <div class="shell narrow">
+      <h1>Impressum</h1>
+    </div>
+  </section>
+  <section class="band band--white">
+    <div class="shell prose legal-content">
+      <!-- Angaben aus dem bisherigen Jimdo-Impressum übernommen.
+           Vor öffentlicher Freigabe unbedingt verantwortliche Person und
+           ladungsfähige Anschrift bestätigen. -->
+      <h2>Angaben zum Anbieter</h2>
+      <p>
+        Axel Heimes<br />
+        Spielonauten Neuss<br />
+        Furtherhofstraße 25<br />
+        41462 Neuss<br />
+        Deutschland
+      </p>
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href="mailto:spielonauten@gmail.com">spielonauten@gmail.com</a></p>
+      <h2>Inhalte und externe Links</h2>
+      <p>
+        Wir erstellen die Inhalte dieser Website mit Sorgfalt. Für Inhalte externer
+        Internetseiten, auf die wir verlinken, sind die jeweiligen Anbieter verantwortlich.
+      </p>
+      <h2>Urheberrecht und Bilder</h2>
+      <p>
+        Texte, Fotos, Grafiken und Logos können urheber- oder kennzeichenrechtlich geschützt
+        sein. Eine Nutzung außerhalb der gesetzlichen Schranken bedarf gegebenenfalls der
+        Erlaubnis der jeweiligen Rechteinhaber.
+      </p>
+      <p>Stand: November 2026.</p>
+    </div>
+  </section>
+  <style>
+    .legal-content { max-width: 850px; }
+    .legal-content h2 { margin-top: 1.8rem; margin-bottom: .65rem; font-size: clamp(1.24rem, 2.2vw, 1.55rem); }
+    .legal-content h2:first-child { margin-top: 0; }
+    .legal-content a { text-underline-offset: .15em; overflow-wrap: anywhere; }
+  </style>
+</Layout>
