@@ -1,8 +1,8 @@
 /* Spielonauten Neuss: gemeinsamer Designrahmen – Phase 2 */
 :root {
   --blue-light: #95d5ef;
-  --blue-mid: #3a91b6;
-  --blue-nav: #2f83a8;
+  --blue-mid: #236b8c;
+  --blue-nav: #216c91;
   --ink: #20242b;
   --white: #fff;
   --max: 1160px;
@@ -37,6 +37,8 @@ p:last-child { margin-bottom: 0; }
 .desktop-nav a { text-decoration: none; padding: .5rem 0; font-size: .92rem; border-bottom: 2px solid transparent; }
 .desktop-nav a:hover, .desktop-nav a[aria-current='page'] { border-bottom-color: var(--white); }
 .mobile-nav { display: none; }
+/* Weißer Fokusrahmen bleibt auf der dunklen Navigation deutlich sichtbar. */
+.site-header a:focus-visible, .site-header summary:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 /* Farbbänder und Inhalt */
 .band { padding: clamp(3.3rem, 6vw, 5.2rem) 0; }
 .band--blue { background: var(--blue-light); }
@@ -80,8 +82,10 @@ p:last-child { margin-bottom: 0; }
 .events-arrow:hover { background: #fff; }
 .events-arrow:disabled { opacity: .3; cursor: default; }
 .events-dots { position: absolute; bottom: 21px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .55rem; z-index: 2; }
-.events-dots button { width: 11px; height: 11px; padding: 0; border: 0; border-radius: 50%; background: #7d8e96; cursor: pointer; }
-.events-dots button[aria-current='true'] { background: #0c0c0c; box-shadow: 0 0 0 3px #fff; }
+/* Gut erreichbare Klickflächen; der sichtbare Punkt bleibt bewusst klein. */
+.events-dots button { position: relative; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; flex: 0 0 auto; }
+.events-dots button::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 12px; height: 12px; transform: translate(-50%, -50%); border-radius: 50%; background: #536b76; }
+.events-dots button[aria-current='true']::after { background: #0c0c0c; box-shadow: 0 0 0 3px #fff; }
 /* Kooperationspartner – Original-Logos vollständig, ohne Verzerrung oder Beschnitt. */
 .partner-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(1rem, 2.1vw, 2rem); }
 .partner-card { text-align: center; display: flex; flex-direction: column; align-items: center; min-width: 0; }
@@ -128,10 +132,11 @@ p:last-child { margin-bottom: 0; }
   .events-stage { min-height: 560px; padding: 42px 18px 94px; }
   .event-panel { padding: 1.45rem 1.15rem; }
   .event-panel p { font-size: .89rem; }
-  .events-arrow { top: auto; bottom: 12px; transform: none; width: 41px; height: 41px; }
+  .events-arrow { top: auto; bottom: 12px; transform: none; width: 44px; height: 44px; }
   .events-arrow--prev { left: 16px; }
   .events-arrow--next { right: 16px; }
-  .events-dots { bottom: 25px; gap: .45rem; }
+  .events-dots { bottom: 21px; gap: .15rem; }
+  .events-dots button { width: 28px; height: 28px; }
   .partner-card { max-width: 400px; margin-inline: auto; }
   .partner-logo-space { height: 160px; margin-bottom: .3rem; }
   .partner-card h3 { min-height: auto; margin-bottom: .6rem; }
@@ -351,13 +356,17 @@ p:last-child { margin-bottom: 0; }
 .about-gallery-prev { left: 12px; }
 .about-gallery-next { right: 12px; }
 .about-gallery-controls { display: flex; align-items: center; justify-content: center; gap: .8rem; margin-top: 1.3rem; }
-.about-gallery-controls button { width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; background: #547888; cursor: pointer; }
-.about-gallery-controls button[aria-current='true'] { background: #142e43; box-shadow: 0 0 0 3px white; }
+/* Berührungsziele mindestens 28 px, ohne die kleine Punktoptik zu ändern. */
+.about-gallery-controls button { position: relative; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; flex: 0 0 auto; }
+.about-gallery-controls button::after { content: ''; position: absolute; inset: 50% auto auto 50%; width: 12px; height: 12px; transform: translate(-50%, -50%); border-radius: 50%; background: #547888; }
+.about-gallery-controls button[aria-current='true']::after { background: #142e43; box-shadow: 0 0 0 3px white; }
 @media (max-width: 580px) {
   .about-prose p { font-size: 1rem; line-height: 1.73; }
   .about-gallery-slide img { height: clamp(220px, 65vw, 360px); }
   .about-gallery-slide figcaption { display: grid; gap: .2rem; }
-  .about-gallery-arrow { top: 34%; width: 40px; height: 40px; }
+  .about-gallery-arrow { top: 34%; width: 44px; height: 44px; }
+  .about-gallery-controls { gap: .2rem; }
+  .about-gallery-controls button { width: 28px; height: 28px; }
   .about-gallery-prev { left: 5px; }
   .about-gallery-next { right: 5px; }
   .about-action .button { max-width: 100%; }

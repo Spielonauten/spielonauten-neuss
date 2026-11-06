@@ -20,11 +20,11 @@ const sortierteVeranstaltungen = [...veranstaltungen].sort((a, b) =>
   <div class="events-heading shell">
     <h2 id="termine">{seitentexte.veranstaltungen.sliderTitel}</h2>
   </div>
-  <div class="events-carousel" data-event-carousel style={`--events-photo: url("${bildUrl(sortierteVeranstaltungen[0])}");`}>
+  <div class="events-carousel" data-event-carousel role="region" aria-roledescription="Karussell" aria-label="Unsere Veranstaltungen" style={`--events-photo: url("${bildUrl(sortierteVeranstaltungen[0])}");`}>
     <button class="events-arrow events-arrow--prev" type="button" data-carousel-prev aria-label="Vorherige Veranstaltung">
       <span aria-hidden="true">&#8249;</span>
     </button>
-    <div class="events-stage" aria-roledescription="Karussell" aria-label="Unsere Veranstaltungen">
+    <div class="events-stage">
       {sortierteVeranstaltungen.map((event, i) => (
         <article
           class="event-slide"

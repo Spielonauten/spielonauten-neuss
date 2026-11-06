@@ -16,6 +16,22 @@ const bild = (pfad) => {
   return `${base}/bilder/spielorte/${wert.replace(/^\/+/, '')}`;
 };
 
+// Die ursprünglichen PNG-Dateien bleiben für Pages CMS unverändert.
+// Solange ein bekanntes Theaterfoto ausgewählt ist, laden Besucher die
+// kleinere WebP-Variante. Ein neu gewähltes CMS-Foto wird direkt verwendet.
+const optimierteTheaterbilder = new Set([
+  'rlt-foyer-01-eingang.png',
+  'rlt-foyer-02-treppe.png',
+  'rlt-foyer-03-spiel-aussuchen.png',
+  'rlt-foyer-04-losspielen.png',
+  'rlt-herzstueck-eingang.png',
+]);
+const bildOptimiert = (pfad) => {
+  const url = bild(pfad);
+  const dateiname = url.split('/').pop();
+  return optimierteTheaterbilder.has(dateiname) ? url.replace(/\.png$/, '-optimiert.webp') : url;
+};
+
 const kardinal = spielorte.kardinal;
 const theater = spielorte.theater;
 const haltestellen = Array.isArray(kardinal.haltestellen) ? kardinal.haltestellen : [];
@@ -172,7 +188,7 @@ const theaterFoyerSteps = Array.isArray(theater.foyerSchritte) ? theater.foyerSc
               {theaterFoyerSteps.map((schritt, index) => (
                 <figure class="venue-foyer-step">
                   <div class="venue-foyer-step-image">
-                    <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite || 960} height={schritt.hoehe || 640} loading="lazy" decoding="async" />
+                    <img src={bildOptimiert(schritt.bild)} alt={schritt.alt} width={schritt.breite || 960} height={schritt.hoehe || 640} loading="lazy" decoding="async" />
                   </div>
                   <figcaption>
                     <span class="venue-step-number">{String(index + 1).padStart(2, '0')}</span>
@@ -196,7 +212,7 @@ const theaterFoyerSteps = Array.isArray(theater.foyerSchritte) ? theater.foyerSc
           <div class="venue-choice-content">
             <p>{theater.herzstueckBeschreibung}</p>
             <figure class="venue-heart-photo">
-              <img src={bild(theater.herzstueckBild)} alt={theater.herzstueckBildAlt} width="650" height="480" loading="lazy" decoding="async" />
+              <img src={bildOptimiert(theater.herzstueckBild)} alt={theater.herzstueckBildAlt} width="650" height="480" loading="lazy" decoding="async" />
               <figcaption>{theater.herzstueckBildtext}</figcaption>
             </figure>
           </div>
