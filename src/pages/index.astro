@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import VeranstaltungsSlider from '../components/VeranstaltungsSlider.astro';
+import Kontaktformular from '../components/Kontaktformular.astro';
 import { partner } from '../data/partner.js';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
@@ -52,12 +53,7 @@ const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
       </div>
     </div>
   </section>
-  <section class="band band--blue section-center" aria-labelledby="kontakt">
-    <div class="shell narrow">
-      <h2 id="kontakt">Du möchtest Kontakt zu uns aufnehmen?</h2>
-      <p>Das Kontaktformular wird nach Auswahl eines datenschutzgerechten Versanddienstes eingebunden. Bis dahin veröffentlichen wir hier bewusst noch kein funktionsloses Formular.</p>
-    </div>
-  </section>
+  <Kontaktformular />
   <section class="band band--white">
     <div class="shell hero-grid">
       <img class="venue-home-image" src={saalFoto} alt="Großer Spielsaal im Kardinal-Bea-Haus mit Tischen und Stühlen für die Spieleabende" width="1089" height="816" loading="lazy" decoding="async" />

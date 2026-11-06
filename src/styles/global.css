@@ -362,3 +362,41 @@ p:last-child { margin-bottom: 0; }
   .about-gallery-next { right: 5px; }
   .about-action .button { max-width: 100%; }
 }
+
+
+/* Update 13 – Kontaktformular im Stil der Jimdo-Seite, responsive und zugänglich. */
+.contact-section { text-align: left; }
+.contact-container { max-width: 920px; }
+.contact-title { text-align: center; margin: 0 auto clamp(1.7rem, 4vw, 2.8rem); max-width: 32ch; }
+.contact-form { max-width: 920px; margin-inline: auto; }
+.contact-form-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.15rem; }
+.contact-field { min-width: 0; display: grid; gap: .4rem; }
+.contact-field label { font-size: .95rem; font-weight: 600; }
+.contact-optional { font-weight: 400; font-size: .85rem; }
+.contact-field input, .contact-field textarea {
+  display: block; width: 100%; border: 1px solid #7ba7ba; border-radius: 6px; background: #fff;
+  font: inherit; color: var(--ink); padding: .72rem .8rem; min-height: 46px;
+}
+.contact-field textarea { min-height: 160px; resize: vertical; }
+.contact-field input:disabled, .contact-field textarea:disabled { background: #f4f7f8; color: #53616a; cursor: not-allowed; }
+.contact-field input:focus-visible, .contact-field textarea:focus-visible { outline: 3px solid #123c65; outline-offset: 2px; }
+.contact-field--message { grid-column: 1 / -1; }
+.contact-privacy { font-size: .88rem; line-height: 1.6; margin: 1.25rem 0 1.6rem; }
+.contact-privacy a { font-weight: 700; text-underline-offset: 3px; }
+.contact-actions { display: flex; justify-content: center; }
+.contact-submit { border: 0; font: inherit; cursor: pointer; padding-inline: 2rem; }
+.contact-submit:disabled { cursor: not-allowed; opacity: .6; transform: none; }
+.contact-not-ready { margin: 1.15rem auto 0; padding: .85rem 1rem; border-left: 4px solid #AC4A25; background: rgba(255,255,255,.55); max-width: 650px; font-size: .9rem; }
+.contact-honeypot { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
+.thanks-section { min-height: 55vh; display: grid; align-items: center; }
+.thanks-inner { text-align: center; }
+.thanks-inner h1 { margin-bottom: .6rem; }
+.thanks-inner p { font-size: 1.08rem; }
+.thanks-inner .button { margin-top: 1.2rem; }
+.thanks-secondary { font-size: .94rem !important; }
+.thanks-symbol { display: grid; place-items: center; width: 76px; height: 76px; border: 3px solid #235e7d; border-radius: 50%; margin: 0 auto 1.5rem; font-size: 2.5rem; color: #235e7d; font-weight: 800; }
+@media(max-width: 700px) {
+  .contact-form-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .contact-field--message { grid-column: auto; }
+  .contact-title { font-size: clamp(1.45rem,5vw,1.95rem); }
+}

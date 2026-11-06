@@ -1,0 +1,52 @@
+---
+import { formTaxiEndpoint } from '../config/kontakt.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const isReady = /^https:\/\/(?:www\.)?form\.taxi\/s\/[A-Za-z0-9_-]+\/?$/.test(formTaxiEndpoint);
+---
+<section class="band band--blue contact-section" aria-labelledby="kontakt-ueberschrift" id="kontakt">
+  <div class="shell contact-container">
+    <h2 id="kontakt-ueberschrift" class="contact-title">Du möchtest Kontakt zu uns aufnehmen? Dann schreib uns gerne!</h2>
+    <form
+      class="contact-form"
+      action={isReady ? formTaxiEndpoint : undefined}
+      method="POST"
+      aria-describedby="kontakt-hinweis"
+    >
+      <!-- Ein Honeypot für Form.taxi, kein sichtbares Formularfeld. -->
+      <div class="contact-honeypot" aria-hidden="true">
+        <label for="kontakt-firma">Firma</label>
+        <input type="text" id="kontakt-firma" name="_gotcha" tabindex="-1" autocomplete="off" />
+      </div>
+      <input type="hidden" name="_subject" value="Neue Nachricht über Spielonauten Neuss" />
+      <div class="contact-form-grid">
+        <div class="contact-field">
+          <label for="kontakt-name">Name <span class="contact-optional">(optional)</span></label>
+          <input id="kontakt-name" name="name" type="text" autocomplete="name" maxlength="120" disabled={!isReady} />
+        </div>
+        <div class="contact-field">
+          <label for="kontakt-email">E-Mail-Adresse <span aria-hidden="true">*</span></label>
+          <input id="kontakt-email" name="email" type="email" autocomplete="email" required maxlength="254" disabled={!isReady} />
+        </div>
+        <div class="contact-field">
+          <label for="kontakt-telefon">Telefonnummer <span class="contact-optional">(optional)</span></label>
+          <input id="kontakt-telefon" name="telefon" type="tel" autocomplete="tel" maxlength="50" disabled={!isReady} />
+        </div>
+        <div class="contact-field contact-field--message">
+          <label for="kontakt-nachricht">Nachricht <span aria-hidden="true">*</span></label>
+          <textarea id="kontakt-nachricht" name="nachricht" rows="7" required maxlength="10000" disabled={!isReady}></textarea>
+        </div>
+      </div>
+      <p class="contact-privacy" id="kontakt-hinweis">
+        Wir verwenden deine Angaben ausschließlich zur Bearbeitung deiner Anfrage. Weitere Informationen findest du in unserer
+        <a href={`${base}/datenschutz/`}>Datenschutzerklärung</a>. Die mit * gekennzeichneten Felder sind Pflichtfelder.
+      </p>
+      <div class="contact-actions">
+        <button class="button contact-submit" type="submit" disabled={!isReady}>Nachricht senden</button>
+      </div>
+      {!isReady && (
+        <p class="contact-not-ready" role="status">Das Kontaktformular wird noch eingerichtet und kann derzeit keine Nachrichten senden.</p>
+      )}
+    </form>
+  </div>
+</section>
