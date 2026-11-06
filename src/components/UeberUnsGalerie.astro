@@ -1,0 +1,85 @@
+---
+import { ueberUnsGalerie } from '../data/ueber-uns-galerie.js';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const bilder = ueberUnsGalerie.map((eintrag) => ({
+  ...eintrag,
+  url: `${base}/${eintrag.bild.replace(/^\//, '')}`,
+}));
+---
+<div class="about-gallery" data-about-gallery role="region" aria-roledescription="Karussell" aria-label="Einblicke in unsere Spielgemeinschaft" tabindex="0">
+  <div class="about-gallery-stage">
+    {bilder.map((bild, i) => (
+      <figure class="about-gallery-slide" data-about-slide hidden={i !== 0}>
+        <img
+          src={bild.url}
+          alt={bild.alt}
+          width={bild.breite}
+          height={bild.hoehe}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+        <figcaption>
+          <strong>{bild.titel}</strong>
+          <span>{bild.beschreibung}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  {bilder.length > 1 && (
+    <>
+      <button class="about-gallery-arrow about-gallery-prev" type="button" data-about-prev aria-label="Vorheriges Foto">
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button class="about-gallery-arrow about-gallery-next" type="button" data-about-next aria-label="Nächstes Foto">
+        <span aria-hidden="true">›</span>
+      </button>
+      <div class="about-gallery-controls" role="group" aria-label="Galeriebilder auswählen">
+        {bilder.map((bild, i) => (
+          <button
+            type="button"
+            data-about-dot
+            aria-label={`Bild ${i + 1}: ${bild.titel}`}
+            aria-current={i === 0 ? 'true' : undefined}
+          ></button>
+        ))}
+      </div>
+    </>
+  )}
+  <p class="sr-only" aria-live="polite" aria-atomic="true" data-about-status></p>
+</div>
+
+<script>
+  for (const gallery of document.querySelectorAll('[data-about-gallery]')) {
+    const slides = Array.from(gallery.querySelectorAll('[data-about-slide]'));
+    const dots = Array.from(gallery.querySelectorAll('[data-about-dot]'));
+    const prev = gallery.querySelector('[data-about-prev]');
+    const next = gallery.querySelector('[data-about-next]');
+    const status = gallery.querySelector('[data-about-status]');
+    let position = 0;
+    if (!slides.length) continue;
+
+    function show(positionToShow, announce = false) {
+      position = (positionToShow + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        slide.hidden = index !== position;
+      });
+      dots.forEach((dot, index) => {
+        if (index === position) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      if (announce && status) {
+        const title = slides[position].querySelector('figcaption strong')?.textContent || '';
+        status.textContent = `Bild ${position + 1} von ${slides.length}: ${title}`;
+      }
+    }
+
+    prev?.addEventListener('click', () => show(position - 1, true));
+    next?.addEventListener('click', () => show(position + 1, true));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => show(index, true)));
+    gallery.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); show(position - 1, true); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); show(position + 1, true); }
+    });
+    show(0);
+  }
+</script>

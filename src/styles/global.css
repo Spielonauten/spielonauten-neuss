@@ -330,3 +330,35 @@ p:last-child { margin-bottom: 0; }
   .venue-choice-content { padding-inline: 1rem; }
   .venue-choice-heading { font-size: 1.45rem; }
 }
+
+/* Update 11 – Über uns: gut lesbarer Vorstellungstext und barrierearm bedienbare Galerie. */
+.about-title { padding-block: clamp(3rem, 5vw, 4.4rem); }
+.about-title h1 { margin: 0; }
+.about-prose { max-width: 780px; }
+.about-prose p { font-size: 1.04rem; line-height: 1.82; margin: 0 0 1.55rem; }
+.about-action { text-align: center; margin-top: 2.2rem; }
+.about-gallery-intro { text-align: center; max-width: 65ch; margin: 0 auto 2rem; }
+.about-gallery { width: min(100%, 900px); margin: 0 auto; position: relative; outline-offset: 5px; }
+.about-gallery-stage { position: relative; }
+.about-gallery-slide { margin: 0; background: #fff; }
+.about-gallery-slide[hidden] { display: none !important; }
+.about-gallery-slide img { width: 100%; height: clamp(250px, 54vw, 540px); object-fit: contain; display: block; background: #edf6fb; }
+.about-gallery-slide figcaption { display: flex; justify-content: center; gap: .45rem .8rem; flex-wrap: wrap; align-items: baseline; padding: .9rem 1.1rem; background: #fff; text-align: center; }
+.about-gallery-slide figcaption strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.1rem; }
+.about-gallery-slide figcaption span { color: #3c5561; }
+.about-gallery-arrow { position: absolute; top: min(45%, 230px); transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #dae7ed; border-radius: 50%; background: rgba(255, 255, 255, .94); color: #152d40; font-size: 2rem; cursor: pointer; line-height: 1; }
+.about-gallery-arrow:hover { background: #fff; }
+.about-gallery-prev { left: 12px; }
+.about-gallery-next { right: 12px; }
+.about-gallery-controls { display: flex; align-items: center; justify-content: center; gap: .8rem; margin-top: 1.3rem; }
+.about-gallery-controls button { width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; background: #547888; cursor: pointer; }
+.about-gallery-controls button[aria-current='true'] { background: #142e43; box-shadow: 0 0 0 3px white; }
+@media (max-width: 580px) {
+  .about-prose p { font-size: 1rem; line-height: 1.73; }
+  .about-gallery-slide img { height: clamp(220px, 65vw, 360px); }
+  .about-gallery-slide figcaption { display: grid; gap: .2rem; }
+  .about-gallery-arrow { top: 34%; width: 40px; height: 40px; }
+  .about-gallery-prev { left: 5px; }
+  .about-gallery-next { right: 5px; }
+  .about-action .button { max-width: 100%; }
+}
