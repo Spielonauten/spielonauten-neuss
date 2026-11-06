@@ -1,58 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { spielorte, wegschritte } from '../data/spielorte.js';
+import spielorte from '../content/spielorte.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const bild = (name) => `${base}/bilder/spielorte/${name}`;
-const rltLogo = `${base}/bilder/partner/rlt-neuss.png`;
+const prefix = '/spielonauten-neuss/';
+
+// Pages CMS speichert volle öffentliche Pfade. GitHub Pages benötigt den
+// Repository-Basispfad genau einmal (auch bei neu hochgeladenen Fotos).
+const bild = (pfad) => {
+  const wert = typeof pfad === 'string' ? pfad.trim() : '';
+  if (!wert) return '';
+  if (wert.startsWith(prefix)) return `${base}/${wert.slice(prefix.length)}`;
+  if (wert.startsWith('/bilder/')) return `${base}${wert}`;
+  if (wert.startsWith('bilder/')) return `${base}/${wert}`;
+  return `${base}/bilder/spielorte/${wert.replace(/^\/+/, '')}`;
+};
+
 const kardinal = spielorte.kardinal;
 const theater = spielorte.theater;
-
-const theaterFoyerSteps = [
-  {
-    bild: 'rlt-foyer-01-eingang.png',
-    alt: 'Haupteingang des Rheinischen Landestheaters mit dem Schriftzug Theater.',
-    breite: 960,
-    hoehe: 640,
-    text: 'Am Haupteingang das Gebäude betreten.',
-  },
-  {
-    bild: 'rlt-foyer-02-treppe.png',
-    alt: 'Treppe im Rheinischen Landestheater mit dem Weg nach oben ins Foyer.',
-    breite: 960,
-    hoehe: 640,
-    text: 'Die Treppe hinauf ins offene Foyer gehen.',
-  },
-  {
-    bild: 'rlt-foyer-03-spiel-aussuchen.png',
-    alt: 'Im offenen Foyer ausgelegte Brettspiele auf langen Tischen.',
-    breite: 960,
-    hoehe: 640,
-    text: 'Ein Spiel aussuchen.',
-  },
-  {
-    bild: 'rlt-foyer-04-losspielen.png',
-    alt: 'Besucherinnen und Besucher spielen gemeinsam im offenen Foyer des Rheinischen Landestheaters.',
-    breite: 960,
-    hoehe: 640,
-    text: 'Einen Platz finden und losspielen.',
-  },
-];
-const theaterHerzstueckBild = {
-  bild: 'rlt-herzstueck-eingang.png',
-  alt: 'Außenansicht des Alten Herzstücks direkt am Eingangsbereich des Rheinischen Landestheaters.',
-  breite: 650,
-  hoehe: 480,
-};
+const haltestellen = Array.isArray(kardinal.haltestellen) ? kardinal.haltestellen : [];
+const wegschritte = Array.isArray(kardinal.wegschritte) ? kardinal.wegschritte : [];
+const theaterFoyerSteps = Array.isArray(theater.foyerSchritte) ? theater.foyerSchritte : [];
 ---
 <Layout title="Wo wird gespielt?" description="Spielorte und Anfahrt der Spielonauten Neuss: Wegbeschreibung zum Kardinal-Bea-Haus und Informationen zum Rheinischen Landestheater.">
   <section class="band band--blue title-hero venue-title">
     <div class="shell narrow">
       <h1>Wo wird gespielt?</h1>
-      <p>Hier findest du unsere Spielorte und erfährst, wie du zu unseren Veranstaltungen kommst.</p>
+      <p>{spielorte.einleitung}</p>
       <nav class="venue-jump-links" aria-label="Direkt zum Spielort springen">
-        <a class="button" href="#kardinal-bea-haus">Kardinal-Bea-Haus <span aria-hidden="true">↓</span></a>
-        <a class="button" href="#rheinisches-landestheater">Rheinisches Landestheater <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#kardinal-bea-haus">{kardinal.name} <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#rheinisches-landestheater">{theater.name} <span aria-hidden="true">↓</span></a>
       </nav>
     </div>
   </section>
@@ -61,12 +38,12 @@ const theaterHerzstueckBild = {
     <div class="shell venue-split">
       <div class="venue-copy">
         <p class="venue-kicker venue-kicker--place">Spielort 01</p>
-        <h2 id="kardinal-title">Kardinal-Bea-Haus</h2>
-        <p>Unsere offenen Brettspieleabende und XXL-Spieletage finden im großen Saal des Kardinal-Bea-Hauses statt. Hier ist genügend Platz, um gemeinsam neue und bekannte Spiele auszuprobieren.</p>
+        <h2 id="kardinal-title">{kardinal.name}</h2>
+        <p>{kardinal.beschreibung}</p>
         <address><strong>Zugang für unsere Gäste:</strong><br />{kardinal.eingang}<br />{kardinal.plzOrt}</address>
-        <p class="venue-small-note">Die Gebäudeadresse wird auch unter {kardinal.gebaeudeadresse} geführt. Für den hier gezeigten Weg nutze bitte den Zugang bei Hausnummer 25.</p>
+        <p class="venue-small-note">Die Gebäudeadresse wird auch unter {kardinal.gebaeudeadresse} geführt. {kardinal.zugangshinweis}</p>
       </div>
-      <img class="venue-lead-image" src={bild('kardinal-bea-haus.webp')} alt="Außenansicht des Kardinal-Bea-Hauses in Neuss" width="1600" height="1064" decoding="async" />
+      <img class="venue-lead-image" src={bild(kardinal.titelbild)} alt={kardinal.titelbildAlt} width="1600" height="1064" decoding="async" />
     </div>
   </section>
 
@@ -74,13 +51,13 @@ const theaterHerzstueckBild = {
   <section class="band band--blue venue-options-band" aria-labelledby="kardinal-details-title">
     <div class="shell">
       <h2 id="kardinal-details-title" class="section-heading">Anfahrt und Wegbeschreibung</h2>
-      <p class="venue-area-intro">Wähle die Informationen aus, die du für deinen Besuch im Kardinal-Bea-Haus brauchst.</p>
+      <p class="venue-area-intro">Wähle die Informationen aus, die du für deinen Besuch im {kardinal.name} brauchst.</p>
       <div class="venue-choices">
         <details class="venue-collapse venue-collapse--card">
           <summary class="venue-collapse-summary">
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Anreise und Karte</span>
-              <strong>So kommst du zum Kardinal-Bea-Haus</strong>
+              <strong>So kommst du zum {kardinal.name}</strong>
               <span>Kartenlinks, öffentliche Verkehrsmittel und Parkmöglichkeiten</span>
             </span>
             <span class="venue-collapse-icon" aria-hidden="true"></span>
@@ -90,7 +67,7 @@ const theaterHerzstueckBild = {
             <section class="venue-choice-section" aria-labelledby="venue-map-title">
               <h3 id="venue-map-title" class="venue-choice-heading">So findest du uns</h3>
               <div class="venue-map-panel">
-                <p>Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.</p>
+                <p>{kardinal.kartenhinweis}</p>
                 <div class="venue-map-actions">
                   <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Route in Google Maps planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
                   <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
@@ -101,26 +78,24 @@ const theaterHerzstueckBild = {
             <section class="venue-choice-section" aria-labelledby="oepnv-title">
               <h3 class="venue-choice-heading" id="oepnv-title">Anfahrt mit dem öffentlichen Nahverkehr</h3>
               <div class="venue-transit-grid">
-                <article class="venue-transit-card">
-                  <img src={bild('haltestelle-thomas-morus.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Thomas-Morus-Kirche zum Kardinal-Bea-Haus" width="976" height="686" loading="lazy" decoding="async" />
-                  <div class="venue-transit-text"><h4>Neuss Thomas-Morus-Kirche</h4><p>Von dieser Haltestelle sind es nach der bisherigen Wegbeschreibung etwa <strong>240 Meter zu Fuß</strong>.</p></div>
-                </article>
-                <article class="venue-transit-card">
-                  <img src={bild('haltestelle-viersener.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Viersener Straße zum Kardinal-Bea-Haus" width="578" height="433" loading="lazy" decoding="async" />
-                  <div class="venue-transit-text"><h4>Neuss Viersener Straße</h4><p>Von hier sind es nach der bisherigen Wegbeschreibung etwa <strong>800 Meter zu Fuß</strong>. Es stehen verschiedene Busverbindungen zur Verfügung.</p></div>
-                </article>
+                {haltestellen.map((halt) => (
+                  <article class="venue-transit-card">
+                    <img src={bild(halt.bild)} alt={halt.alt} width={halt.breite || 976} height={halt.hoehe || 686} loading="lazy" decoding="async" />
+                    <div class="venue-transit-text"><h4>{halt.name}</h4><p>{halt.beschreibung}</p></div>
+                  </article>
+                ))}
               </div>
-              <p class="venue-transit-hint">Die Karten zeigen die bisherigen Fußwege. Linien, Haltestellen und Fahrpläne können sich ändern – überprüfe deine Verbindung bitte vor der Anreise.</p>
+              <p class="venue-transit-hint">{kardinal.oepnvHinweis}</p>
             </section>
 
             <section class="venue-choice-section" aria-labelledby="auto-title">
               <h3 id="auto-title" class="venue-choice-heading">Anfahrt mit dem Auto</h3>
               <div class="venue-split venue-split--photo-last">
                 <div class="venue-copy">
-                  <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
+                  <p>{kardinal.autoBeschreibung}</p>
                   <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
                 </div>
-                <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
+                <img class="venue-lead-image" src={bild(kardinal.parkbild)} alt={kardinal.parkbildAlt} width="1600" height="900" loading="lazy" decoding="async" />
               </div>
             </section>
           </div>
@@ -131,18 +106,18 @@ const theaterHerzstueckBild = {
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Wegbeschreibung</span>
               <strong>Vom Vorplatz bis zum Spieltisch</strong>
-              <span>Vier nummerierte Fotos zeigen den Weg in den großen Saal</span>
+              <span>{wegschritte.length} nummerierte Fotos zeigen den Weg in den großen Saal</span>
             </span>
             <span class="venue-collapse-icon" aria-hidden="true"></span>
           </summary>
           <div class="venue-choice-content">
             <section aria-labelledby="weg-title">
-              <h3 id="weg-title" class="venue-choice-heading">Vom Vorplatz bis zum Spieltisch – in vier Schritten</h3>
+              <h3 id="weg-title" class="venue-choice-heading">Vom Vorplatz bis zum Spieltisch – in {wegschritte.length} Schritten</h3>
               <div class="venue-route-grid">
                 {wegschritte.map((schritt, i) => (
                   <figure class="venue-route-card">
                     <div class="venue-route-image">
-                      <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
+                      <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite || 1200} height={schritt.hoehe || 800} loading="lazy" decoding="async" />
                     </div>
                     <figcaption>
                       <span class="venue-step-number" aria-label={`Schritt ${i + 1}`}>{String(i + 1).padStart(2, '0')}</span>
@@ -162,17 +137,17 @@ const theaterHerzstueckBild = {
     <div class="shell venue-split venue-theater">
       <div class="venue-copy">
         <p class="venue-kicker venue-kicker--place">Spielort 02</p>
-        <h2 id="theater-title">Rheinisches Landestheater Neuss</h2>
-        <p>Für <strong>Rheingespielt</strong> und <strong>„Vorhang auf für Brettspiele“</strong> sind wir im Rheinischen Landestheater zu Gast. Je nach Veranstaltung spielen wir entweder im <strong>offenen Foyer</strong> oder im <strong>Alten Herzstück</strong> direkt beim Eingang.</p>
+        <h2 id="theater-title">{theater.name}</h2>
+        <p>{theater.beschreibung}</p>
         <address>{theater.eingang}<br />{theater.plzOrt}</address>
-        <p>Mit der Straßenbahnlinie <strong>709</strong> erreichst du die Haltestelle <strong>Landestheater/Zollstraße</strong>. Das Parkhaus Tranktor liegt direkt neben dem Theater. Aktuelle Details findest du auf der Website des Theaters.</p>
+        <p>{theater.anreiseBeschreibung}</p>
         <div class="venue-theater-actions">
           <a class="button" href={theater.route} target="_blank" rel="noopener noreferrer">Route zum Theater planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
           <a class="venue-text-link" href={theater.website} target="_blank" rel="noopener noreferrer">Anreiseinfos des Theaters <span class="sr-only">(öffnet in neuem Tab)</span></a>
         </div>
       </div>
       <div class="venue-theater-visual" aria-hidden="true">
-        <img src={rltLogo} alt="" loading="lazy" decoding="async" />
+        <img src={bild(theater.logo)} alt="" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -180,24 +155,24 @@ const theaterHerzstueckBild = {
   <section class="band band--blue venue-theater-areas" aria-labelledby="theater-areas-title">
     <div class="shell">
       <h2 id="theater-areas-title" class="section-heading">Wo genau spielen wir im Theater?</h2>
-      <p class="venue-area-intro">Welcher Bereich genutzt wird, geben wir bei der jeweiligen Veranstaltung bekannt. Hier findest du die passenden Hinweise für beide Möglichkeiten.</p>
+      <p class="venue-area-intro">{theater.bereichHinweis}</p>
       <div class="venue-choices">
         <details class="venue-collapse venue-collapse--card">
           <summary class="venue-collapse-summary">
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Spielort 02a</span>
               <strong>Offenes Foyer</strong>
-              <span>Vier Bilder zeigen den Weg zum Spielebereich.</span>
+              <span>{theaterFoyerSteps.length} Bilder zeigen den Weg zum Spielebereich.</span>
             </span>
             <span class="venue-collapse-icon" aria-hidden="true"></span>
           </summary>
           <div class="venue-choice-content">
-            <p>Wenn wir im <strong>offenen Foyer</strong> spielen, findest du den Spielbereich mit diesen vier Schritten:</p>
-            <div class="venue-foyer-steps" aria-label="Vier Schritte zum offenen Foyer im Rheinischen Landestheater">
+            <p>{theater.foyerEinleitung}</p>
+            <div class="venue-foyer-steps" aria-label={`${theaterFoyerSteps.length} Schritte zum offenen Foyer im Rheinischen Landestheater`}>
               {theaterFoyerSteps.map((schritt, index) => (
                 <figure class="venue-foyer-step">
                   <div class="venue-foyer-step-image">
-                    <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
+                    <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite || 960} height={schritt.hoehe || 640} loading="lazy" decoding="async" />
                   </div>
                   <figcaption>
                     <span class="venue-step-number">{String(index + 1).padStart(2, '0')}</span>
@@ -219,10 +194,10 @@ const theaterHerzstueckBild = {
             <span class="venue-collapse-icon" aria-hidden="true"></span>
           </summary>
           <div class="venue-choice-content">
-            <p>Das <strong>Alte Herzstück</strong> liegt im Erdgeschoss direkt am Eingang des Theaters. Wenn wir dort spielen, kannst du unseren Spielbereich bereits von außen sehen.</p>
+            <p>{theater.herzstueckBeschreibung}</p>
             <figure class="venue-heart-photo">
-              <img src={bild(theaterHerzstueckBild.bild)} alt={theaterHerzstueckBild.alt} width={theaterHerzstueckBild.breite} height={theaterHerzstueckBild.hoehe} loading="lazy" decoding="async" />
-              <figcaption>Das Alte Herzstück befindet sich direkt unten am Eingang – hier kannst du unseren Spielebereich schon von außen erkennen.</figcaption>
+              <img src={bild(theater.herzstueckBild)} alt={theater.herzstueckBildAlt} width="650" height="480" loading="lazy" decoding="async" />
+              <figcaption>{theater.herzstueckBildtext}</figcaption>
             </figure>
           </div>
         </details>

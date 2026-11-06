@@ -1,0 +1,114 @@
+{
+  "einleitung": "Hier findest du unsere Spielorte und erfährst, wie du zu unseren Veranstaltungen kommst.",
+  "kardinal": {
+    "name": "Kardinal-Bea-Haus",
+    "beschreibung": "Unsere offenen Brettspieleabende und XXL-Spieletage finden im großen Saal des Kardinal-Bea-Hauses statt. Hier ist genügend Platz, um gemeinsam neue und bekannte Spiele auszuprobieren.",
+    "eingang": "Furtherhofstraße 25",
+    "plzOrt": "41462 Neuss",
+    "gebaeudeadresse": "Furtherhofstraße 29",
+    "zugangshinweis": "Für den hier gezeigten Weg nutze bitte den Zugang bei Hausnummer 25.",
+    "titelbild": "/spielonauten-neuss/bilder/spielorte/kardinal-bea-haus.webp",
+    "titelbildAlt": "Außenansicht des Kardinal-Bea-Hauses in Neuss",
+    "route": "https://www.google.com/maps/dir/?api=1&destination=Furtherhofstra%C3%9Fe%2025%2C%2041462%20Neuss",
+    "karte": "https://www.openstreetmap.org/search?query=Furtherhofstra%C3%9Fe%2025%2C%2041462%20Neuss",
+    "kartenhinweis": "Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.",
+    "haltestellen": [
+      {
+        "name": "Neuss Thomas-Morus-Kirche",
+        "beschreibung": "Von dieser Haltestelle sind es nach der bisherigen Wegbeschreibung etwa 240 Meter zu Fuß.",
+        "bild": "/spielonauten-neuss/bilder/spielorte/haltestelle-thomas-morus.webp",
+        "alt": "Übersichtskarte des Fußwegs von der Haltestelle Thomas-Morus-Kirche zum Kardinal-Bea-Haus",
+        "breite": 976,
+        "hoehe": 686
+      },
+      {
+        "name": "Neuss Viersener Straße",
+        "beschreibung": "Von hier sind es nach der bisherigen Wegbeschreibung etwa 800 Meter zu Fuß. Es stehen verschiedene Busverbindungen zur Verfügung.",
+        "bild": "/spielonauten-neuss/bilder/spielorte/haltestelle-viersener.webp",
+        "alt": "Übersichtskarte des Fußwegs von der Haltestelle Viersener Straße zum Kardinal-Bea-Haus",
+        "breite": 578,
+        "hoehe": 433
+      }
+    ],
+    "oepnvHinweis": "Die Karten zeigen die bisherigen Fußwege. Linien, Haltestellen und Fahrpläne können sich ändern – überprüfe deine Verbindung bitte vor der Anreise.",
+    "autoBeschreibung": "Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.",
+    "parkbild": "/spielonauten-neuss/bilder/spielorte/parkplatz.webp",
+    "parkbildAlt": "Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus",
+    "wegschritte": [
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/weg-01-vorplatz.webp",
+        "alt": "Blick über den Vorplatz mit blauem Wegpfeil zur Überdachung",
+        "text": "Über den Vorplatz zur Überdachung gehen und dort links halten.",
+        "breite": 1500,
+        "hoehe": 844
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/weg-02-ueberdachung.webp",
+        "alt": "Überdachter Zugang zum Gebäude mit blauem Pfeil in Richtung Tür",
+        "text": "Unter der Überdachung geradeaus zur Eingangstür gehen.",
+        "breite": 1500,
+        "hoehe": 844
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/weg-03-eingang.webp",
+        "alt": "Geöffnete hölzerne Eingangstür mit blauem Pfeil nach links",
+        "text": "Durch die Tür und direkt wieder nach links abbiegen.",
+        "breite": 1100,
+        "hoehe": 816
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/spielsaal.webp",
+        "alt": "Großer Spielsaal mit vielen Tischen und Stühlen",
+        "text": "Geschafft! Du bist im großen Saal und kannst direkt mitspielen.",
+        "breite": 1089,
+        "hoehe": 816
+      }
+    ]
+  },
+  "theater": {
+    "name": "Rheinisches Landestheater Neuss",
+    "beschreibung": "Für Rheingespielt und „Vorhang auf für Brettspiele“ sind wir im Rheinischen Landestheater zu Gast. Je nach Veranstaltung spielen wir entweder im offenen Foyer oder im Alten Herzstück direkt beim Eingang.",
+    "eingang": "Oberstraße 95",
+    "plzOrt": "41460 Neuss",
+    "anreiseBeschreibung": "Mit der Straßenbahnlinie 709 erreichst du die Haltestelle Landestheater/Zollstraße. Das Parkhaus Tranktor liegt direkt neben dem Theater. Aktuelle Details findest du auf der Website des Theaters.",
+    "route": "https://www.google.com/maps/dir/?api=1&destination=Oberstra%C3%9Fe%2095%2C%2041460%20Neuss",
+    "website": "https://www.rheinisches-landestheater.de/seiten/ihr-besuch.html",
+    "logo": "/spielonauten-neuss/bilder/partner/rlt-neuss.png",
+    "bereichHinweis": "Welcher Bereich genutzt wird, geben wir bei der jeweiligen Veranstaltung bekannt. Hier findest du die passenden Hinweise für beide Möglichkeiten.",
+    "foyerEinleitung": "Wenn wir im offenen Foyer spielen, findest du den Spielbereich mit diesen Schritten:",
+    "foyerSchritte": [
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-01-eingang.png",
+        "alt": "Haupteingang des Rheinischen Landestheaters mit dem Schriftzug Theater.",
+        "text": "Am Haupteingang das Gebäude betreten.",
+        "breite": 960,
+        "hoehe": 640
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-02-treppe.png",
+        "alt": "Treppe im Rheinischen Landestheater mit dem Weg nach oben ins Foyer.",
+        "text": "Die Treppe hinauf ins offene Foyer gehen.",
+        "breite": 960,
+        "hoehe": 640
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-03-spiel-aussuchen.png",
+        "alt": "Im offenen Foyer ausgelegte Brettspiele auf langen Tischen.",
+        "text": "Ein Spiel aussuchen.",
+        "breite": 960,
+        "hoehe": 640
+      },
+      {
+        "bild": "/spielonauten-neuss/bilder/spielorte/rlt-foyer-04-losspielen.png",
+        "alt": "Besucherinnen und Besucher spielen gemeinsam im offenen Foyer des Rheinischen Landestheaters.",
+        "text": "Einen Platz finden und losspielen.",
+        "breite": 960,
+        "hoehe": 640
+      }
+    ],
+    "herzstueckBeschreibung": "Das Alte Herzstück liegt im Erdgeschoss direkt am Eingang des Theaters. Wenn wir dort spielen, kannst du unseren Spielbereich bereits von außen sehen.",
+    "herzstueckBild": "/spielonauten-neuss/bilder/spielorte/rlt-herzstueck-eingang.png",
+    "herzstueckBildAlt": "Außenansicht des Alten Herzstücks direkt am Eingangsbereich des Rheinischen Landestheaters.",
+    "herzstueckBildtext": "Das Alte Herzstück befindet sich direkt unten am Eingang – hier kannst du unseren Spielebereich schon von außen erkennen."
+  }
+}
