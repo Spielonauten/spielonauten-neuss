@@ -27,16 +27,27 @@ const eintraege = reihenfolge.map((id) => veranstaltungen.find((v) => v.id === i
 </Layout>
 
 <script>
-  // Der statische Build bleibt korrekt, selbst wenn später ein Datum verstreicht:
-  // Browser markieren verstrichene Einzeltermine nach dem tatsächlichen Besuchstag.
-  const heute = new Date();
-  heute.setHours(0, 0, 0, 0);
-  for (const section of document.querySelectorAll<HTMLElement>('[data-event-feature]')) {
-    if (section.dataset.eventKind !== 'fest' || !section.dataset.eventDate) continue;
-    const [jahr, monat, tag] = section.dataset.eventDate.split('-').map(Number);
-    if (new Date(jahr, monat - 1, tag) < heute) {
-      const hinweis = section.querySelector<HTMLElement>('[data-event-past]');
-      if (hinweis) hinweis.hidden = false;
+  import { naechsterTerminText, zukunftstermine, statusText } from '../data/terminanzeige.js';
+  for (const section of document.querySelectorAll('[data-event-feature]')) {
+    const termine = JSON.parse(section.getAttribute('data-event-terms') || '[]');
+    const next = section.querySelector('[data-event-next]');
+    if (next) next.textContent = naechsterTerminText(termine);
+    const list = section.querySelector('[data-event-upcoming-list]');
+    if (list) {
+      list.replaceChildren();
+      const upcoming = zukunftstermine(termine);
+      if (!upcoming.length) {
+        const li = document.createElement('li');
+        li.textContent = 'Weitere Termine werden noch bekannt gegeben.';
+        list.append(li);
+      } else {
+        upcoming.forEach((termin) => {
+          const li = document.createElement('li');
+          li.className = `event-term-item event-term-item--${termin.status}`;
+          li.textContent = statusText(termin);
+          list.append(li);
+        });
+      }
     }
   }
 </script>

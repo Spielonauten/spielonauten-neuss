@@ -400,3 +400,14 @@ p:last-child { margin-bottom: 0; }
   .contact-field--message { grid-column: auto; }
   .contact-title { font-size: clamp(1.45rem,5vw,1.95rem); }
 }
+
+/* Update 17: kommende Termine und Hinweise – beide Ansichten verwenden dieselbe Datenquelle. */
+.event-rhythm { font-size: .95rem; }
+.event-upcoming { margin: 1.5rem 0 1.75rem; }
+.event-upcoming h3 { font-size: 1.04rem; margin-bottom: .65rem; }
+.event-upcoming ul { margin: 0; padding-left: 1.3rem; }
+.event-upcoming li { padding: .28rem 0; line-height: 1.5; }
+.event-term-item--abgesagt { color: #8a2e1c; font-weight: 700; }
+.event-term-item--verschoben { color: #7b471b; font-weight: 700; }
+
+.event-status-notice { color: #7c261c; font-weight: 700; }

@@ -3,15 +3,17 @@
   "titel": "After-Work bei IKEA",
   "untertitel": "Brettspiele im Schwedensrestaurant",
   "beschreibung": "Unser After-Work-Spieleabend verwandelt das Schwedensrestaurant in eine Brettspiel-Area. Egal, ob du erfahren bist oder dich einfach auf einen geselligen Abend freust – du bist am Zug!",
-  "termin": "Donnerstag, 26.11.2026 · 18:00–20:30 Uhr",
-  "datum": "2026-11-26",
-  "art": "fest",
   "ort": "IKEA Düsseldorf, Schwedensrestaurant, Oerschbachstraße 75, Düsseldorf",
   "teilnahme": "Für IKEA-Familienmitglieder mit Anmeldung über IKEA. Ein direkter Anmeldelink wird ergänzt, sobald er bestätigt ist.",
   "hinweise": [
-    "Wir bringen Spiele von Klassikern bis zu aktuellen Neuheiten mit, erklären die Regeln und spielen mit euch."
+    "Wir bringen Spiele von Klassikern bis zu aktuellen Neuheiten mit, erklären die Regeln und spielen mit euch.",
+    "Übliche Uhrzeit: 18:30–20:30 Uhr. Bei abweichenden Einzelterminen gelten die dort angegebenen Zeiten."
   ],
   "bild": "bilder/veranstaltungen/ikea.webp",
   "bildBreite": 1080,
-  "bildHoehe": 1080
+  "bildHoehe": 1080,
+  "typ": "unregelmaessig",
+  "rhythmus": "Unregelmäßige Termine, üblicherweise 18:30–20:30 Uhr.",
+  "standardBeginn": "18:30",
+  "standardEnde": "20:30"
 }

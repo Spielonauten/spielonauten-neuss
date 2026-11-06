@@ -7,6 +7,10 @@ interface Veranstaltung {
   termin: string;
   datum: string;
   art: string;
+  typ: string;
+  rhythmus: string;
+  termine: Array<{ format: string; datum: string; beginn: string; ende?: string; status: string; hinweis?: string }>;
+  kommendeTermine: Array<{ format: string; datum: string; beginn: string; ende?: string; status: string; hinweis?: string }>;
   ort: string;
   teilnahme: string;
   hinweise: string[];
@@ -23,18 +27,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const logo = `${base}/bilder/logo/spielonauten-logo.png`;
 const hasPoster = Boolean(event.bild);
 const posterUrl = hasPoster ? `${base}/${event.bild?.replace(/^\//, '')}` : '';
-const artLabel = {
-  fest: 'Einzeltermin',
-  regelmaessig: 'Regelmäßige Veranstaltung',
-  planung: 'Termin in Planung',
-}[event.art];
+import { statusText } from '../data/terminanzeige.js';
+const artLabel = event.typ === 'regelmaessig' ? 'Regelmäßige Veranstaltung' : event.typ === 'grossveranstaltung' ? 'Großveranstaltung' : 'Unregelmäßige Veranstaltung';
 ---
 <section
   class:list={['band', position % 2 === 0 ? 'band--white' : 'band--blue', 'event-feature']}
   id={event.id}
   data-event-feature
-  data-event-date={event.datum}
-  data-event-kind={event.art}
+  data-event-terms={JSON.stringify(event.termine)}
   aria-labelledby={`title-${event.id}`}
 >
   <div class="shell event-feature-grid">
@@ -43,10 +43,11 @@ const artLabel = {
       <h2 id={`title-${event.id}`}>{event.titel}</h2>
       <p class="event-feature-subtitle">{event.untertitel}</p>
       <p>{event.beschreibung}</p>
+      <p class="event-rhythm"><strong>Üblicher Rhythmus:</strong> {event.rhythmus}</p>
       <dl class="event-facts">
         <div>
-          <dt>Wann</dt>
-          <dd>{event.termin}</dd>
+          <dt>Nächster bestätigter Termin</dt>
+          <dd data-event-next>{event.termin}</dd>
         </div>
         <div>
           <dt>Wo</dt>
@@ -58,7 +59,14 @@ const artLabel = {
         </div>
       </dl>
       {event.hinweise.map((hinweis) => <p class="event-extra">{hinweis}</p>)}
-      {event.art === 'fest' && <p class="event-date-warning" data-event-past hidden>Dieser Termin liegt bereits zurück. Ein neuer Termin wird hier ergänzt, sobald er feststeht.</p>}
+      <div class="event-upcoming" data-event-upcoming>
+        <h3>Alle kommenden Termine</h3>
+        <ul data-event-upcoming-list>
+          {event.kommendeTermine.length ? event.kommendeTermine.map((termin) => (
+            <li class:list={['event-term-item', `event-term-item--${termin.status}`]}>{statusText(termin)}</li>
+          )) : <li>Weitere Termine werden noch bekannt gegeben.</li>}
+        </ul>
+      </div>
       <a class="button" href={`${base}/wo-wird-gespielt/`}>Informationen zu unseren Spielorten</a>
     </div>
     <div class="event-feature-media">

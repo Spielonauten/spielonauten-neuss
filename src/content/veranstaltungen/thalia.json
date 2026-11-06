@@ -3,15 +3,17 @@
   "titel": "Brettspielaktion bei Thalia",
   "untertitel": "Vor dem Kauf im Geschäft ausprobieren",
   "beschreibung": "Wir bringen Brettspiele direkt auf die Verkaufsfläche im Rheinpark-Center Neuss, erklären die Regeln und spielen mit euch.",
-  "termin": "Nächster Termin in Planung",
-  "datum": "",
-  "art": "planung",
   "ort": "Thalia im Rheinpark-Center Neuss, Breslauer Straße 2–4, 41460 Neuss",
   "teilnahme": "Spontane, kostenlose Teilnahme ohne Anmeldung.",
   "hinweise": [
-    "So kannst du direkt vor dem Kauf ausprobieren, ob dir ein Spiel gefällt."
+    "So kannst du direkt vor dem Kauf ausprobieren, ob dir ein Spiel gefällt.",
+    "Übliche Uhrzeit: 15:00–18:00 Uhr. Bei abweichenden Einzelterminen gelten die dort angegebenen Zeiten."
   ],
   "bild": "bilder/veranstaltungen/thalia.webp",
   "bildBreite": 1080,
-  "bildHoehe": 1080
+  "bildHoehe": 1080,
+  "typ": "unregelmaessig",
+  "rhythmus": "Unregelmäßige Termine, üblicherweise 15:00–18:00 Uhr.",
+  "standardBeginn": "15:00",
+  "standardEnde": "18:00"
 }

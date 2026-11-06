@@ -17,8 +17,7 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
         <article
           class="event-slide"
           data-event-slide
-          data-kind={event.art}
-          data-date={event.datum}
+          data-termine={JSON.stringify(event.termine)}
           data-event-background={bildUrl(event)}
           hidden={i !== 0}
           aria-label={`${i + 1} von ${veranstaltungen.length}: ${event.titel}`}
@@ -27,7 +26,8 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
             <h3>{event.titel}</h3>
             <p class="event-subtitle">{event.untertitel}</p>
             <p>{event.beschreibung}</p>
-            <p class="event-detail"><strong>Wann:</strong> {event.termin}</p>
+            <p class="event-detail"><strong>Nächster Termin:</strong> <span data-next-term>{event.termin}</span></p>
+            <p class="event-detail event-status-notice" data-termin-hinweis hidden={!event.terminHinweis}>{event.terminHinweis}</p>
             <p class="event-detail"><strong>Wo:</strong> {event.ort}</p>
             <a class="button" href={`${base}/veranstaltungen/#${event.id}`}>Alle Informationen</a>
           </div>
@@ -53,6 +53,7 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
 </section>
 
 <script>
+  import { naechsterTerminText, dringenderTerminHinweis } from '../data/terminanzeige.js';
   for (const carousel of document.querySelectorAll('[data-event-carousel]')) {
     const slides = [...carousel.querySelectorAll('[data-event-slide]')];
     const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
@@ -60,15 +61,21 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
     const next = carousel.querySelector('[data-carousel-next]');
     const status = carousel.querySelector('[data-carousel-status]');
 
-    // Abgelaufene Einzeltermine im Browser ausblenden; wiederkehrende und
-    // noch nicht terminierte Formate bleiben weiterhin sichtbar.
-    const visibleIndices = slides.flatMap((slide, i) => {
-      const date = slide.dataset.date;
-      const isPast = slide.dataset.kind === 'fest' && date && new Date(`${date}T23:59:59`).getTime() < Date.now();
-      return isPast ? [] : [i];
+    // Alle Veranstaltungsformate bleiben sichtbar, auch ohne bestätigten Termin.
+    // Termine werden im Browser neu bestimmt, damit die Anzeige auch ohne
+    // weiteren GitHub-Build nach Mitternacht aktuell bleibt.
+    slides.forEach((slide) => {
+      const termine = JSON.parse(slide.dataset.termine || '[]');
+      const anzeige = slide.querySelector('[data-next-term]');
+      if (anzeige) anzeige.textContent = naechsterTerminText(termine);
+      const hinweis = slide.querySelector('[data-termin-hinweis]');
+      if (hinweis) {
+        const text = dringenderTerminHinweis(termine);
+        hinweis.textContent = text;
+        hinweis.hidden = !text;
+      }
     });
-    // Auch ohne anstehende Einzeltermine bleibt der Slider nutzbar.
-    const available = visibleIndices.length ? visibleIndices : [0];
+    const available = slides.map((_, i) => i);
     let position = 0;
 
     const show = (newPosition, announce = false) => {

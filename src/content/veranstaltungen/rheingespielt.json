@@ -2,16 +2,18 @@
   "id": "rheingespielt",
   "titel": "Rheingespielt",
   "untertitel": "Der Spieleabend im Rheinischen Landestheater Neuss",
-  "beschreibung": "Wir treffen uns zu einem gemeinsamen Spieleabend im offenen Foyer. Brettspiele und Erklärungen bringen wir mit – du kannst einfach vorbeikommen.",
-  "art": "regelmaessig",
-  "datum": "2026-11-19",
-  "termin": "Nächster Termin: Donnerstag, 19.11.2026 · 19:00 Uhr",
+  "beschreibung": "Wir treffen uns regelmäßig im Rheinischen Landestheater zum gemeinsamen Spielen. Brettspiele und Erklärungen bringen wir mit – du kannst einfach vorbeikommen. Der genaue Spielbereich wird erst am Veranstaltungstag festgelegt.",
   "ort": "Rheinisches Landestheater Neuss, Oberstraße 95, 41460 Neuss",
   "teilnahme": "Eintritt kostenlos, keine Anmeldung erforderlich.",
   "hinweise": [
-    "Du kannst neue Spiele ausprobieren, dich beraten lassen oder einfach direkt mitspielen. Auch ohne Regelkenntnisse bist du willkommen."
+    "Du kannst neue Spiele ausprobieren, dich beraten lassen oder einfach direkt mitspielen. Auch ohne Regelkenntnisse bist du willkommen.",
+    "Der Spielbereich (Offenes Foyer oder Altes Herzstück) steht erst am Veranstaltungstag fest. Unter „Wo wird gespielt?“ findest du die allgemeine Wegbeschreibung für beide Bereiche."
   ],
   "bild": "bilder/veranstaltungen/rheingespielt.webp",
   "bildBreite": 1080,
-  "bildHoehe": 1080
+  "bildHoehe": 1080,
+  "typ": "regelmaessig",
+  "rhythmus": "In der Regel am vierten Donnerstag im Monat ab 19:00 Uhr. Abweichungen wegen Theaterferien, Spielplan und Feiertagen sind möglich.",
+  "standardBeginn": "19:00",
+  "standardEnde": ""
 }
