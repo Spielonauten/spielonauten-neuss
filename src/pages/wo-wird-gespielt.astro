@@ -70,80 +70,93 @@ const theaterHerzstueckBild = {
     </div>
   </section>
 
-  <!-- Zusätzliche Informationen bleiben bis zum Aufklappen verborgen. -->
-  <details class="venue-collapse venue-collapse--kardinal">
-    <summary class="venue-collapse-summary shell">
-      <span class="venue-collapse-summary-text">
-        <strong>Anfahrt und Wegbeschreibung zum Kardinal-Bea-Haus</strong>
-        <span>Karte, vier Fotos, Busverbindungen und Parkmöglichkeiten</span>
-      </span>
-      <span class="venue-collapse-icon" aria-hidden="true"></span>
-    </summary>
-
-  <section class="band band--mid venue-map-band" aria-labelledby="venue-map-title">
+  <!-- Beide Bereiche sind unabhängig voneinander aufklappbar. -->
+  <section class="band band--blue venue-options-band" aria-labelledby="kardinal-details-title">
     <div class="shell">
-      <p class="venue-kicker venue-section-kicker">Karte und Navigation</p>
-      <h2 id="venue-map-title" class="section-heading">So findest du uns</h2>
-      <div class="venue-map-panel">
-        <p>Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.</p>
-        <div class="venue-map-actions">
-        <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Route in Google Maps planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
-          <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
-        </div>
+      <h2 id="kardinal-details-title" class="section-heading">Anfahrt und Wegbeschreibung</h2>
+      <p class="venue-area-intro">Wähle die Informationen aus, die du für deinen Besuch im Kardinal-Bea-Haus brauchst.</p>
+      <div class="venue-choices">
+        <details class="venue-collapse venue-collapse--card">
+          <summary class="venue-collapse-summary">
+            <span class="venue-collapse-summary-text">
+              <span class="venue-area-number">Anreise und Karte</span>
+              <strong>So kommst du zum Kardinal-Bea-Haus</strong>
+              <span>Kartenlinks, öffentliche Verkehrsmittel und Parkmöglichkeiten</span>
+            </span>
+            <span class="venue-collapse-icon" aria-hidden="true"></span>
+          </summary>
+
+          <div class="venue-choice-content venue-choice-content--travel">
+            <section class="venue-choice-section" aria-labelledby="venue-map-title">
+              <h3 id="venue-map-title" class="venue-choice-heading">So findest du uns</h3>
+              <div class="venue-map-panel">
+                <p>Öffne die Route direkt in deinem Kartendienst. Eine eingebettete Karte laden wir nicht automatisch – so bleiben unnötige Datenübertragungen beim Besuch unserer Website aus.</p>
+                <div class="venue-map-actions">
+                  <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Route in Google Maps planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+                  <a class="venue-text-link" href={kardinal.karte} target="_blank" rel="noopener noreferrer">Auf OpenStreetMap ansehen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+                </div>
+              </div>
+            </section>
+
+            <section class="venue-choice-section" aria-labelledby="oepnv-title">
+              <h3 class="venue-choice-heading" id="oepnv-title">Anfahrt mit dem öffentlichen Nahverkehr</h3>
+              <div class="venue-transit-grid">
+                <article class="venue-transit-card">
+                  <img src={bild('haltestelle-thomas-morus.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Thomas-Morus-Kirche zum Kardinal-Bea-Haus" width="976" height="686" loading="lazy" decoding="async" />
+                  <div class="venue-transit-text"><h4>Neuss Thomas-Morus-Kirche</h4><p>Von dieser Haltestelle sind es nach der bisherigen Wegbeschreibung etwa <strong>240 Meter zu Fuß</strong>.</p></div>
+                </article>
+                <article class="venue-transit-card">
+                  <img src={bild('haltestelle-viersener.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Viersener Straße zum Kardinal-Bea-Haus" width="578" height="433" loading="lazy" decoding="async" />
+                  <div class="venue-transit-text"><h4>Neuss Viersener Straße</h4><p>Von hier sind es nach der bisherigen Wegbeschreibung etwa <strong>800 Meter zu Fuß</strong>. Es stehen verschiedene Busverbindungen zur Verfügung.</p></div>
+                </article>
+              </div>
+              <p class="venue-transit-hint">Die Karten zeigen die bisherigen Fußwege. Linien, Haltestellen und Fahrpläne können sich ändern – überprüfe deine Verbindung bitte vor der Anreise.</p>
+            </section>
+
+            <section class="venue-choice-section" aria-labelledby="auto-title">
+              <h3 id="auto-title" class="venue-choice-heading">Anfahrt mit dem Auto</h3>
+              <div class="venue-split venue-split--photo-last">
+                <div class="venue-copy">
+                  <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
+                  <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
+                </div>
+                <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <details class="venue-collapse venue-collapse--card">
+          <summary class="venue-collapse-summary">
+            <span class="venue-collapse-summary-text">
+              <span class="venue-area-number">Wegbeschreibung</span>
+              <strong>Vom Vorplatz bis zum Spieltisch</strong>
+              <span>Vier nummerierte Fotos zeigen den Weg in den großen Saal</span>
+            </span>
+            <span class="venue-collapse-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="venue-choice-content">
+            <section aria-labelledby="weg-title">
+              <h3 id="weg-title" class="venue-choice-heading">Vom Vorplatz bis zum Spieltisch – in vier Schritten</h3>
+              <div class="venue-route-grid">
+                {wegschritte.map((schritt, i) => (
+                  <figure class="venue-route-card">
+                    <div class="venue-route-image">
+                      <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
+                    </div>
+                    <figcaption>
+                      <span class="venue-step-number" aria-label={`Schritt ${i + 1}`}>{String(i + 1).padStart(2, '0')}</span>
+                      <span>{schritt.text}</span>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          </div>
+        </details>
       </div>
     </div>
   </section>
-
-  <section class="band band--blue" aria-labelledby="weg-title">
-    <div class="shell">
-      <h2 id="weg-title" class="section-heading">Vom Vorplatz bis zum Spieltisch – in vier Schritten</h2>
-      <div class="venue-route-grid">
-        {wegschritte.map((schritt, i) => (
-          <figure class="venue-route-card">
-            <div class="venue-route-image">
-              <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
-            </div>
-            <figcaption>
-              <span class="venue-step-number" aria-label={`Schritt ${i + 1}`}>{String(i + 1).padStart(2, '0')}</span>
-              <span>{schritt.text}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--white" aria-labelledby="oepnv-title">
-    <div class="shell">
-      <h2 class="section-heading" id="oepnv-title">Anfahrt mit dem öffentlichen Nahverkehr</h2>
-      <div class="venue-transit-grid">
-        <article class="venue-transit-card">
-          <img src={bild('haltestelle-thomas-morus.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Thomas-Morus-Kirche zum Kardinal-Bea-Haus" width="976" height="686" loading="lazy" decoding="async" />
-          <div class="venue-transit-text"><h3>Neuss Thomas-Morus-Kirche</h3><p>Von dieser Haltestelle sind es nach der bisherigen Wegbeschreibung etwa <strong>240 Meter zu Fuß</strong>.</p></div>
-        </article>
-        <article class="venue-transit-card">
-          <img src={bild('haltestelle-viersener.webp')} alt="Übersichtskarte des Fußwegs von der Haltestelle Viersener Straße zum Kardinal-Bea-Haus" width="578" height="433" loading="lazy" decoding="async" />
-          <div class="venue-transit-text"><h3>Neuss Viersener Straße</h3><p>Von hier sind es nach der bisherigen Wegbeschreibung etwa <strong>800 Meter zu Fuß</strong>. Es stehen verschiedene Busverbindungen zur Verfügung.</p></div>
-        </article>
-      </div>
-      <p class="venue-transit-hint">Die Karten zeigen die bisherigen Fußwege. Linien, Haltestellen und Fahrpläne können sich ändern – überprüfe deine Verbindung bitte vor der Anreise.</p>
-    </div>
-  </section>
-
-  <section class="band band--blue" aria-labelledby="auto-title">
-    <div class="shell">
-      <h2 id="auto-title" class="section-heading">Anfahrt mit dem Auto</h2>
-      <div class="venue-split venue-split--photo-last">
-        <div class="venue-copy">
-          <p>Entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus gibt es einen längeren Parkstreifen. Bitte beachte die örtliche Beschilderung und die jeweils verfügbaren Parkplätze.</p>
-          <a class="button" href={kardinal.route} target="_blank" rel="noopener noreferrer">Anfahrt planen <span class="sr-only">(öffnet in neuem Tab)</span></a>
-        </div>
-        <img class="venue-lead-image" src={bild('parkplatz.webp')} alt="Parkstreifen mit abgestellten Autos entlang der Furtherhofstraße vor dem Kardinal-Bea-Haus" width="1600" height="900" loading="lazy" decoding="async" />
-      </div>
-    </div>
-  </section>
-
-  </details>
 
   <section id="rheinisches-landestheater" class="band band--white" aria-labelledby="theater-title">
     <div class="shell venue-split venue-theater">
@@ -168,8 +181,8 @@ const theaterHerzstueckBild = {
     <div class="shell">
       <h2 id="theater-areas-title" class="section-heading">Wo genau spielen wir im Theater?</h2>
       <p class="venue-area-intro">Welcher Bereich genutzt wird, geben wir bei der jeweiligen Veranstaltung bekannt. Hier findest du die passenden Hinweise für beide Möglichkeiten.</p>
-      <div class="venue-theater-choices">
-        <details class="venue-collapse venue-collapse--theater">
+      <div class="venue-choices">
+        <details class="venue-collapse venue-collapse--card">
           <summary class="venue-collapse-summary">
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Spielort 02a</span>
@@ -196,7 +209,7 @@ const theaterHerzstueckBild = {
           </div>
         </details>
 
-        <details class="venue-collapse venue-collapse--theater">
+        <details class="venue-collapse venue-collapse--card">
           <summary class="venue-collapse-summary">
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Spielort 02b</span>
