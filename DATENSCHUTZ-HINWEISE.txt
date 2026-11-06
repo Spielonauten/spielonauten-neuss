@@ -1,0 +1,24 @@
+REDAKTIONELLE HINWEISE – NICHT UNGEPRÜFT ALS FERTIGE RECHTSTEXTE VERWENDEN
+
+Die GitHub-Seite unter /datenschutz/ enthält derzeit nur einen
+Platzhalter. Vor Aktivierung des Kontaktformulars bitte die vollständige
+Datenschutzerklärung passend zum Websitebetrieb prüfen und veröffentlichen.
+
+Für den Abschnitt "Kontaktformular" sind insbesondere diese Angaben
+zu berücksichtigen:
+- Zweck: Bearbeitung von Kontaktanfragen.
+- Daten: freiwilliger Name, verpflichtende E-Mail-Adresse und Nachricht,
+  freiwillige Telefonnummer; gegebenenfalls technische Metadaten.
+- Empfänger/Auftragsverarbeiter: Form.taxi, wrkt*biz Reinhard Söllradl,
+  Österreich. Form.taxi beschreibt Datenverarbeitung innerhalb der EU.
+- Maßgebliche Rechtsgrundlage(n) nach tatsächlicher Nutzung prüfen.
+- Speicherdauer/Löschfristen nach den tatsächlichen Einstellungen prüfen.
+- Betroffenenrechte, Verantwortlicher und Kontaktangaben berücksichtigen.
+- AV-Vertrag mit Form.taxi abschließen und aufbewahren.
+
+Form.taxi bietet im Panel unter "Datenschutz" einen passenden
+Mustertext für die eigene Datenschutzerklärung an.
+
+Quellen:
+https://docs.form.taxi/de/privacy
+https://docs.form.taxi/de/form-settings
