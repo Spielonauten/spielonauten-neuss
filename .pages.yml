@@ -94,7 +94,7 @@ content:
     operations:
       create: true
       rename: false
-      delete: false
+      delete: true
     view:
       primary: datum
       fields: [datum, format, beginn, ende, status]
