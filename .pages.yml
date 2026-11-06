@@ -198,8 +198,7 @@ content:
   - name: hinweis
     label: Zusatzhinweis zu Absage / Verschiebung
     type: text
-    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin
-      anlegen.
+    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin anlegen.
 - name: ueber_uns_galerie
   label: Bildergalerie Über uns
   type: file
@@ -549,4 +548,154 @@ content:
     - name: herzstueckBildtext
       label: Bildunterschrift für das Alte Herzstück
       type: text
+      required: true
+- name: seitentexte
+  label: Allgemeine Seitentexte
+  type: file
+  path: src/content/seitentexte.json
+  format: json
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: startseite
+    label: Startseite
+    type: object
+    fields:
+    - name: heroTitel
+      label: Startseite – Hauptüberschrift
+      type: string
+      required: true
+    - name: heroText
+      label: Startseite – Begrüßungstext
+      type: text
+      required: true
+      description: Für Hervorhebungen **fett** oder *kursiv* schreiben. Kein HTML einfügen.
+    - name: ablaufTitel
+      label: Überschrift – So läuft’s bei uns
+      type: string
+      required: true
+    - name: infokarten
+      label: Vier Informationskarten (Reihenfolge bearbeitbar)
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{titel}'
+      fields:
+      - name: titel
+        label: Überschrift
+        type: string
+        required: true
+      - name: text
+        label: Text der Karte
+        type: text
+        required: true
+    - name: partnerTitel
+      label: Überschrift – Kooperationspartner
+      type: string
+      required: true
+    - name: spielorteTitel
+      label: Überschrift – Wo wird gespielt?
+      type: string
+      required: true
+    - name: spielorteText
+      label: Spielorte – Beschreibung auf der Startseite
+      type: text
+      list: true
+      required: true
+      description: Jeder Listeneintrag ist ein eigener Absatz. **fett** und *kursiv* sind möglich.
+    - name: spielorteButton
+      label: Button zum Spielort
+      type: string
+      required: true
+    - name: instagramTitel
+      label: Instagram – Überschrift
+      type: string
+      required: true
+    - name: instagramText
+      label: Instagram – Beschreibung
+      type: text
+      required: true
+    - name: instagramButton
+      label: Instagram – Button-Text
+      type: string
+      required: true
+  - name: veranstaltungen
+    label: Veranstaltungsseite
+    type: object
+    fields:
+    - name: sliderTitel
+      label: Startseite – Überschrift über den Veranstaltungsslides
+      type: string
+      required: true
+    - name: titel
+      label: Veranstaltungsseite – Hauptüberschrift
+      type: string
+      required: true
+    - name: einleitung
+      label: Veranstaltungsseite – Einleitung
+      type: text
+      required: true
+  - name: ueberUns
+    label: Über uns
+    type: object
+    fields:
+    - name: titel
+      label: Über uns – Hauptüberschrift
+      type: string
+      required: true
+    - name: abschnitte
+      label: Über uns – Einleitungstexte (Absätze)
+      type: text
+      list: true
+      required: true
+      description: Jeder Eintrag ist ein Absatz. **fett** oder *kursiv* schreiben, nicht HTML.
+    - name: foerdervereinButton
+      label: Button – Förderverein
+      type: string
+      required: true
+    - name: galerieTitel
+      label: Bildergalerie – Überschrift
+      type: string
+      required: true
+    - name: galerieEinleitung
+      label: Bildergalerie – Einleitung
+      type: text
+      required: true
+  - name: kontakt
+    label: Kontaktbereich
+    type: object
+    fields:
+    - name: titel
+      label: Kontaktformular – Überschrift
+      type: string
+      required: true
+  - name: danke
+    label: Bestätigungsseite nach Nachricht
+    type: object
+    fields:
+    - name: titel
+      label: Dankeseite – Hauptüberschrift
+      type: string
+      required: true
+    - name: text
+      label: Dankeseite – Bestätigung
+      type: text
+      required: true
+    - name: hinweis
+      label: Dankeseite – Zusatzhinweis
+      type: text
+      required: true
+    - name: button
+      label: Dankeseite – Button zur Startseite
+      type: string
+      required: true
+  - name: fusszeile
+    label: Fußzeile
+    type: object
+    fields:
+    - name: hinweis
+      label: Kurzer Hinweis unten auf jeder Seite
+      type: string
       required: true
