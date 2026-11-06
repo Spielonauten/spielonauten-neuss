@@ -7,6 +7,43 @@ const bild = (name) => `${base}/bilder/spielorte/${name}`;
 const rltLogo = `${base}/bilder/partner/rlt-neuss.png`;
 const kardinal = spielorte.kardinal;
 const theater = spielorte.theater;
+
+const theaterFoyerSteps = [
+  {
+    bild: 'rlt-foyer-01-eingang.png',
+    alt: 'Haupteingang des Rheinischen Landestheaters mit dem Schriftzug Theater.',
+    breite: 960,
+    hoehe: 640,
+    text: 'Am Haupteingang das Gebäude betreten.',
+  },
+  {
+    bild: 'rlt-foyer-02-treppe.png',
+    alt: 'Treppe im Rheinischen Landestheater mit dem Weg nach oben ins Foyer.',
+    breite: 960,
+    hoehe: 640,
+    text: 'Die Treppe hinauf ins offene Foyer gehen.',
+  },
+  {
+    bild: 'rlt-foyer-03-spiel-aussuchen.png',
+    alt: 'Im offenen Foyer ausgelegte Brettspiele auf langen Tischen.',
+    breite: 960,
+    hoehe: 640,
+    text: 'Ein Spiel aussuchen.',
+  },
+  {
+    bild: 'rlt-foyer-04-losspielen.png',
+    alt: 'Besucherinnen und Besucher spielen gemeinsam im offenen Foyer des Rheinischen Landestheaters.',
+    breite: 960,
+    hoehe: 640,
+    text: 'Einen Platz finden und losspielen.',
+  },
+];
+const theaterHerzstueckBild = {
+  bild: 'rlt-herzstueck-eingang.png',
+  alt: 'Außenansicht des Alten Herzstücks direkt am Eingangsbereich des Rheinischen Landestheaters.',
+  breite: 650,
+  hoehe: 480,
+};
 ---
 <Layout title="Wo wird gespielt?" description="Spielorte und Anfahrt der Spielonauten Neuss: Wegbeschreibung zum Kardinal-Bea-Haus und Informationen zum Rheinischen Landestheater.">
   <section class="band band--blue title-hero venue-title">
@@ -137,23 +174,23 @@ const theater = spielorte.theater;
             <span class="venue-collapse-summary-text">
               <span class="venue-area-number">Spielort 02a</span>
               <strong>Offenes Foyer</strong>
-              <span>Vier Bilder zeigen künftig den Weg zum Spielebereich.</span>
+              <span>Vier Bilder zeigen den Weg zum Spielebereich.</span>
             </span>
             <span class="venue-collapse-icon" aria-hidden="true"></span>
           </summary>
           <div class="venue-choice-content">
-            <p>Wenn wir im offenen Foyer spielen, ergänzen wir hier eine bebilderte Wegbeschreibung mit vier Schritten. Die Fotos fehlen noch – bis dahin nutzen wir keine unbestätigten Richtungsangaben.</p>
-            <div class="venue-foyer-steps" aria-label="Vorbereitete vier Schritte für den Weg zum offenen Foyer">
-              {[
-                'Ankunft am Rheinischen Landestheater',
-                'Der richtige Gebäudeeingang',
-                'Orientierung im Gebäude',
-                'Der Spielbereich im offenen Foyer',
-              ].map((titel, index) => (
-                <div class="venue-foyer-step">
-                  <div class="venue-foyer-photo-placeholder" aria-hidden="true">Foto {index + 1} folgt</div>
-                  <p><span class="venue-step-number">{String(index + 1).padStart(2, '0')}</span><span>{titel}</span></p>
-                </div>
+            <p>Wenn wir im <strong>offenen Foyer</strong> spielen, findest du den Spielbereich mit diesen vier Schritten:</p>
+            <div class="venue-foyer-steps" aria-label="Vier Schritte zum offenen Foyer im Rheinischen Landestheater">
+              {theaterFoyerSteps.map((schritt, index) => (
+                <figure class="venue-foyer-step">
+                  <div class="venue-foyer-step-image">
+                    <img src={bild(schritt.bild)} alt={schritt.alt} width={schritt.breite} height={schritt.hoehe} loading="lazy" decoding="async" />
+                  </div>
+                  <figcaption>
+                    <span class="venue-step-number">{String(index + 1).padStart(2, '0')}</span>
+                    <span>{schritt.text}</span>
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </div>
@@ -170,7 +207,10 @@ const theater = spielorte.theater;
           </summary>
           <div class="venue-choice-content">
             <p>Das <strong>Alte Herzstück</strong> liegt im Erdgeschoss direkt am Eingang des Theaters. Wenn wir dort spielen, kannst du unseren Spielbereich bereits von außen sehen.</p>
-            <p class="venue-choice-note">Ein zusätzliches Orientierungsfoto vom Eingangsbereich können wir später ergänzen.</p>
+            <figure class="venue-heart-photo">
+              <img src={bild(theaterHerzstueckBild.bild)} alt={theaterHerzstueckBild.alt} width={theaterHerzstueckBild.breite} height={theaterHerzstueckBild.hoehe} loading="lazy" decoding="async" />
+              <figcaption>Das Alte Herzstück befindet sich direkt unten am Eingang – hier kannst du unseren Spielebereich schon von außen erkennen.</figcaption>
+            </figure>
           </div>
         </details>
       </div>
