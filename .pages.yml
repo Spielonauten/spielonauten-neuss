@@ -1,0 +1,89 @@
+# Spielonauten Neuss – Pages CMS
+# Konfigurationsdatei liegt im Hauptverzeichnis des GitHub-Repositorys.
+# Die Website selbst wird weiterhin von GitHub Actions / Astro gebaut.
+media:
+  input: public/bilder/veranstaltungen
+  output: /spielonauten-neuss/bilder/veranstaltungen
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: veranstaltungen
+    label: Veranstaltungen
+    type: collection
+    path: src/content/veranstaltungen
+    format: json
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      primary: titel
+      fields: [titel, art, datum, termin]
+      sort: [titel, datum]
+      search: [titel, ort]
+    fields:
+      - name: id
+        label: Technische Kennung (nicht ändern)
+        type: string
+        readonly: true
+      - name: titel
+        label: Name der Veranstaltung
+        type: string
+        required: true
+      - name: untertitel
+        label: Untertitel
+        type: string
+        required: true
+      - name: beschreibung
+        label: Beschreibung
+        type: text
+        required: true
+      - name: art
+        label: Terminart
+        type: select
+        required: true
+        description: Fest = einmaliger konkreter Termin; regelmäßig = wiederkehrend; Planung = noch ohne Datum.
+        options:
+          values:
+            - name: fest
+              label: Fester Einzeltermin
+            - name: regelmaessig
+              label: Regelmäßige Veranstaltung
+            - name: planung
+              label: Termin in Planung
+      - name: datum
+        label: Datum eines festen Termins
+        type: date
+        default: ''
+        description: Nur bei festen Terminen ausfüllen. Format JJJJ-MM-TT. Zusammen mit dem Anzeigetext ändern.
+        options:
+          format: yyyy-MM-dd
+      - name: termin
+        label: Termintext für Besucher
+        type: string
+        required: true
+        description: Hier steht die lesbare Angabe inklusive Uhrzeit (z. B. Samstag, 12.12.2026 · 12–21 Uhr).
+      - name: ort
+        label: Veranstaltungsort
+        type: text
+        required: true
+      - name: teilnahme
+        label: Teilnahme / Anmeldung
+        type: text
+        required: true
+      - name: hinweise
+        label: Zusätzliche Hinweise
+        type: text
+        list: true
+      - name: bild
+        label: Flyerpfad (technisch – vorerst nicht ändern)
+        type: string
+        readonly: true
+      - name: bildBreite
+        label: Bildbreite (technisch)
+        type: number
+        readonly: true
+      - name: bildHoehe
+        label: Bildhöhe (technisch)
+        type: number
+        readonly: true
