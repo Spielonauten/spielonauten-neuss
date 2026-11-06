@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import UeberUnsGalerie from '../components/UeberUnsGalerie.astro';
 import { partner } from '../data/partner.js';
-const foerderverein = partner.find((eintrag) => eintrag.name.startsWith('Förderverein'));
+const foerderverein = partner.find((eintrag) => eintrag.id === 'fkbh');
 ---
 <Layout title="Über uns" description="Wer sind die Spielonauten Neuss? Erfahre mehr über unsere Brettspielgemeinschaft, unsere Geschichte und unser ehrenamtliches Engagement.">
   <section class="band band--blue title-hero about-title" aria-labelledby="about-heading">

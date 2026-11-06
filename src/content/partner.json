@@ -1,0 +1,30 @@
+[
+  {
+    "id": "fkbh",
+    "name": "Förderverein Kardinal-Bea-Haus e. V.",
+    "beschreibung": "Der Verein kümmert sich um den Erhalt und Betrieb des Kardinal-Bea-Hauses in Neuss-Vogelsang – dem Spielort unserer eigenen Veranstaltungen.",
+    "logo": "/spielonauten-neuss/bilder/partner/fkbh.png",
+    "website": "https://fkbh.de/"
+  },
+  {
+    "id": "ikea-duesseldorf",
+    "name": "IKEA Düsseldorf",
+    "beschreibung": "Zusammen organisieren wir After-Work-Brettspieleabende im Schwedensrestaurant von IKEA Düsseldorf.",
+    "logo": "/spielonauten-neuss/bilder/partner/ikea-duesseldorf.png",
+    "website": "https://www.ikea.com/de/de/stores/events/ikea-duesseldorf/"
+  },
+  {
+    "id": "thalia-rpc",
+    "name": "Thalia im Rheinpark-Center",
+    "beschreibung": "Bei gemeinsamen Aktionen können Brettspiele direkt im Geschäft ausprobiert werden.",
+    "logo": "/spielonauten-neuss/bilder/partner/thalia-rpc.png",
+    "website": "https://www.thalia.de/buchhandlung/5470/1000"
+  },
+  {
+    "id": "rlt-neuss",
+    "name": "Rheinisches Landestheater Neuss",
+    "beschreibung": "Gemeinsam veranstalten wir den Spieleabend „Rheingespielt“ und weitere Brettspielveranstaltungen im Theater.",
+    "logo": "/spielonauten-neuss/bilder/partner/rlt-neuss.png",
+    "website": "https://www.rheinisches-landestheater.de/"
+  }
+]
