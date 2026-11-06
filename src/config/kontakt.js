@@ -1,10 +1,13 @@
 /**
- * Kontaktformular / Form.taxi
+ * Spielonauten Neuss – Kontaktformular mit Form.taxi
  *
- * Hier die exakte, im Form.taxi-Dashboard angezeigte Sendeadresse eintragen.
- * Beispiel: https://form.taxi/s/DEIN_FORM_CODE
+ * Öffentliche Sendeadresse des Kontaktformulars.
+ * Hier niemals API-Schlüssel oder Passwörter eintragen.
  *
- * Bis zur Eintragung bleibt der Senden-Button gesperrt.
- * Vor der Freischaltung unbedingt den AV-Vertrag und die Datenschutzerklaerung pruefen.
+ * Der Nachrichtenversand wird erst nach Abschluss
+ * der Datenschutzprüfung freigeschaltet.
  */
-export const formTaxiEndpoint = '';
+
+export const formTaxiEndpoint = 'https://form.taxi/s/olomg6dh';
+
+export const formFreigeschaltet = false;
