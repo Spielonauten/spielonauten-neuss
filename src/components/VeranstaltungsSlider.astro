@@ -1,27 +1,38 @@
 ---
 import { veranstaltungen } from '../data/veranstaltungen.js';
 import seitentexte from '../content/seitentexte.json';
+import { naechsterBestaetigterTermin } from '../data/terminanzeige.js';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const startBild = `${base}/bilder/startseite/meeples-startseite.jpg`;
 const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')}` : startBild;
+
+// Der nächste bestätigte Einzeltermin entscheidet über die Reihenfolge.
+// Formate ohne bestätigten Zukunftstermin bleiben sichtbar, aber am Ende.
+const terminSchluessel = (termine) => {
+  const termin = naechsterBestaetigterTermin(termine);
+  return termin ? `${termin.datum}T${termin.beginn || '00:00'}` : '9999-12-31T23:59';
+};
+const sortierteVeranstaltungen = [...veranstaltungen].sort((a, b) =>
+  terminSchluessel(a.termine).localeCompare(terminSchluessel(b.termine))
+);
 ---
 <section class="events-section" aria-labelledby="termine">
   <div class="events-heading shell">
     <h2 id="termine">{seitentexte.veranstaltungen.sliderTitel}</h2>
   </div>
-  <div class="events-carousel" data-event-carousel style={`--events-photo: url("${bildUrl(veranstaltungen[0])}");`}>
+  <div class="events-carousel" data-event-carousel style={`--events-photo: url("${bildUrl(sortierteVeranstaltungen[0])}");`}>
     <button class="events-arrow events-arrow--prev" type="button" data-carousel-prev aria-label="Vorherige Veranstaltung">
       <span aria-hidden="true">&#8249;</span>
     </button>
     <div class="events-stage" aria-roledescription="Karussell" aria-label="Unsere Veranstaltungen">
-      {veranstaltungen.map((event, i) => (
+      {sortierteVeranstaltungen.map((event, i) => (
         <article
           class="event-slide"
           data-event-slide
           data-termine={JSON.stringify(event.termine)}
           data-event-background={bildUrl(event)}
           hidden={i !== 0}
-          aria-label={`${i + 1} von ${veranstaltungen.length}: ${event.titel}`}
+          aria-label={`${i + 1} von ${sortierteVeranstaltungen.length}: ${event.titel}`}
         >
           <div class="event-panel">
             <h3>{event.titel}</h3>
@@ -39,7 +50,7 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
       <span aria-hidden="true">&#8250;</span>
     </button>
     <div class="events-dots" role="group" aria-label="Veranstaltung auswählen">
-      {veranstaltungen.map((event, i) => (
+      {sortierteVeranstaltungen.map((event, i) => (
         <button
           type="button"
           data-carousel-dot
@@ -54,19 +65,32 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
 </section>
 
 <script>
-  import { naechsterTerminText, dringenderTerminHinweis } from '../data/terminanzeige.js';
+  import { naechsterTerminText, dringenderTerminHinweis, naechsterBestaetigterTermin } from '../data/terminanzeige.js';
   for (const carousel of document.querySelectorAll('[data-event-carousel]')) {
-    const slides = [...carousel.querySelectorAll('[data-event-slide]')];
-    const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
+    const urspruenglicheSlides = [...carousel.querySelectorAll('[data-event-slide]')];
+    const urspruenglicheDots = [...carousel.querySelectorAll('[data-carousel-dot]')];
     const prev = carousel.querySelector('[data-carousel-prev]');
     const next = carousel.querySelector('[data-carousel-next]');
     const status = carousel.querySelector('[data-carousel-status]');
+    const stage = carousel.querySelector('.events-stage');
+    const dotsContainer = carousel.querySelector('.events-dots');
 
-    // Alle Veranstaltungsformate bleiben sichtbar, auch ohne bestätigten Termin.
-    // Termine werden im Browser neu bestimmt, damit die Anzeige auch ohne
-    // weiteren GitHub-Build nach Mitternacht aktuell bleibt.
-    slides.forEach((slide) => {
+    // Auch ohne neuen GitHub-Build die Reihenfolge beim Seitenaufruf neu
+    // bestimmen: Nach Ablauf des 9. November wird automatisch der 19. November
+    // nach vorne gestellt, sofern kein früherer bestätigter Termin existiert.
+    const eintraege = urspruenglicheSlides.map((slide, index) => {
       const termine = JSON.parse(slide.dataset.termine || '[]');
+      const termin = naechsterBestaetigterTermin(termine);
+      const schluessel = termin ? `${termin.datum}T${termin.beginn || '00:00'}` : '9999-12-31T23:59';
+      return { slide, dot: urspruenglicheDots[index], termine, schluessel, index };
+    }).sort((a, b) => a.schluessel.localeCompare(b.schluessel) || a.index - b.index);
+
+    eintraege.forEach(({ slide, dot, termine }, index) => {
+      stage.append(slide);
+      dotsContainer.append(dot);
+      slide.setAttribute('aria-label', `${index + 1} von ${eintraege.length}: ${slide.querySelector('h3')?.textContent || ''}`);
+      dot.dataset.index = String(index);
+
       const anzeige = slide.querySelector('[data-next-term]');
       if (anzeige) anzeige.textContent = naechsterTerminText(termine);
       const hinweis = slide.querySelector('[data-termin-hinweis]');
@@ -76,7 +100,10 @@ const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')
         hinweis.hidden = !text;
       }
     });
-    const available = slides.map((_, i) => i);
+
+    const slides = eintraege.map(({ slide }) => slide);
+    const dots = eintraege.map(({ dot }) => dot);
+    const available = slides.map((_, index) => index);
     let position = 0;
 
     const show = (newPosition, announce = false) => {
