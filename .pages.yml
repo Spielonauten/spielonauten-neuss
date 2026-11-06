@@ -1,6 +1,4 @@
-# Spielonauten Neuss – Pages CMS
-# Konfigurationsdatei liegt im Hauptverzeichnis des GitHub-Repositorys.
-# Die Website selbst wird weiterhin von GitHub Actions / Astro gebaut.
+# Spielonauten Neuss: Formate und bestätigte Einzeltermine getrennt pflegen.
 media:
   input: public/bilder/veranstaltungen
   output: /spielonauten-neuss/bilder/veranstaltungen
@@ -8,7 +6,7 @@ media:
 
 content:
   - name: veranstaltungen
-    label: Veranstaltungen
+    label: Veranstaltungsformate
     type: collection
     path: src/content/veranstaltungen
     format: json
@@ -19,8 +17,8 @@ content:
       delete: false
     view:
       primary: titel
-      fields: [titel, art, datum, termin]
-      sort: [titel, datum]
+      fields: [titel, typ, rhythmus, standardBeginn, standardEnde]
+      sort: [titel]
       search: [titel, ort]
     fields:
       - name: id
@@ -39,33 +37,31 @@ content:
         label: Beschreibung
         type: text
         required: true
-      - name: art
-        label: Terminart
+      - name: typ
+        label: Veranstaltungsart
         type: select
         required: true
-        description: Fest = einmaliger konkreter Termin; regelmäßig = wiederkehrend; Planung = noch ohne Datum.
         options:
           values:
-            - name: fest
-              label: Fester Einzeltermin
             - name: regelmaessig
               label: Regelmäßige Veranstaltung
-            - name: planung
-              label: Termin in Planung
-      - name: datum
-        label: Datum eines festen Termins
-        type: date
-        default: ''
-        description: Nur bei festen Terminen ausfüllen. Format JJJJ-MM-TT. Zusammen mit dem Anzeigetext ändern.
-        options:
-          format: yyyy-MM-dd
-      - name: termin
-        label: Termintext für Besucher
-        type: string
+            - name: unregelmaessig
+              label: Unregelmäßige Veranstaltung
+            - name: grossveranstaltung
+              label: Einzelne Großveranstaltungen
+      - name: rhythmus
+        label: Üblicher Rhythmus / Hinweise zur Regelmäßigkeit
+        type: text
         required: true
-        description: Hier steht die lesbare Angabe inklusive Uhrzeit (z. B. Samstag, 12.12.2026 · 12–21 Uhr).
+        description: Nur zur Information. Es werden daraus keine zukünftigen Termine erfunden.
+      - name: standardBeginn
+        label: Übliche Startzeit (HH:MM)
+        type: string
+      - name: standardEnde
+        label: Übliche Endzeit (HH:MM) – leer bei Open End
+        type: string
       - name: ort
-        label: Veranstaltungsort
+        label: Allgemeiner Veranstaltungsort
         type: text
         required: true
       - name: teilnahme
@@ -88,3 +84,73 @@ content:
         label: Bildhöhe (technisch)
         type: number
         readonly: true
+
+  - name: termine
+    label: Einzeltermine
+    type: collection
+    path: src/content/termine
+    format: json
+    filename: "{datum}-{format}.json"
+    operations:
+      create: true
+      rename: false
+      delete: false
+    view:
+      primary: datum
+      fields: [datum, format, beginn, ende, status]
+      sort: [datum]
+      search: [format]
+      default:
+        sort: datum
+        order: desc
+    fields:
+      - name: format
+        label: Veranstaltungsformat
+        type: select
+        required: true
+        options:
+          values:
+            - name: rheingespielt
+              label: Rheingespielt
+            - name: offener-brettspieleabend
+              label: Offener Brettspieleabend
+            - name: ikea
+              label: After-Work IKEA
+            - name: vorhang-auf
+              label: Vorhang auf für Brettspiele
+            - name: xxl-spieletag
+              label: XXL-Spieletag
+            - name: thalia
+              label: Thalia
+      - name: datum
+        label: Datum des Einzeltermins
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: beginn
+        label: Beginn (HH:MM)
+        type: string
+        required: true
+        description: Beispiel 18:30. Immer die tatsächliche Zeit des Einzeltermins eintragen.
+        pattern: "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      - name: ende
+        label: Ende (HH:MM) – leer bei Open End
+        type: string
+        description: Beispiel 20:30. Bei Open End leer lassen.
+      - name: status
+        label: Status
+        type: select
+        required: true
+        options:
+          values:
+            - name: bestaetigt
+              label: Bestätigt
+            - name: abgesagt
+              label: Abgesagt
+            - name: verschoben
+              label: Verschoben
+      - name: hinweis
+        label: Zusatzhinweis zu Absage / Verschiebung
+        type: text
+        description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin anlegen.
