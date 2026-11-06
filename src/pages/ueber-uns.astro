@@ -2,22 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import UeberUnsGalerie from '../components/UeberUnsGalerie.astro';
 import { partner } from '../data/partner.js';
+import seitentexte from '../content/seitentexte.json';
+import { formatierterText } from '../utils/sichererText.js';
+const texte = seitentexte.ueberUns;
+const absaetze = Array.isArray(texte.abschnitte) ? texte.abschnitte : [];
 const foerderverein = partner.find((eintrag) => eintrag.id === 'fkbh');
 ---
 <Layout title="Über uns" description="Wer sind die Spielonauten Neuss? Erfahre mehr über unsere Brettspielgemeinschaft, unsere Geschichte und unser ehrenamtliches Engagement.">
   <section class="band band--blue title-hero about-title" aria-labelledby="about-heading">
     <div class="shell narrow">
-      <h1 id="about-heading">Über uns Spielonauten</h1>
+      <h1 id="about-heading">{texte.titel}</h1>
     </div>
   </section>
 
   <section class="band band--white about-intro" aria-labelledby="about-heading">
     <div class="shell about-prose">
-      <p>Wir sind eine Gruppe begeisterter Brettspielfreunde. Wir haben uns zusammengetan, um die Freude am analogen Spielen mit dem Wunsch zu verbinden, diese Begeisterung in einer offenen Gemeinschaft auszuleben. Unser Engagement geht dabei über das rein Spielerische hinaus, denn wir nutzen unser Hobby auch, um uns ehrenamtlich einzubringen. So sind wir eng mit dem <strong>Förderverein Kardinal-Bea-Haus e. V.</strong> verbunden, der sich für den Erhalt und den Betrieb des gleichnamigen Hauses in Neuss einsetzt. Sämtliche Erlöse, die im Rahmen unserer Veranstaltungen erzielt werden, fließen direkt in diesen Förderverein.</p>
-      <p>Was 2013 mit unregelmäßigen Abenden in kleiner Runde unter dem fast schon legendären Motto <em>„Am zweiten Montag in ungeraden Monaten“</em> begann, hat sich über die Jahre zu einer festen Instanz entwickelt. Seit unser Kernteam 2023 Verstärkung fand, ist unser Engagement stetig gewachsen. Wir organisieren mittlerweile verschiedene Veranstaltungen: vom beliebten XXL-Spieletag über den After-Work-Spieleabend bei IKEA Düsseldorf bis hin zu <strong>„Rheingespielt“</strong> im Rheinischen Landestheater. In einem Veranstaltungsjahr konnten wir bereits über 30 Events mit insgesamt mehr als 1.000 Gästen realisieren.</p>
+      {absaetze.map((absatz) => (
+        <p set:html={formatierterText(absatz)}></p>
+      ))}
       {foerderverein && (
         <div class="about-action">
-          <a class="button" href={foerderverein.website} target="_blank" rel="noopener noreferrer">Zum Förderverein Kardinal-Bea-Haus e. V. <span class="sr-only">(öffnet in neuem Tab)</span></a>
+          <a class="button" href={foerderverein.website} target="_blank" rel="noopener noreferrer">{texte.foerdervereinButton} <span class="sr-only">(öffnet in neuem Tab)</span></a>
         </div>
       )}
     </div>
@@ -25,8 +30,8 @@ const foerderverein = partner.find((eintrag) => eintrag.id === 'fkbh');
 
   <section class="band band--blue about-photos" aria-labelledby="about-photos-heading">
     <div class="shell">
-      <h2 id="about-photos-heading" class="section-heading">Einblicke in unsere Gemeinschaft</h2>
-      <p class="about-gallery-intro">Bilder aus unserer Spielonauten-Gemeinschaft im Lauf der Zeit – vom ältesten bis zum jüngsten Foto.</p>
+      <h2 id="about-photos-heading" class="section-heading">{texte.galerieTitel}</h2>
+      <p class="about-gallery-intro">{texte.galerieEinleitung}</p>
       <UeberUnsGalerie />
     </div>
   </section>

@@ -1,12 +1,13 @@
 ---
 import { veranstaltungen } from '../data/veranstaltungen.js';
+import seitentexte from '../content/seitentexte.json';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const startBild = `${base}/bilder/startseite/meeples-startseite.jpg`;
 const bildUrl = (event) => event.bild ? `${base}/${event.bild.replace(/^\//, '')}` : startBild;
 ---
 <section class="events-section" aria-labelledby="termine">
   <div class="events-heading shell">
-    <h2 id="termine">Diese Veranstaltungen warten auf dich:</h2>
+    <h2 id="termine">{seitentexte.veranstaltungen.sliderTitel}</h2>
   </div>
   <div class="events-carousel" data-event-carousel style={`--events-photo: url("${bildUrl(veranstaltungen[0])}");`}>
     <button class="events-arrow events-arrow--prev" type="button" data-carousel-prev aria-label="Vorherige Veranstaltung">

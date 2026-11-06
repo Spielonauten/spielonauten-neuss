@@ -3,6 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import VeranstaltungsSlider from '../components/VeranstaltungsSlider.astro';
 import Kontaktformular from '../components/Kontaktformular.astro';
 import { partner } from '../data/partner.js';
+import seitentexte from '../content/seitentexte.json';
+import { formatierterText } from '../utils/sichererText.js';
+const texte = seitentexte.startseite;
+const infokarten = Array.isArray(texte.infokarten) ? texte.infokarten : [];
+const spielorteAbsaetze = Array.isArray(texte.spielorteText) ? texte.spielorteText : [];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const heroImage = `${base}/bilder/startseite/meeples-startseite.jpg`;
 const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
@@ -12,26 +17,28 @@ const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
     <div class="shell hero-grid">
       <img class="hero-photo" src={heroImage} alt="Rote, blaue und gelbe Spielfiguren auf einem Brettspiel" width="822" height="464" />
       <div class="hero-copy">
-        <h1>Lust auf ein Spiel?</h1>
-        <p>Dann bist du bei den <strong>Spielonauten Neuss</strong> genau richtig! Bei unserer Brettspielgruppe dreht sich alles um das gemeinsame Erleben von spannenden Abenteuern, strategischem Denken und purem Spielspaß. Jetzt bist du am Zug! Schau dich um und komm gerne bei einer unserer Veranstaltungen vorbei.</p>
+        <h1>{texte.heroTitel}</h1>
+        <p set:html={formatierterText(texte.heroText)}></p>
       </div>
     </div>
   </section>
   <VeranstaltungsSlider />
   <section class="band band--blue" aria-labelledby="ablauf">
     <div class="shell">
-      <h2 class="section-heading" id="ablauf">So läuft’s bei uns</h2>
+      <h2 class="section-heading" id="ablauf">{texte.ablaufTitel}</h2>
       <div class="info-grid">
-        <article class="info-card"><h3>Eintritt FREI</h3><p>Du musst nichts zahlen, komme einfach vorbei! Alle Erlöse aus Getränken und Verpflegung unterstützen den Erhalt des Kardinal-Bea-Hauses.</p></article>
-        <article class="info-card"><h3>Was spiele ich denn heute?</h3><p>Wir haben immer eine große Auswahl an Spielen dabei. Du kannst auch eigene Spiele mitbringen und sie gemeinsam mit uns ausprobieren.</p></article>
-        <article class="info-card"><h3>Du kennst die Regeln nicht?</h3><p>Kein Problem. Wir erklären die Spiele und spielen gerne mit dir.</p></article>
-        <article class="info-card"><h3>Alle sind willkommen!</h3><p>Unabhängig von deinem Alter oder deiner Spielerfahrung freuen wir uns auf dich.</p></article>
+        {infokarten.map((karte) => (
+          <article class="info-card">
+            <h3>{karte.titel}</h3>
+            <p set:html={formatierterText(karte.text)}></p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
   <section class="band band--white" aria-labelledby="partner">
     <div class="shell">
-      <h2 class="section-heading" id="partner">Unsere Kooperationspartner</h2>
+      <h2 class="section-heading" id="partner">{texte.partnerTitel}</h2>
       <div class="partner-grid">
         {partner.map((item) => (
           <article class="partner-card">
@@ -58,18 +65,19 @@ const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
     <div class="shell hero-grid">
       <img class="venue-home-image" src={saalFoto} alt="Großer Spielsaal im Kardinal-Bea-Haus mit Tischen und Stühlen für die Spieleabende" width="1089" height="816" loading="lazy" decoding="async" />
       <div class="venue-home-copy">
-        <h2>Wo wird gespielt?</h2>
-        <p>Die meisten unserer eigenen Veranstaltungen finden im <strong>Kardinal-Bea-Haus</strong> in Neuss statt. Der Eingang liegt an der <strong>Furtherhofstraße 25</strong>.</p>
-        <p>Bei <strong>Rheingespielt</strong> und <strong>Vorhang auf für Brettspiele</strong> sind wir außerdem im Rheinischen Landestheater zu Gast.</p>
-        <a class="button" href={`${base}/wo-wird-gespielt/`}>Spielorte und Anfahrt ansehen</a>
+        <h2>{texte.spielorteTitel}</h2>
+        {spielorteAbsaetze.map((absatz) => (
+          <p set:html={formatierterText(absatz)}></p>
+        ))}
+        <a class="button" href={`${base}/wo-wird-gespielt/`}>{texte.spielorteButton}</a>
       </div>
     </div>
   </section>
   <section class="band band--blue section-center">
     <div class="shell narrow">
-      <h2>Mehr Eindrücke auf Instagram</h2>
-      <p>Fotos von unseren Veranstaltungen und Einblicke in unsere Brettspielgemeinschaft.</p>
-      <a class="button" href="https://www.instagram.com/spielonauten_neuss/" target="_blank" rel="noopener noreferrer">Zu Instagram <span class="sr-only">(öffnet in neuem Tab)</span></a>
+      <h2>{texte.instagramTitel}</h2>
+      <p set:html={formatierterText(texte.instagramText)}></p>
+      <a class="button" href="https://www.instagram.com/spielonauten_neuss/" target="_blank" rel="noopener noreferrer">{texte.instagramButton} <span class="sr-only">(öffnet in neuem Tab)</span></a>
     </div>
   </section>
 </Layout>

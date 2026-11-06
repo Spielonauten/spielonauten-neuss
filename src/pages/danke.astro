@@ -1,15 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import seitentexte from '../content/seitentexte.json';
+const texte = seitentexte.danke;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="Vielen Dank für deine Nachricht" description="Bestätigung einer Kontaktanfrage an die Spielonauten Neuss.">
   <section class="band band--blue thanks-section">
     <div class="shell narrow thanks-inner">
       <div class="thanks-symbol" aria-hidden="true">✓</div>
-      <h1>Vielen Dank für deine Nachricht!</h1>
-      <p>Deine Nachricht wurde übermittelt. Wir melden uns so bald wie möglich bei dir.</p>
-      <p class="thanks-secondary">Wenn du uns noch etwas mitteilen möchtest, kannst du das Kontaktformular erneut verwenden.</p>
-      <a class="button" href={`${base}/`}>Zurück zur Startseite</a>
+      <h1>{texte.titel}</h1>
+      <p>{texte.text}</p>
+      <p class="thanks-secondary">{texte.hinweis}</p>
+      <a class="button" href={`${base}/`}>{texte.button}</a>
     </div>
   </section>
 </Layout>

@@ -1,0 +1,62 @@
+{
+  "startseite": {
+    "heroTitel": "Lust auf ein Spiel?",
+    "heroText": "Dann bist du bei den **Spielonauten Neuss** genau richtig! Bei unserer Brettspielgruppe dreht sich alles um das gemeinsame Erleben von spannenden Abenteuern, strategischem Denken und purem Spielspaß. Jetzt bist du am Zug! Schau dich um und komm gerne bei einer unserer Veranstaltungen vorbei.",
+    "ablaufTitel": "So läuft’s bei uns",
+    "infokarten": [
+      {
+        "titel": "Eintritt FREI",
+        "text": "Du musst nichts zahlen, komme einfach vorbei! Alle Erlöse aus Getränken und Verpflegung unterstützen den Erhalt des Kardinal-Bea-Hauses."
+      },
+      {
+        "titel": "Was spiele ich denn heute?",
+        "text": "Wir haben immer eine große Auswahl an Spielen dabei. Du kannst auch eigene Spiele mitbringen und sie gemeinsam mit uns ausprobieren."
+      },
+      {
+        "titel": "Du kennst die Regeln nicht?",
+        "text": "Kein Problem. Wir erklären die Spiele und spielen gerne mit dir."
+      },
+      {
+        "titel": "Alle sind willkommen!",
+        "text": "Unabhängig von deinem Alter oder deiner Spielerfahrung freuen wir uns auf dich."
+      }
+    ],
+    "partnerTitel": "Unsere Kooperationspartner",
+    "spielorteTitel": "Wo wird gespielt?",
+    "spielorteText": [
+      "Die meisten unserer eigenen Veranstaltungen finden im **Kardinal-Bea-Haus** in Neuss statt. Der Eingang liegt an der **Furtherhofstraße 25**.",
+      "Bei **Rheingespielt** und **Vorhang auf für Brettspiele** sind wir außerdem im Rheinischen Landestheater zu Gast."
+    ],
+    "spielorteButton": "Spielorte und Anfahrt ansehen",
+    "instagramTitel": "Mehr Eindrücke auf Instagram",
+    "instagramText": "Fotos von unseren Veranstaltungen und Einblicke in unsere Brettspielgemeinschaft.",
+    "instagramButton": "Zu Instagram"
+  },
+  "veranstaltungen": {
+    "sliderTitel": "Diese Veranstaltungen warten auf dich:",
+    "titel": "Alles Wichtige zu unseren Veranstaltungen",
+    "einleitung": "Bilder und Informationen zu unseren bisherigen Veranstaltungen findest du auch auf unserem Instagram-Kanal. Die nächsten Termine und Teilnahmebedingungen stehen hier auf der Website."
+  },
+  "ueberUns": {
+    "titel": "Über uns Spielonauten",
+    "abschnitte": [
+      "Wir sind eine Gruppe begeisterter Brettspielfreunde. Wir haben uns zusammengetan, um die Freude am analogen Spielen mit dem Wunsch zu verbinden, diese Begeisterung in einer offenen Gemeinschaft auszuleben. Unser Engagement geht dabei über das rein Spielerische hinaus, denn wir nutzen unser Hobby auch, um uns ehrenamtlich einzubringen. So sind wir eng mit dem **Förderverein Kardinal-Bea-Haus e. V.** verbunden, der sich für den Erhalt und den Betrieb des gleichnamigen Hauses in Neuss einsetzt. Sämtliche Erlöse, die im Rahmen unserer Veranstaltungen erzielt werden, fließen direkt in diesen Förderverein.",
+      "Was 2013 mit unregelmäßigen Abenden in kleiner Runde unter dem fast schon legendären Motto *„Am zweiten Montag in ungeraden Monaten“* begann, hat sich über die Jahre zu einer festen Instanz entwickelt. Seit unser Kernteam 2023 Verstärkung fand, ist unser Engagement stetig gewachsen. Wir organisieren mittlerweile verschiedene Veranstaltungen: vom beliebten XXL-Spieletag über den After-Work-Spieleabend bei IKEA Düsseldorf bis hin zu **„Rheingespielt“** im Rheinischen Landestheater. In einem Veranstaltungsjahr konnten wir bereits über 30 Events mit insgesamt mehr als 1.000 Gästen realisieren."
+    ],
+    "foerdervereinButton": "Zum Förderverein Kardinal-Bea-Haus e. V.",
+    "galerieTitel": "Einblicke in unsere Gemeinschaft",
+    "galerieEinleitung": "Bilder aus unserer Spielonauten-Gemeinschaft im Lauf der Zeit – vom ältesten bis zum jüngsten Foto."
+  },
+  "kontakt": {
+    "titel": "Du möchtest Kontakt zu uns aufnehmen? Dann schreib uns gerne!"
+  },
+  "danke": {
+    "titel": "Vielen Dank für deine Nachricht!",
+    "text": "Deine Nachricht wurde übermittelt. Wir melden uns so bald wie möglich bei dir.",
+    "hinweis": "Wenn du uns noch etwas mitteilen möchtest, kannst du das Kontaktformular erneut verwenden.",
+    "button": "Zurück zur Startseite"
+  },
+  "fusszeile": {
+    "hinweis": "Spielonauten Neuss · Website im Aufbau"
+  }
+}

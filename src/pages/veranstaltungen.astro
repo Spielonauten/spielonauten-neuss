@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import VeranstaltungsEintrag from '../components/VeranstaltungsEintrag.astro';
 import { veranstaltungen } from '../data/veranstaltungen.js';
+import seitentexte from '../content/seitentexte.json';
+const texte = seitentexte.veranstaltungen;
 
 // Reihenfolge wie auf der bisherigen Veranstaltungsseite.
 const reihenfolge = [
@@ -17,8 +19,8 @@ const eintraege = reihenfolge.map((id) => veranstaltungen.find((v) => v.id === i
 <Layout title="Veranstaltungen" description="Unsere offenen Spieleabende und Brettspielveranstaltungen in Neuss – Termine, Orte und Teilnahmeinformationen.">
   <section class="band band--blue title-hero">
     <div class="shell narrow">
-      <h1>Alles Wichtige zu unseren Veranstaltungen</h1>
-      <p>Bilder und Informationen zu unseren bisherigen Veranstaltungen findest du auch auf unserem Instagram-Kanal. Die nächsten Termine und Teilnahmebedingungen stehen hier auf der Website.</p>
+      <h1>{texte.titel}</h1>
+      <p>{texte.einleitung}</p>
     </div>
   </section>
   {eintraege.map((eintrag, position) => (
