@@ -1,38 +1,38 @@
 [
   {
-    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-01.webp",
-    "alt": "Gruppenaufnahme der Spielonauten vor einer Backsteinwand mit einer Auswahl an Brettspielen.",
-    "titel": "Gemeinsam am Spieltisch",
-    "beschreibung": "Ein Gruppenfoto aus unserer Spielonauten-Geschichte."
-  },
-  {
-    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-02.webp",
-    "alt": "Vier Personen der Spielonauten Neuss bei einem After-Work-Spieleabend bei IKEA.",
-    "titel": "After-Work bei IKEA",
-    "beschreibung": "Gemeinsames Brettspielen auch außerhalb unseres Vereins-Spielorts."
-  },
-  {
-    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-03.webp",
-    "alt": "Sechs Menschen vor einem Spieltisch mit Brettspielen bei einer Veranstaltung der Spielonauten.",
-    "titel": "Bei einem Spieletag",
-    "beschreibung": "Brettspiele und gemeinsames Engagement stehen im Mittelpunkt."
-  },
-  {
-    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-04.webp",
-    "alt": "Vier Personen des Spielonauten-Teams zeigen kleine Pakete mit dem Spielonauten-Logo.",
-    "titel": "Das Spielonauten-Team",
-    "beschreibung": "Gemeinsame Aktionen und Engagement für die Brettspielgemeinschaft."
+    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-06.webp",
+    "titel": "Vorhang auf für Brettspiele - März 2026",
+    "beschreibung": "Unser Team bei für die Veranstaltung \"Vorhang auf für Brettspiele\"",
+    "alt": "Sechs Menschen stehen zusammen für ein Gruppenfoto bei der Veranstaltung „Vorhang auf für Brettspiele“."
   },
   {
     "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-05.webp",
-    "alt": "Vier Menschen der Spielonauten Neuss vor einem Veranstaltungshintergrund mit Brettspielschachteln.",
-    "titel": "Spielonauten unterwegs",
-    "beschreibung": "Einblicke in eine Veranstaltung außerhalb des gewohnten Spielorts."
+    "titel": "Wir sind Samstagshelden",
+    "beschreibung": "Wir waren im Rheinpark-Center Neuss und haben außerhalb unserer gewohnten Spielorte Brettspiele erklärt.",
+    "alt": "Vier Menschen der Spielonauten Neuss vor einem Veranstaltungshintergrund mit Brettspielschachteln."
   },
   {
-    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-06.webp",
-    "alt": "Sechs Menschen stehen zusammen für ein Gruppenfoto bei einer Veranstaltung.",
-    "titel": "Gemeinsam aktiv",
-    "beschreibung": "Die jüngste Aufnahme unserer Bilderreihe."
+    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-04.webp",
+    "titel": "XXL-Spieltag Dezember 2027",
+    "beschreibung": "Wir packen unser Geschenk von (St.) Martin aus.",
+    "alt": "Vier Personen des Spielonauten-Teams zeigen kleine Pakete mit dem Spielonauten-Logo."
+  },
+  {
+    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-03.webp",
+    "titel": "XXL-Spieltag Februar 2027",
+    "beschreibung": "Das erste Mal mit den damals neuen T‑Shirts.",
+    "alt": "Sechs Menschen vor einem Spieltisch mit Brettspielen bei einer Veranstaltung der Spielonauten."
+  },
+  {
+    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-02.webp",
+    "titel": "IKEA After-Work-Spieleabend im November 2023",
+    "beschreibung": "Unser Team beim ersten gemeinsamen Event mit IKEA Düssleorf.",
+    "alt": "Vier Personen der Spielonauten Neuss bei einem After-Work-Spieleabend bei IKEA."
+  },
+  {
+    "bild": "/spielonauten-neuss/bilder/ueber-uns/spielonauten-01.webp",
+    "titel": "XXL-Spieltag August 2023",
+    "beschreibung": "Gruppenfoto vor dem ersten XXL-Spieletag",
+    "alt": "Gruppenaufnahme der Spielonauten vor einer Backsteinwand mit einer Auswahl an Brettspielen."
   }
 ]
