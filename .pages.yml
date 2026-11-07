@@ -107,6 +107,15 @@ content:
     label: Teilnahme / Anmeldung
     type: text
     required: true
+  - name: buttonText
+    label: Button – Beschriftung (optional)
+    type: string
+    description: Z. B. „Jetzt bei IKEA anmelden“ oder „Zur Thalia-Aktion“. Nur verwenden, wenn auch eine Button-URL eingetragen wird.
+  - name: buttonUrl
+    label: Button – Link (optional, vollständige HTTPS-Adresse)
+    type: string
+    pattern: '^https://.+'
+    description: Insbesondere für IKEA/Thalia. Leer lassen = bisheriger Link zu „Wo wird gespielt?“. Externe Links öffnen in einem neuen Tab.
   - name: hinweise
     label: Zusätzliche Hinweise
     type: text
