@@ -159,7 +159,9 @@ p:last-child { margin-bottom: 0; }
 .event-feature-copy { max-width: 560px; }
 .event-feature-copy h2 { margin-bottom: .45rem; }
 .event-feature-copy p { line-height: 1.55; }
-.event-type { font-size: .78rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; color: #1e5b77; margin-bottom: .6rem; }
+.event-type { font-size: .78rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; color: var(--venue-accent, #AC4A25); margin-bottom: .6rem; }
+/* Gleicher Terrakotta-Farbton wie „Spielort 01“; auf Hellblau aus Kontrastgründen etwas dunkler. */
+.band--blue .event-type { color: #8B361C; }
 .event-feature-subtitle { font-weight: 700; margin-bottom: 1.25rem; }
 .event-facts { margin: 1.25rem 0; }
 .event-facts div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.6rem; padding: .33rem 0; border-bottom: 1px solid rgba(24, 67, 94, .13); }
@@ -420,3 +422,26 @@ p:last-child { margin-bottom: 0; }
 .event-term-item--verschoben { color: #7b471b; font-weight: 700; }
 
 .event-status-notice { color: #7c261c; font-weight: 700; }
+
+
+/* Update 24: Instagram direkt als Kanal erkennbar, ohne externe Schriftarten oder Bilder. */
+.instagram-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4.5rem); align-items: center; }
+.instagram-brandmark { display: flex; gap: clamp(.7rem, 1.5vw, 1.2rem); align-items: center; justify-content: center; min-width: 0; }
+.instagram-symbol { flex: 0 0 auto; width: clamp(66px, 8vw, 100px); height: clamp(66px, 8vw, 100px); background: linear-gradient(135deg, #7855c9 0%, #b53f99 38%, #e64f6f 65%, #f2b248 100%); border-radius: 22%; display: grid; place-items: center; }
+.instagram-symbol svg { width: 79%; height: 79%; display: block; }
+.instagram-wordmark { min-width: 0; font-family: 'Segoe Script', 'Brush Script MT', 'Lucida Handwriting', cursive; font-size: clamp(2.25rem, 4.1vw, 4rem); font-style: italic; font-weight: 700; letter-spacing: -.05em; line-height: 1.2; color: #1b3d4e; }
+.instagram-copy { min-width: 0; }
+.instagram-copy h2 { margin-bottom: .6rem; }
+.instagram-copy p { max-width: 46ch; }
+.instagram-copy .button { margin-top: .65rem; }
+@media (max-width: 900px) {
+  .instagram-layout { grid-template-columns: 1fr; gap: 1.8rem; }
+  .instagram-brandmark { justify-content: center; }
+  .instagram-copy { text-align: center; }
+  .instagram-copy p { margin-inline: auto; }
+}
+@media (max-width: 420px) {
+  .instagram-brandmark { gap: .5rem; }
+  .instagram-symbol { width: 64px; height: 64px; }
+  .instagram-wordmark { font-size: clamp(1.9rem, 8vw, 2.7rem); }
+}

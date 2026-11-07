@@ -17,6 +17,23 @@ const formatLabel = event.typ === 'regelmaessig'
 const einzeltermine = Array.isArray(event.termine) ? event.termine : [];
 const kommendeTermine = Array.isArray(event.kommendeTermine) ? event.kommendeTermine : [];
 const hinweise = Array.isArray(event.hinweise) ? event.hinweise : [];
+// Optionaler Link direkt zu Anmeldung/Veranstaltungsinfos. Kein Link? Bisheriger Spielorte-Button.
+// Akzeptiert nur HTTPS-Adressen, damit fehlerhafte CMS-Eingaben keinen unsicheren Link erzeugen.
+const eingegebenerButtonLink = typeof event.buttonUrl === 'string' ? event.buttonUrl.trim() : '';
+let eigenerButtonLink = '';
+try {
+  const adresse = new URL(eingegebenerButtonLink);
+  if (adresse.protocol === 'https:' && adresse.hostname.includes('.')) {
+    eigenerButtonLink = adresse.href;
+  }
+} catch {
+  // Leer oder ungültig: der ursprüngliche Spielorte-Link bleibt erhalten.
+}
+const buttonLink = eigenerButtonLink || `${base}/wo-wird-gespielt/`;
+const buttonText = eigenerButtonLink
+  ? (String(event.buttonText || '').trim() || 'Weitere Informationen / Anmeldung')
+  : 'Informationen zu unseren Spielorten';
+
 ---
 <section
   class={`band ${bandClass} event-feature`}
@@ -64,8 +81,14 @@ const hinweise = Array.isArray(event.hinweise) ? event.hinweise : [];
         </ul>
       </div>
 
-      <a class="button" href={`${base}/wo-wird-gespielt/`}>
-        Informationen zu unseren Spielorten
+      <a
+        class="button"
+        href={buttonLink}
+        target={eigenerButtonLink ? '_blank' : undefined}
+        rel={eigenerButtonLink ? 'noopener noreferrer' : undefined}
+      >
+        {buttonText}
+        {eigenerButtonLink && <span class="sr-only"> (öffnet in neuem Tab)</span>}
       </a>
     </div>
 

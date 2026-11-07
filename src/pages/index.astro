@@ -73,11 +73,23 @@ const saalFoto = `${base}/bilder/spielorte/spielsaal.webp`;
       </div>
     </div>
   </section>
-  <section class="band band--blue section-center">
-    <div class="shell narrow">
-      <h2>{texte.instagramTitel}</h2>
-      <p set:html={formatierterText(texte.instagramText)}></p>
-      <a class="button" href="https://www.instagram.com/spielonauten_neuss/" target="_blank" rel="noopener noreferrer">{texte.instagramButton} <span class="sr-only">(öffnet in neuem Tab)</span></a>
+  <section class="band band--blue instagram-section" aria-labelledby="instagram-titel">
+    <div class="shell instagram-layout">
+      <div class="instagram-brandmark" aria-hidden="true">
+        <span class="instagram-symbol">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <rect x="11" y="11" width="42" height="42" rx="12" stroke="white" stroke-width="4" />
+            <circle cx="32" cy="32" r="10" stroke="white" stroke-width="4" />
+            <circle cx="45" cy="19" r="3.5" fill="white" />
+          </svg>
+        </span>
+        <span class="instagram-wordmark">Instagram</span>
+      </div>
+      <div class="instagram-copy">
+        <h2 id="instagram-titel">{texte.instagramTitel}</h2>
+        <p set:html={formatierterText(texte.instagramText)}></p>
+        <a class="button" href="https://www.instagram.com/spielonauten_neuss/" target="_blank" rel="noopener noreferrer">{texte.instagramButton} <span class="sr-only">(öffnet in neuem Tab)</span></a>
+      </div>
     </div>
   </section>
 </Layout>
