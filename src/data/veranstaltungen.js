@@ -15,10 +15,20 @@ const dateien = import.meta.glob('../content/termine/*.json', { eager: true, imp
 const einzeltermine = Object.values(dateien);
 const formate = [rheingespielt, offenerBrettspieleabend, ikea, vorhangAuf, xxlSpieletag, thalia];
 
+// Alte, von Pages CMS gespeicherte Bildpfade bleiben nach dem Domainwechsel nutzbar.
+// Neue CMS-Uploads enthalten künftig nur /bilder/... ohne Repository-Präfix.
+function bildpfadOhneAltenPrefix(pfad) {
+  if (typeof pfad !== 'string') return '';
+  return pfad.trim()
+    .replace(/^\/?spielonauten-neuss\//, '')
+    .replace(/^\/+/, '');
+}
+
 export const veranstaltungen = formate.map((format) => {
   const termine = einzeltermine.filter((termin) => termin.format === format.id);
   return {
     ...format,
+    bild: bildpfadOhneAltenPrefix(format.bild),
     termine,
     art: format.typ === 'regelmaessig' ? 'regelmaessig' : 'planung',
     datum: '',

@@ -8,14 +8,13 @@ const nav = [
   { label: 'Über uns', path: '/ueber-uns/' },
 ];
 const linkFor = (path) => `${base}${path}`;
-const active = (path) => (path === '/' ? currentPath === base : currentPath === `${base}${path}`.replace(/\/$/, ''));
-const logo = `${base}/bilder/logo/spielonauten-logo.png`;
+const active = (path) => currentPath === (`${base}${path}`.replace(/\/$/, '') || '/');
 ---
 <header class="site-header">
   <div class="shell header-content">
     <a class="brand" href={linkFor('/')} aria-label="Spielonauten Neuss – Startseite">
-      <img class="brand-logo" src={logo} alt="Logo der Spielonauten Neuss" width="44" height="44" />
-      <span>Spielonauten-Neuss</span>
+      <span class="brand-symbol" aria-hidden="true">SN</span>
+      <span>Spielonauten Neuss</span>
     </a>
 
     <nav class="desktop-nav" aria-label="Hauptnavigation">
@@ -29,7 +28,7 @@ const logo = `${base}/bilder/logo/spielonauten-logo.png`;
     <details class="mobile-nav">
       <summary aria-label="Hauptmenü öffnen oder schließen">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span class="sr-only">Menü</span>
+        <span>Menü</span>
       </summary>
       <nav aria-label="Mobile Hauptnavigation">
         {nav.map((item) => (

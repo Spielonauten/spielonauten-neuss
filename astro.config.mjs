@@ -1,12 +1,8 @@
 import { defineConfig } from 'astro/config';
 
-// GitHub-Projektseite: https://BENUTZERNAME.github.io/spielonauten-neuss/
-// Der Inhaber wird beim GitHub-Actions-Build automatisch erkannt.
-// Bei einer spaeteren eigenen Domain werden site und base angepasst.
-const owner = process.env.GITHUB_REPOSITORY_OWNER || 'example';
-
+// Offizielle Website auf eigener Domain: kein Repository-Unterpfad mehr.
+// Alle internen Links nutzen dadurch / statt /spielonauten-neuss/.
 export default defineConfig({
-  site: `https://${owner}.github.io`,
-  base: '/spielonauten-neuss',
+  site: 'https://spielonauten-neuss.de',
   output: 'static',
 });

@@ -1,4 +1,4 @@
-// Astro erstellt daraus beim Build /spielonauten-neuss/sitemap.xml.
+// Astro erstellt daraus beim Build /sitemap.xml der offiziellen Domain.
 // Keine zusätzlichen npm-Abhängigkeiten erforderlich.
 const urls = [
   '',
@@ -11,8 +11,8 @@ const urls = [
 
 export function GET({ site }) {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  // "site" enthält die GitHub-Pages-Domain aus astro.config.mjs.
-  const origin = site?.origin ?? 'https://spielonauten.github.io';
+  // "site" enthält die eigene Domain aus astro.config.mjs.
+  const origin = site?.origin ?? 'https://spielonauten-neuss.de';
   const list = urls.map((path) => {
     const absolute = new URL(`${base}/${path}`, origin).href;
     return `  <url><loc>${absolute}</loc></url>`;
