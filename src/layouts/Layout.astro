@@ -12,8 +12,8 @@ interface Props {
 const {
   title,
   description = 'Spielonauten Neuss – gemeinsam Brettspiele erleben.',
-  // Vor der offiziellen Ablösung von Jimdo noch NICHT zur Indexierung freigeben.
-  robots = 'noindex, nofollow',
+  // Erst nach erfolgreichem Domainumzug und Abnahme indexieren.
+  robots = 'index, follow',
 } = Astro.props;
 
 const fullTitle = `${title} | Spielonauten Neuss`;
@@ -28,7 +28,7 @@ const socialImage = new URL(`${base}/social-preview-23a.jpg`, origin).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <!-- Bis zur offiziellen Umstellung weiter aktiv; Danke-Seite auch danach nicht indexieren. -->
+    <!-- Die Danke-Seite bleibt individuell von der Indexierung ausgeschlossen. -->
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#216c91" />
     <title>{fullTitle}</title>
