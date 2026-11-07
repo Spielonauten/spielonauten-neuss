@@ -2,7 +2,7 @@ media:
 - name: veranstaltungsbilder
   label: Veranstaltungsbilder
   input: public/bilder/veranstaltungen
-  output: /spielonauten-neuss/bilder/veranstaltungen
+  output: /bilder/veranstaltungen
   extensions:
   - jpg
   - jpeg
@@ -11,7 +11,7 @@ media:
 - name: galeriebilder
   label: Über uns – Galeriebilder
   input: public/bilder/ueber-uns
-  output: /spielonauten-neuss/bilder/ueber-uns
+  output: /bilder/ueber-uns
   extensions:
   - jpg
   - jpeg
@@ -20,7 +20,7 @@ media:
 - name: partnerbilder
   label: Kooperationspartner – Logos
   input: public/bilder/partner
-  output: /spielonauten-neuss/bilder/partner
+  output: /bilder/partner
   extensions:
   - jpg
   - jpeg
@@ -29,7 +29,7 @@ media:
 - name: spielortbilder
   label: Spielorte – Anfahrt und Wegbeschreibungen
   input: public/bilder/spielorte
-  output: /spielonauten-neuss/bilder/spielorte
+  output: /bilder/spielorte
   extensions:
   - jpg
   - jpeg
