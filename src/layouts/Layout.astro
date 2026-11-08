@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import seo from '../content/seo.json';
 
 interface Props {
   title: string;
@@ -16,6 +17,20 @@ const {
   robots = 'index, follow',
 } = Astro.props;
 
+// Bearbeitbare SEO-Beschreibungen für die sechs öffentlichen Seiten.
+// Die Dankeseite behält ihre eigene Beschreibung und noindex-Anweisung.
+const seiten = {
+  '/': 'startseite',
+  '/veranstaltungen/': 'veranstaltungen',
+  '/wo-wird-gespielt/': 'spielorte',
+  '/ueber-uns/': 'ueberUns',
+  '/impressum/': 'impressum',
+  '/datenschutz/': 'datenschutz',
+};
+const pfad = Astro.url.pathname.replace(/\/+/g, '/').replace(/\/?$/, '/');
+const seitenId = seiten[pfad];
+const redaktionelleBeschreibung = seitenId && typeof seo[seitenId] === 'string' ? seo[seitenId].trim() : '';
+const metaBeschreibung = redaktionelleBeschreibung || description;
 const fullTitle = `${title} | Spielonauten Neuss`;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const origin = Astro.site?.origin ?? Astro.url.origin;
@@ -27,7 +42,7 @@ const socialImage = new URL(`${base}/social-preview-23a.jpg`, origin).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaBeschreibung} />
     <!-- Die Danke-Seite bleibt individuell von der Indexierung ausgeschlossen. -->
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#216c91" />
@@ -41,7 +56,7 @@ const socialImage = new URL(`${base}/social-preview-23a.jpg`, origin).href;
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Spielonauten Neuss" />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaBeschreibung} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:width" content="1200" />
@@ -49,7 +64,7 @@ const socialImage = new URL(`${base}/social-preview-23a.jpg`, origin).href;
     <meta property="og:image:alt" content="Original-Logo der Spielonauten Neuss auf hellem Hintergrund" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaBeschreibung} />
     <meta name="twitter:image" content={socialImage} />
   </head>
   <body>
