@@ -2,17 +2,18 @@
   "id": "offener-brettspieleabend",
   "titel": "Offener Brettspieleabend",
   "untertitel": "Gemeinsam spielen im Kardinal-Bea-Haus",
-  "beschreibung": "Monatlich am zweiten Montag laden wir ab 18:30 Uhr zu unserem traditionellen Spieleabend ein. Komm gerne auch spontan bei uns vorbei. Eine große Menge Spaß wartet auf dich.",
+  "beschreibung": "Monatlich am zweiten Montag laden wir ab 18:30 Uhr zu unserem traditionellen Spieleabend ein. In entspannter Atmosphäre spielen wir Neuheiten, Klassiker und das, was ihr mitbringt. Du kennst die Regeln nicht? Kein Problem, wir haben genügend Brettspielprofis vor Ort, die dir die Spiele erklären und mitspielen.",
+  "typ": "regelmaessig",
+  "rhythmus": "Am zweiten Montag im Monat, ab 18:30 Uhr.",
+  "standardBeginn": "18:30",
+  "standardEnde": "22:00",
   "ort": "Großer Saal im Kardinal-Bea-Haus, Furtherhofstraße 25, 41462 Neuss",
-  "teilnahme": "Keine Anmeldung notwendig. Eintritt kostenlos.",
+  "teilnahme": "Keine Anmeldung notwendig. Eintritt kostenlos. Komm gerne auch spontan vorbei.",
+  "buttonUrl": "https://spielonauten-neuss.de/wo-wird-gespielt/",
   "hinweise": [
     "Wir spielen Neuheiten, Klassiker und alles, was ihr mitbringt. Unsere Spieleprofis erklären dir gerne die Regeln."
   ],
   "bild": "bilder/veranstaltungen/offener-brettspieleabend.webp",
   "bildBreite": 1448,
-  "bildHoehe": 2048,
-  "typ": "regelmaessig",
-  "rhythmus": "In der Regel am zweiten Montag im Monat, ab 18:30 Uhr.",
-  "standardBeginn": "18:30",
-  "standardEnde": ""
+  "bildHoehe": 2048
 }
