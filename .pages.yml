@@ -110,12 +110,14 @@ content:
   - name: buttonText
     label: Button – Beschriftung (optional)
     type: string
-    description: Z. B. „Jetzt bei IKEA anmelden“ oder „Zur Thalia-Aktion“. Nur verwenden, wenn auch eine Button-URL eingetragen wird.
+    description: Z. B. „Jetzt bei IKEA anmelden“ oder „Zur Thalia-Aktion“. Nur verwenden, wenn auch eine Button-URL
+      eingetragen wird.
   - name: buttonUrl
     label: Button – Link (optional, vollständige HTTPS-Adresse)
     type: string
-    pattern: '^https://.+'
-    description: Insbesondere für IKEA/Thalia. Leer lassen = bisheriger Link zu „Wo wird gespielt?“. Externe Links öffnen in einem neuen Tab.
+    pattern: ^https://.+
+    description: Insbesondere für IKEA/Thalia. Leer lassen = bisheriger Link zu „Wo wird gespielt?“. Externe Links
+      öffnen in einem neuen Tab.
   - name: hinweise
     label: Zusätzliche Hinweise
     type: text
@@ -207,7 +209,8 @@ content:
   - name: hinweis
     label: Zusatzhinweis zu Absage / Verschiebung
     type: text
-    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin anlegen.
+    description: Bei Verschiebung Ersatztermin erläutern. Den neuen Termin zusätzlich als eigenen bestätigten Einzeltermin
+      anlegen.
 - name: ueber_uns_galerie
   label: Bildergalerie Über uns
   type: file
@@ -708,3 +711,48 @@ content:
       label: Kurzer Hinweis unten auf jeder Seite
       type: string
       required: true
+- name: seo
+  label: SEO-Einstellungen
+  type: file
+  path: src/content/seo.json
+  format: json
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: startseite
+    label: Meta-Description – Startseite
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
+  - name: veranstaltungen
+    label: Meta-Description – Veranstaltungsseite
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
+  - name: spielorte
+    label: Meta-Description – Wo wird gespielt?
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
+  - name: ueberUns
+    label: Meta-Description – Über uns
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
+  - name: impressum
+    label: Meta-Description – Impressum
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
+  - name: datenschutz
+    label: Meta-Description – Datenschutz
+    type: text
+    required: true
+    description: 'Kurzbeschreibung für Google und Social-Media-Vorschauen. Empfehlung: ungefähr 140–160 Zeichen;
+      Google kann einen anderen Ausschnitt anzeigen.'
