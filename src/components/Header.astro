@@ -8,12 +8,13 @@ const nav = [
   { label: 'Über uns', path: '/ueber-uns/' },
 ];
 const linkFor = (path) => `${base}${path}`;
+const logo = `${base}/bilder/logo/spielonauten-logo.png`;
 const active = (path) => currentPath === (`${base}${path}`.replace(/\/$/, '') || '/');
 ---
 <header class="site-header">
   <div class="shell header-content">
     <a class="brand" href={linkFor('/')} aria-label="Spielonauten Neuss – Startseite">
-      <span class="brand-symbol" aria-hidden="true">SN</span>
+      <img class="brand-logo" src={logo} alt="Logo der Spielonauten Neuss" width="44" height="44" />
       <span>Spielonauten Neuss</span>
     </a>
 
