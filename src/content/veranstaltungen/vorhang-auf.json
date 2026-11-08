@@ -3,17 +3,16 @@
   "titel": "Vorhang auf für Brettspiele",
   "untertitel": "Der Brettspieltag im Rheinischen Landestheater",
   "beschreibung": "Ein gemütlicher Brettspieltag für neugierige Spielerinnen und Spieler. Es gibt Neuheiten, Klassiker und viele Möglichkeiten, einfach mitzuspielen.",
+  "typ": "grossveranstaltung",
+  "rhythmus": "Einzelne Großveranstaltungen mit individuell angekündigten Terminen und Uhrzeiten.",
   "ort": "Rheinisches Landestheater Neuss, Oberstraße 95, 41460 Neuss",
-  "teilnahme": "Eintritt kostenlos. Getränke können vor Ort gekauft werden.",
+  "teilnahme": "Eintritt kostenlos.",
+  "buttonUrl": "https://spielonauten-neuss.de/wo-wird-gespielt/",
   "hinweise": [
-    "Unsere Spieleprofis erklären euch die Regeln. Auch das gastronomische Angebot in der Umgebung kann genutzt werden.",
-    "Welcher Spielbereich genutzt wird, wird am Veranstaltungstag vor Ort bekannt gegeben. Die Anreise und die beiden möglichen Bereiche sind auf der Spielortseite beschrieben."
+    "Unsere Spieleprofis erklären euch die Regeln. Getränke können vor Ort gekauft werden. Es kann das gastronomische Angebot in der Umgebung genutzt werden.",
+    "Neben den Brettspielen aus unseren privaten Sammlungen werden euch mehrere Spieleverlage exklusiv ihre Spiele vorstellen. Bisher haben sich der **Feuerland Spiele**, der **HeidelBÄR Games** und **Koalla Spiele** angekündigt. "
   ],
   "bild": "bilder/veranstaltungen/vorhang-auf.webp",
   "bildBreite": 1080,
-  "bildHoehe": 1080,
-  "typ": "grossveranstaltung",
-  "rhythmus": "Einzelne Großveranstaltungen mit individuell angekündigten Uhrzeiten.",
-  "standardBeginn": "",
-  "standardEnde": ""
+  "bildHoehe": 1080
 }
