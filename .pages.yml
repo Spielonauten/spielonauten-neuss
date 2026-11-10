@@ -194,6 +194,14 @@ content:
     label: Ende (HH:MM) – leer bei Open End
     type: string
     description: Beispiel 20:30. Bei Open End leer lassen.
+  - name: kalenderEnde
+    label: Endzeit nur für den Kalender (HH:MM, bei Open End)
+    type: string
+    pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]$
+    description: >-
+      Nur bei Open End: eine technische Orientierungs-Endzeit für abonnierte Kalender.
+      Die Veranstaltungsseite zeigt weiterhin Open End. Ohne Eintrag erscheint im
+      Kalender nur der Startzeitpunkt. Bei festem Ende stattdessen das Feld Ende verwenden.
   - name: status
     label: Status
     type: select
