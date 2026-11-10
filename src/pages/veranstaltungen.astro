@@ -21,6 +21,10 @@ const eintraege = reihenfolge.map((id) => veranstaltungen.find((v) => v.id === i
     <div class="shell narrow">
       <h1>{texte.titel}</h1>
       <p>{texte.einleitung}</p>
+      <div class="kalender-abonnement">
+        <a class="button" href="webcal://spielonauten-neuss.de/kalender.ics" aria-label="Spielonauten-Veranstaltungskalender abonnieren">📅 Veranstaltungskalender abonnieren</a>
+        <p class="kalender-abonnement-hilfe">Für Google Kalender: <a href="https://spielonauten-neuss.de/kalender.ics">Kalenderadresse kopieren</a> und in Google Kalender unter „Weitere Kalender → Per URL“ hinzufügen. Bitte abonnieren statt einmalig importieren.</p>
+      </div>
     </div>
   </section>
   {eintraege.map((eintrag, position) => (
@@ -53,3 +57,10 @@ const eintraege = reihenfolge.map((id) => veranstaltungen.find((v) => v.id === i
     }
   }
 </script>
+
+<style>
+  .kalender-abonnement { margin: 1.6rem auto 0; display: flex; align-items: center; flex-direction: column; gap: .55rem; }
+  .kalender-abonnement .button { display: inline-block; max-width: 100%; white-space: normal; }
+  .kalender-abonnement-hilfe { font-size: .85rem; line-height: 1.45; max-width: 58ch; margin: 0; }
+  .kalender-abonnement-hilfe a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+</style>
